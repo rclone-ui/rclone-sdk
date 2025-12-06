@@ -1,0 +1,61 @@
+{
+    "name": "rclone-sdk",
+    "version": "1.72.0",
+    "keywords": [
+        "rclone",
+        "rclone-remote-control",
+        "rclone-sdk",
+        "rclone-client",
+        "rclone-api",
+        "rclone-rcd",
+        "rclone-rest"
+    ],
+    "author": "https://github.com/rclone-ui",
+    "license": "MIT",
+    "description": "Fully typed SDK for Rclone. Compatible with vanilla Fetch, React Query, and SWR.",
+    "scripts": {
+        "build": "tsup",
+        "prepublishOnly": "npm run build",
+        "lint": "biome check .",
+        "check": "tsc --noEmit",
+        "pub:ts": "npm version patch --no-git-tag-version && npm publish",
+        "gen:rs": "node scripts/progen.cjs",
+        "pub:rs": "cd rs && cargo publish",
+        "all": "npm run pub:ts && npm run gen:rs && npm run pub:rs"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "openapi-fetch": "^0.15.0",
+        "openapi-react-query": "^0.5.1",
+        "rclone-openapi": "^1.0.23",
+        "swr-openapi": "^5.4.2"
+    },
+    "devDependencies": {
+        "@apiture/openapi-down-convert": "^0.14.2",
+        "@biomejs/biome": "^1.9.4",
+        "tsup": "^8.5.1",
+        "typescript": "^5.9.3"
+    },
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./query": {
+            "types": "./dist/query.d.ts",
+            "import": "./dist/query.js"
+        },
+        "./swr": {
+            "types": "./dist/swr.d.ts",
+            "import": "./dist/swr.js"
+        }
+    },
+    "files": ["dist"],
+    "sideEffects": false
+}
