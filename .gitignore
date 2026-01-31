@@ -23,3 +23,6 @@ dist
 target
 *.rs.bk
 .*.swp
+
+.npmrc
+.env*
