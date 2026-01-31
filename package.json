@@ -1,6 +1,6 @@
 {
     "name": "rclone-sdk",
-    "version": "1.72.0",
+    "version": "1.73.0",
     "keywords": [
         "rclone",
         "rclone-remote-control",
@@ -20,8 +20,8 @@
         "check": "tsc --noEmit",
         "pub:ts": "npm version patch --no-git-tag-version && npm publish",
         "gen:rs": "node scripts/progen.cjs",
-        "pub:rs": "cd rs && cargo publish",
-        "all": "npm run pub:ts && npm run gen:rs && npm run pub:rs"
+        "pub:rs": "cd rs && cargo publish --allow-dirty",
+        "all": "npm publish && npm run gen:rs && npm run pub:rs"
     },
     "engines": {
         "node": ">=18"
@@ -29,8 +29,8 @@
     "dependencies": {
         "openapi-fetch": "^0.15.0",
         "openapi-react-query": "^0.5.1",
-        "rclone-openapi": "^1.0.23",
-        "swr-openapi": "^5.4.2"
+        "rclone-openapi": "^1.73.0",
+        "swr-openapi": "^5.6.0"
     },
     "devDependencies": {
         "@apiture/openapi-down-convert": "^0.14.2",

@@ -22,7 +22,7 @@ cargo add rclone-sdk
 
 ```toml
 [dependencies]
-rclone-sdk = "1.72"
+rclone-sdk = "1.73.0"
 tokio = { version = "1", features = ["full"] }
 ```
 
@@ -221,6 +221,9 @@ Now you'll be able to
 
 Contributions = welcome! Just make sure to check if the PR isn't a better fit for the [**rclone-openapi**](https://github.com/rclone-ui/rclone-ui) repo.
 
+
+<br />
+<br />
 
 <div align="center">
 <sub>Made with ☁️ for the rclone community</sub>

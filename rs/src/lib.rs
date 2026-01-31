@@ -80,9 +80,13 @@ pub mod types {
     ///{
     ///  "type": "object",
     ///  "required": [
+    ///    "name",
     ///    "type"
     ///  ],
     ///  "properties": {
+    ///    "name": {
+    ///      "type": "string"
+    ///    },
     ///    "provider": {
     ///      "type": "string"
     ///    },
@@ -96,6 +100,7 @@ pub mod types {
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
     pub struct ConfigGetResponse {
+        pub name: ::std::string::String,
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
         pub provider: ::std::option::Option<::std::string::String>,
         #[serde(rename = "type")]
@@ -2889,6 +2894,45 @@ pub mod types {
 
     impl ::std::convert::From<&OperationsHashsumResponse> for OperationsHashsumResponse {
         fn from(value: &OperationsHashsumResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    ///`OperationsHashsumfileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "required": [
+    ///    "hash",
+    ///    "hashType"
+    ///  ],
+    ///  "properties": {
+    ///    "hash": {
+    ///      "description": "The hash value of the file.",
+    ///      "type": "string"
+    ///    },
+    ///    "hashType": {
+    ///      "description": "The hash algorithm that was used.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsHashsumfileResponse {
+        ///The hash value of the file.
+        pub hash: ::std::string::String,
+        ///The hash algorithm that was used.
+        #[serde(rename = "hashType")]
+        pub hash_type: ::std::string::String,
+    }
+
+    impl ::std::convert::From<&OperationsHashsumfileResponse> for OperationsHashsumfileResponse {
+        fn from(value: &OperationsHashsumfileResponse) -> Self {
             value.clone()
         }
     }
@@ -7976,7 +8020,7 @@ pub mod types {
 ///
 ///Full OpenAPI specification for the Rclone RC API.
 ///
-///Version: 0.1.3
+///Version: 1.73.0
 pub struct Client {
     pub(crate) baseurl: String,
     pub(crate) client: reqwest::Client,
@@ -8017,7 +8061,7 @@ impl Client {
 
 impl ClientInfo<()> for Client {
     fn api_version() -> &'static str {
-        "0.1.3"
+        "1.73.0"
     }
 
     fn baseurl(&self) -> &str {
@@ -8534,6 +8578,76 @@ impl Client {
             .build()?;
         let info = OperationInfo {
             operation_id: "operations_hashsum",
+        };
+        self.pre(&mut request, &info).await?;
+        let result = self.exec(request, &info).await;
+        self.post(&result, &info).await?;
+        let response = result?;
+        match response.status().as_u16() {
+            200u16 => ResponseValue::from_response(response).await,
+            400u16..=499u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            500u16..=599u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            _ => Err(Error::UnexpectedResponse(response)),
+        }
+    }
+
+    ///Hash a single file
+    ///
+    ///Returns the hash of a single file using the specified hash algorithm.
+    ///
+    ///Sends a `POST` request to `/operations/hashsumfile`
+    ///
+    ///Arguments:
+    /// - `async_`: Run the command asynchronously. Returns a job id
+    ///   immediately.
+    /// - `group`: Assign the request to a custom stats group.
+    /// - `base64`: Set to true to emit the hash value in base64 rather than
+    ///   hexadecimal.
+    /// - `download`: Set to true to force reading the data instead of using
+    ///   remote checksums.
+    /// - `fs`: Remote name or path containing the file to hash.
+    /// - `hash_type`: Hash algorithm to use, e.g. `md5`, `sha1`, or another
+    ///   supported name.
+    /// - `remote`: Path to the specific file within `fs` to hash.
+    pub async fn operations_hashsumfile<'a>(
+        &'a self,
+        async_: Option<bool>,
+        group: Option<&'a str>,
+        base64: Option<bool>,
+        download: Option<bool>,
+        fs: &'a str,
+        hash_type: &'a str,
+        remote: &'a str,
+    ) -> Result<ResponseValue<types::OperationsHashsumfileResponse>, Error<types::RcError>> {
+        let url = format!("{}/operations/hashsumfile", self.baseurl,);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        header_map.append(
+            ::reqwest::header::HeaderName::from_static("api-version"),
+            ::reqwest::header::HeaderValue::from_static(Self::api_version()),
+        );
+        #[allow(unused_mut)]
+        let mut request = self
+            .client
+            .post(url)
+            .header(
+                ::reqwest::header::ACCEPT,
+                ::reqwest::header::HeaderValue::from_static("application/json"),
+            )
+            .query(&progenitor_client::QueryParam::new("_async", &async_))
+            .query(&progenitor_client::QueryParam::new("_group", &group))
+            .query(&progenitor_client::QueryParam::new("base64", &base64))
+            .query(&progenitor_client::QueryParam::new("download", &download))
+            .query(&progenitor_client::QueryParam::new("fs", &fs))
+            .query(&progenitor_client::QueryParam::new("hashType", &hash_type))
+            .query(&progenitor_client::QueryParam::new("remote", &remote))
+            .headers(header_map)
+            .build()?;
+        let info = OperationInfo {
+            operation_id: "operations_hashsumfile",
         };
         self.pre(&mut request, &info).await?;
         let result = self.exec(request, &info).await;
