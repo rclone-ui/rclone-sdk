@@ -219,7 +219,7 @@ Now you'll be able to
 
 ## Contributing
 
-Contributions = welcome! Just make sure to check if the PR isn't a better fit for the [**rclone-openapi**](https://github.com/rclone-ui/rclone-ui) repo.
+Contributions = welcome! Just make sure to check if the PR isn't a better fit for the [**rclone-openapi**](https://github.com/rclone-ui/rclone-openapi) repo.
 
 
 <br />
