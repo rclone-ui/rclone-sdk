@@ -35,6 +35,97 @@ pub mod types {
         }
     }
 
+    ///`BackendCommandRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "arg": {
+    ///      "description": "Optional positional arguments for the backend
+    /// command.",
+    ///      "type": "array",
+    ///      "items": {
+    ///        "type": "string"
+    ///      }
+    ///    },
+    ///    "command": {
+    ///      "description": "Backend-specific command to invoke.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path the backend command should
+    /// target.",
+    ///      "type": "string"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Backend command options encoded as a JSON string.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct BackendCommandRequest {
+        ///Optional positional arguments for the backend command.
+        #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
+        pub arg: ::std::vec::Vec<::std::string::String>,
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Backend-specific command to invoke.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub command: ::std::option::Option<::std::string::String>,
+        ///Remote name or path the backend command should target.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Backend command options encoded as a JSON string.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&BackendCommandRequest> for BackendCommandRequest {
+        fn from(value: &BackendCommandRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for BackendCommandRequest {
+        fn default() -> Self {
+            Self {
+                arg: Default::default(),
+                async_: Default::default(),
+                command: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                opt: Default::default(),
+            }
+        }
+    }
+
     ///`BackendCommandResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -72,25 +163,102 @@ pub mod types {
         }
     }
 
-    ///`ConfigGetResponse`
+    ///`CacheExpireRequest`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
     ///  "type": "object",
-    ///  "required": [
-    ///    "name",
-    ///    "type"
-    ///  ],
     ///  "properties": {
-    ///    "name": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
     ///      "type": "string"
     ///    },
-    ///    "provider": {
+    ///    "remote": {
+    ///      "description": "Remote path to expire from the cache, e.g.
+    /// `remote:path/to/dir`.",
     ///      "type": "string"
     ///    },
-    ///    "type": {
+    ///    "withData": {
+    ///      "description": "Set to true to drop cached chunk data along with
+    /// directory entries.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CacheExpireRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Remote path to expire from the cache, e.g. `remote:path/to/dir`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+        ///Set to true to drop cached chunk data along with directory entries.
+        #[serde(
+            rename = "withData",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub with_data: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&CacheExpireRequest> for CacheExpireRequest {
+        fn from(value: &CacheExpireRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CacheExpireRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+                with_data: Default::default(),
+            }
+        }
+    }
+
+    ///`CacheFetchRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "chunks": {
+    ///      "description": "Comma-separated chunk specifier list (e.g.
+    /// `0:10,25:30`) describing file pieces to prefetch.",
     ///      "type": "string"
     ///    }
     ///  },
@@ -99,17 +267,494 @@ pub mod types {
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct ConfigGetResponse {
-        pub name: ::std::string::String,
+    pub struct CacheFetchRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Comma-separated chunk specifier list (e.g. `0:10,25:30`) describing
+        /// file pieces to prefetch.
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub provider: ::std::option::Option<::std::string::String>,
+        pub chunks: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CacheFetchRequest> for CacheFetchRequest {
+        fn from(value: &CacheFetchRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CacheFetchRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                chunks: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CacheStatsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CacheStatsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CacheStatsRequest> for CacheStatsRequest {
+        fn from(value: &CacheStatsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CacheStatsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigCreateRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the new remote configuration.",
+    ///      "type": "string"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Optional JSON object controlling interactive
+    /// behaviour (e.g. `obscure`, `continue`).",
+    ///      "type": "string"
+    ///    },
+    ///    "parameters": {
+    ///      "description": "JSON object of configuration key/value pairs
+    /// required for the remote.",
+    ///      "type": "string"
+    ///    },
+    ///    "type": {
+    ///      "description": "Backend type identifier, such as `drive`, `s3`, or
+    /// `dropbox`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigCreateRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the new remote configuration.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+        ///Optional JSON object controlling interactive behaviour (e.g.
+        /// `obscure`, `continue`).
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+        ///JSON object of configuration key/value pairs required for the
+        /// remote.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub parameters: ::std::option::Option<::std::string::String>,
+        ///Backend type identifier, such as `drive`, `s3`, or `dropbox`.
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub type_: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigCreateRequest> for ConfigCreateRequest {
+        fn from(value: &ConfigCreateRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigCreateRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+                opt: Default::default(),
+                parameters: Default::default(),
+                type_: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigCreateResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigCreateResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&ConfigCreateResponse> for ConfigCreateResponse {
+        fn from(value: &ConfigCreateResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigCreateResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigDeleteRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the remote configuration to delete.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigDeleteRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the remote configuration to delete.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigDeleteRequest> for ConfigDeleteRequest {
+        fn from(value: &ConfigDeleteRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigDeleteRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigDumpRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigDumpRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigDumpRequest> for ConfigDumpRequest {
+        fn from(value: &ConfigDumpRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigDumpRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigGetRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the remote configuration to fetch.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigGetRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the remote configuration to fetch.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigGetRequest> for ConfigGetRequest {
+        fn from(value: &ConfigGetRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigGetRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigGetResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "required": [
+    ///    "type"
+    ///  ],
+    ///  "properties": {
+    ///    "type": {
+    ///      "type": "string"
+    ///    }
+    ///  },
+    ///  "additionalProperties": {
+    ///    "type": "string"
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigGetResponse {
         #[serde(rename = "type")]
         pub type_: ::std::string::String,
+        #[serde(flatten)]
+        pub extra: ::std::collections::HashMap<::std::string::String, ::std::string::String>,
     }
 
     impl ::std::convert::From<&ConfigGetResponse> for ConfigGetResponse {
         fn from(value: &ConfigGetResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`ConfigListremotesRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigListremotesRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigListremotesRequest> for ConfigListremotesRequest {
+        fn from(value: &ConfigListremotesRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigListremotesRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -142,6 +787,132 @@ pub mod types {
     impl ::std::convert::From<&ConfigListremotesResponse> for ConfigListremotesResponse {
         fn from(value: &ConfigListremotesResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`ConfigPasswordRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the remote whose secrets should be
+    /// updated.",
+    ///      "type": "string"
+    ///    },
+    ///    "parameters": {
+    ///      "description": "JSON object of password answers, typically
+    /// including `pass`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigPasswordRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the remote whose secrets should be updated.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+        ///JSON object of password answers, typically including `pass`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub parameters: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigPasswordRequest> for ConfigPasswordRequest {
+        fn from(value: &ConfigPasswordRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigPasswordRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+                parameters: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigPathsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigPathsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigPathsRequest> for ConfigPathsRequest {
+        fn from(value: &ConfigPathsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigPathsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -870,6 +1641,60 @@ pub mod types {
         }
     }
 
+    ///`ConfigProvidersRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigProvidersRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigProvidersRequest> for ConfigProvidersRequest {
+        fn from(value: &ConfigProvidersRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigProvidersRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`ConfigProvidersResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -900,6 +1725,318 @@ pub mod types {
     impl ::std::convert::From<&ConfigProvidersResponse> for ConfigProvidersResponse {
         fn from(value: &ConfigProvidersResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`ConfigSetpathRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "path": {
+    ///      "description": "Absolute path to the `rclone.conf` file that rclone
+    /// should use.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigSetpathRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Absolute path to the `rclone.conf` file that rclone should use.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub path: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigSetpathRequest> for ConfigSetpathRequest {
+        fn from(value: &ConfigSetpathRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigSetpathRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                path: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigUnlockRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "configPassword": {
+    ///      "description": "Password used to unlock an encrypted config file.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigUnlockRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Password used to unlock an encrypted config file.
+        #[serde(
+            rename = "configPassword",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config_password: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigUnlockRequest> for ConfigUnlockRequest {
+        fn from(value: &ConfigUnlockRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigUnlockRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config_password: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigUpdateRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the remote configuration to update.",
+    ///      "type": "string"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Optional JSON object controlling update behaviour
+    /// (e.g. `obscure`, `continue`).",
+    ///      "type": "string"
+    ///    },
+    ///    "parameters": {
+    ///      "description": "JSON object of configuration key/value pairs to
+    /// apply to the remote.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigUpdateRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the remote configuration to update.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+        ///Optional JSON object controlling update behaviour (e.g. `obscure`,
+        /// `continue`).
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+        ///JSON object of configuration key/value pairs to apply to the remote.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub parameters: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigUpdateRequest> for ConfigUpdateRequest {
+        fn from(value: &ConfigUpdateRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigUpdateRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+                opt: Default::default(),
+                parameters: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigUpdateResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigUpdateResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&ConfigUpdateResponse> for ConfigUpdateResponse {
+        fn from(value: &ConfigUpdateResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigUpdateResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreBwlimitRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "rate": {
+    ///      "description": "Bandwidth limit to apply, for example `off`, `5M`,
+    /// or a schedule string.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreBwlimitRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Bandwidth limit to apply, for example `off`, `5M`, or a schedule
+        /// string.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub rate: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreBwlimitRequest> for CoreBwlimitRequest {
+        fn from(value: &CoreBwlimitRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreBwlimitRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                rate: Default::default(),
+            }
         }
     }
 
@@ -950,6 +2087,106 @@ pub mod types {
         }
     }
 
+    ///`CoreCommandRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "arg": {
+    ///      "description": "Optional positional arguments for the command.
+    /// Repeat to supply multiple values.",
+    ///      "type": "array",
+    ///      "items": {
+    ///        "type": "string"
+    ///      }
+    ///    },
+    ///    "command": {
+    ///      "description": "Name of the rclone command to execute, for example
+    /// `ls` or `lsf`.",
+    ///      "type": "string"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Optional command options encoded as a JSON
+    /// string.",
+    ///      "type": "string"
+    ///    },
+    ///    "returnType": {
+    ///      "description": "Controls how output is returned; accepts
+    /// `COMBINED_OUTPUT`, `STREAM`, `STREAM_ONLY_STDOUT`, or
+    /// `STREAM_ONLY_STDERR`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreCommandRequest {
+        ///Optional positional arguments for the command. Repeat to supply
+        /// multiple values.
+        #[serde(default, skip_serializing_if = "::std::vec::Vec::is_empty")]
+        pub arg: ::std::vec::Vec<::std::string::String>,
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Name of the rclone command to execute, for example `ls` or `lsf`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub command: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Optional command options encoded as a JSON string.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+        ///Controls how output is returned; accepts `COMBINED_OUTPUT`,
+        /// `STREAM`, `STREAM_ONLY_STDOUT`, or `STREAM_ONLY_STDERR`.
+        #[serde(
+            rename = "returnType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub return_type: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreCommandRequest> for CoreCommandRequest {
+        fn from(value: &CoreCommandRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreCommandRequest {
+        fn default() -> Self {
+            Self {
+                arg: Default::default(),
+                async_: Default::default(),
+                command: Default::default(),
+                group: Default::default(),
+                opt: Default::default(),
+                return_type: Default::default(),
+            }
+        }
+    }
+
     ///`CoreCommandResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -996,6 +2233,160 @@ pub mod types {
     impl ::std::convert::From<&CoreCommandResponse> for CoreCommandResponse {
         fn from(value: &CoreCommandResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`CoreDisksRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreDisksRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreDisksRequest> for CoreDisksRequest {
+        fn from(value: &CoreDisksRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreDisksRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreDisksResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "required": [
+    ///    "disks"
+    ///  ],
+    ///  "properties": {
+    ///    "disks": {
+    ///      "description": "Accessible local paths such as disk mount points,
+    /// user home folders, and removable volumes.",
+    ///      "type": "array",
+    ///      "items": {
+    ///        "type": "string"
+    ///      }
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreDisksResponse {
+        ///Accessible local paths such as disk mount points, user home folders,
+        /// and removable volumes.
+        pub disks: ::std::vec::Vec<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreDisksResponse> for CoreDisksResponse {
+        fn from(value: &CoreDisksResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    ///`CoreDuRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "dir": {
+    ///      "description": "Local directory path to report disk usage for.
+    /// Defaults to the rclone cache directory when omitted.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreDuRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Local directory path to report disk usage for. Defaults to the
+        /// rclone cache directory when omitted.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub dir: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreDuRequest> for CoreDuRequest {
+        fn from(value: &CoreDuRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreDuRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                dir: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -1091,6 +2482,152 @@ pub mod types {
         }
     }
 
+    ///`CoreGcRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreGcRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreGcRequest> for CoreGcRequest {
+        fn from(value: &CoreGcRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreGcRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreGcResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreGcResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&CoreGcResponse> for CoreGcResponse {
+        fn from(value: &CoreGcResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreGcResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreGroupListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreGroupListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreGroupListRequest> for CoreGroupListRequest {
+        fn from(value: &CoreGroupListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreGroupListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`CoreGroupListResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -1123,6 +2660,123 @@ pub mod types {
         }
     }
 
+    ///`CoreMemstatsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreMemstatsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreMemstatsRequest> for CoreMemstatsRequest {
+        fn from(value: &CoreMemstatsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreMemstatsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreObscureRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "clear": {
+    ///      "description": "Plain-text string to obscure for storage in the
+    /// config file.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreObscureRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Plain-text string to obscure for storage in the config file.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub clear: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreObscureRequest> for CoreObscureRequest {
+        fn from(value: &CoreObscureRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreObscureRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                clear: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`CoreObscureResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -1152,6 +2806,60 @@ pub mod types {
         }
     }
 
+    ///`CorePidRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CorePidRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CorePidRequest> for CorePidRequest {
+        fn from(value: &CorePidRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CorePidRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`CorePidResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -1178,6 +2886,111 @@ pub mod types {
     impl ::std::convert::From<&CorePidResponse> for CorePidResponse {
         fn from(value: &CorePidResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`CoreQuitRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "exitCode": {
+    ///      "description": "Optional exit code to use when terminating the
+    /// rclone process.",
+    ///      "type": "integer"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreQuitRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional exit code to use when terminating the rclone process.
+        #[serde(
+            rename = "exitCode",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub exit_code: ::std::option::Option<i64>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreQuitRequest> for CoreQuitRequest {
+        fn from(value: &CoreQuitRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreQuitRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                exit_code: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreQuitResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreQuitResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&CoreQuitResponse> for CoreQuitResponse {
+        fn from(value: &CoreQuitResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreQuitResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
         }
     }
 
@@ -1233,6 +3046,282 @@ pub mod types {
                 group: Default::default(),
                 name: Default::default(),
                 size: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreStatsDeleteRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "group": {
+    ///      "description": "Stats group identifier to remove.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreStatsDeleteRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group_: ::std::option::Option<::std::string::String>,
+        ///Stats group identifier to remove.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreStatsDeleteRequest> for CoreStatsDeleteRequest {
+        fn from(value: &CoreStatsDeleteRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreStatsDeleteRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreStatsDeleteResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreStatsDeleteResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&CoreStatsDeleteResponse> for CoreStatsDeleteResponse {
+        fn from(value: &CoreStatsDeleteResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreStatsDeleteResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreStatsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "group": {
+    ///      "description": "Stats group identifier to return a snapshot for.
+    /// Leave unset to include all groups.",
+    ///      "type": "string"
+    ///    },
+    ///    "short": {
+    ///      "description": "When true, omit the `transferring` and `checking`
+    /// arrays from the response.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreStatsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group_: ::std::option::Option<::std::string::String>,
+        ///Stats group identifier to return a snapshot for. Leave unset to
+        /// include all groups.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///When true, omit the `transferring` and `checking` arrays from the
+        /// response.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub short: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&CoreStatsRequest> for CoreStatsRequest {
+        fn from(value: &CoreStatsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreStatsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group_: Default::default(),
+                group: Default::default(),
+                short: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreStatsResetRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "group": {
+    ///      "description": "Stats group identifier whose counters should be
+    /// reset. Leave unset to reset all groups.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreStatsResetRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group_: ::std::option::Option<::std::string::String>,
+        ///Stats group identifier whose counters should be reset. Leave unset
+        /// to reset all groups.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreStatsResetRequest> for CoreStatsResetRequest {
+        fn from(value: &CoreStatsResetRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreStatsResetRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreStatsResetResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreStatsResetResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&CoreStatsResetResponse> for CoreStatsResetResponse {
+        fn from(value: &CoreStatsResetResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreStatsResetResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
             }
         }
     }
@@ -1425,6 +3514,15 @@ pub mod types {
     ///      "description": "Bytes transferred so far for this object.",
     ///      "type": "number"
     ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote or filesystem for this
+    /// transfer.",
+    ///      "type": "string"
+    ///    },
+    ///    "dstRemote": {
+    ///      "description": "Destination path within dstFs.",
+    ///      "type": "string"
+    ///    },
     ///    "eta": {
     ///      "description": "Estimated seconds remaining, when available.",
     ///      "type": [
@@ -1456,6 +3554,14 @@ pub mod types {
     ///      "description": "Current speed in bytes per second as an
     /// exponentially weighted moving average.",
     ///      "type": "number"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote or filesystem for this transfer.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcRemote": {
+    ///      "description": "Source path within srcFs.",
+    ///      "type": "string"
     ///    }
     ///  },
     ///  "additionalProperties": true
@@ -1466,6 +3572,20 @@ pub mod types {
     pub struct CoreStatsTransfer {
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
         pub bytes: ::std::option::Option<f64>,
+        ///Destination remote or filesystem for this transfer.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///Destination path within dstFs.
+        #[serde(
+            rename = "dstRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_remote: ::std::option::Option<::std::string::String>,
         ///Estimated seconds remaining, when available.
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
         pub eta: ::std::option::Option<f64>,
@@ -1487,6 +3607,20 @@ pub mod types {
             skip_serializing_if = "::std::option::Option::is_none"
         )]
         pub speed_avg: ::std::option::Option<f64>,
+        ///Source remote or filesystem for this transfer.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+        ///Source path within srcFs.
+        #[serde(
+            rename = "srcRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_remote: ::std::option::Option<::std::string::String>,
     }
 
     impl ::std::convert::From<&CoreStatsTransfer> for CoreStatsTransfer {
@@ -1499,6 +3633,8 @@ pub mod types {
         fn default() -> Self {
             Self {
                 bytes: Default::default(),
+                dst_fs: Default::default(),
+                dst_remote: Default::default(),
                 eta: Default::default(),
                 group: Default::default(),
                 name: Default::default(),
@@ -1506,6 +3642,72 @@ pub mod types {
                 size: Default::default(),
                 speed: Default::default(),
                 speed_avg: Default::default(),
+                src_fs: Default::default(),
+                src_remote: Default::default(),
+            }
+        }
+    }
+
+    ///`CoreTransferredRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "group": {
+    ///      "description": "Stats group identifier to filter the completed
+    /// transfer list. Leave unset for all groups.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreTransferredRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group_: ::std::option::Option<::std::string::String>,
+        ///Stats group identifier to filter the completed transfer list. Leave
+        /// unset for all groups.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreTransferredRequest> for CoreTransferredRequest {
+        fn from(value: &CoreTransferredRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreTransferredRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group_: Default::default(),
+                group: Default::default(),
             }
         }
     }
@@ -1883,6 +4085,60 @@ pub mod types {
         }
     }
 
+    ///`CoreVersionRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct CoreVersionRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&CoreVersionRequest> for CoreVersionRequest {
+        fn from(value: &CoreVersionRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for CoreVersionRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`CoreVersionResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2013,6 +4269,176 @@ pub mod types {
         }
     }
 
+    ///`DebugSetBlockProfileRateRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "rate": {
+    ///      "description": "Sampling interval in nanoseconds for blocking
+    /// profile collection; use 1 to capture all events.",
+    ///      "type": "integer"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct DebugSetBlockProfileRateRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Sampling interval in nanoseconds for blocking profile collection;
+        /// use 1 to capture all events.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub rate: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&DebugSetBlockProfileRateRequest> for DebugSetBlockProfileRateRequest {
+        fn from(value: &DebugSetBlockProfileRateRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for DebugSetBlockProfileRateRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                rate: Default::default(),
+            }
+        }
+    }
+
+    ///`DebugSetBlockProfileRateResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct DebugSetBlockProfileRateResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&DebugSetBlockProfileRateResponse> for DebugSetBlockProfileRateResponse {
+        fn from(value: &DebugSetBlockProfileRateResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for DebugSetBlockProfileRateResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`DebugSetGcPercentRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "gc-percent": {
+    ///      "description": "Target percentage of newly allocated data to
+    /// trigger garbage collection.",
+    ///      "type": "integer"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct DebugSetGcPercentRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Target percentage of newly allocated data to trigger garbage
+        /// collection.
+        #[serde(
+            rename = "gc-percent",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub gc_percent: ::std::option::Option<i64>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&DebugSetGcPercentRequest> for DebugSetGcPercentRequest {
+        fn from(value: &DebugSetGcPercentRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for DebugSetGcPercentRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                gc_percent: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`DebugSetGcPercentResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2040,6 +4466,72 @@ pub mod types {
     impl ::std::convert::From<&DebugSetGcPercentResponse> for DebugSetGcPercentResponse {
         fn from(value: &DebugSetGcPercentResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`DebugSetMutexProfileFractionRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "rate": {
+    ///      "description": "Sampling fraction for mutex contention profiling;
+    /// set to 0 to disable.",
+    ///      "type": "integer"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct DebugSetMutexProfileFractionRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Sampling fraction for mutex contention profiling; set to 0 to
+        /// disable.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub rate: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&DebugSetMutexProfileFractionRequest>
+        for DebugSetMutexProfileFractionRequest
+    {
+        fn from(value: &DebugSetMutexProfileFractionRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for DebugSetMutexProfileFractionRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                rate: Default::default(),
+            }
         }
     }
 
@@ -2075,6 +4567,72 @@ pub mod types {
         }
     }
 
+    ///`DebugSetSoftMemoryLimitRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "mem-limit": {
+    ///      "description": "Soft memory limit for the Go runtime in bytes.",
+    ///      "type": "integer"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct DebugSetSoftMemoryLimitRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Soft memory limit for the Go runtime in bytes.
+        #[serde(
+            rename = "mem-limit",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub mem_limit: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&DebugSetSoftMemoryLimitRequest> for DebugSetSoftMemoryLimitRequest {
+        fn from(value: &DebugSetSoftMemoryLimitRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for DebugSetSoftMemoryLimitRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                mem_limit: Default::default(),
+            }
+        }
+    }
+
     ///`DebugSetSoftMemoryLimitResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2102,6 +4660,152 @@ pub mod types {
     impl ::std::convert::From<&DebugSetSoftMemoryLimitResponse> for DebugSetSoftMemoryLimitResponse {
         fn from(value: &DebugSetSoftMemoryLimitResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`FscacheClearRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct FscacheClearRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&FscacheClearRequest> for FscacheClearRequest {
+        fn from(value: &FscacheClearRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for FscacheClearRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`FscacheClearResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct FscacheClearResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&FscacheClearResponse> for FscacheClearResponse {
+        fn from(value: &FscacheClearResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for FscacheClearResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`FscacheEntriesRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct FscacheEntriesRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&FscacheEntriesRequest> for FscacheEntriesRequest {
+        fn from(value: &FscacheEntriesRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for FscacheEntriesRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -2313,6 +5017,48 @@ pub mod types {
         }
     }
 
+    ///`JobListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&JobListRequest> for JobListRequest {
+        fn from(value: &JobListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+            }
+        }
+    }
+
     ///`JobListResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2375,6 +5121,56 @@ pub mod types {
     impl ::std::convert::From<&JobListResponse> for JobListResponse {
         fn from(value: &JobListResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`JobStatusRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "jobid": {
+    ///      "description": "Numeric identifier of the job to query, as returned
+    /// from an async call.",
+    ///      "type": "number"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobStatusRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<f64>,
+    }
+
+    impl ::std::convert::From<&JobStatusRequest> for JobStatusRequest {
+        fn from(value: &JobStatusRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobStatusRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                jobid: Default::default(),
+            }
         }
     }
 
@@ -2465,6 +5261,236 @@ pub mod types {
     impl ::std::convert::From<&JobStatusResponse> for JobStatusResponse {
         fn from(value: &JobStatusResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`JobStopRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "jobid": {
+    ///      "description": "Numeric identifier of the job to cancel.",
+    ///      "type": "number"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobStopRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<f64>,
+    }
+
+    impl ::std::convert::From<&JobStopRequest> for JobStopRequest {
+        fn from(value: &JobStopRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobStopRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`JobStopResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobStopResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&JobStopResponse> for JobStopResponse {
+        fn from(value: &JobStopResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobStopResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`JobStopgroupRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "group": {
+    ///      "description": "Stats group name whose active jobs should be
+    /// stopped.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobStopgroupRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Stats group name whose active jobs should be stopped.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&JobStopgroupRequest> for JobStopgroupRequest {
+        fn from(value: &JobStopgroupRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobStopgroupRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`JobStopgroupResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct JobStopgroupResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&JobStopgroupResponse> for JobStopgroupResponse {
+        fn from(value: &JobStopgroupResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for JobStopgroupResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`MountListmountsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountListmountsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&MountListmountsRequest> for MountListmountsRequest {
+        fn from(value: &MountListmountsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountListmountsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -2566,6 +5592,242 @@ pub mod types {
         }
     }
 
+    ///`MountMountRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote path to mount, such as `drive:` or
+    /// `remote:subdir`.",
+    ///      "type": "string"
+    ///    },
+    ///    "mountOpt": {
+    ///      "description": "Mount options encoded as JSON, matching flags
+    /// accepted by `rclone mount`.",
+    ///      "type": "string"
+    ///    },
+    ///    "mountPoint": {
+    ///      "description": "Absolute local path where the remote should be
+    /// mounted.",
+    ///      "type": "string"
+    ///    },
+    ///    "mountType": {
+    ///      "description": "Optional mount implementation to use (`mount`,
+    /// `cmount`, or `mount2`).",
+    ///      "type": "string"
+    ///    },
+    ///    "vfsOpt": {
+    ///      "description": "VFS options encoded as JSON, matching flags
+    /// accepted by `rclone mount`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountMountRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Remote path to mount, such as `drive:` or `remote:subdir`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Mount options encoded as JSON, matching flags accepted by `rclone
+        /// mount`.
+        #[serde(
+            rename = "mountOpt",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub mount_opt: ::std::option::Option<::std::string::String>,
+        ///Absolute local path where the remote should be mounted.
+        #[serde(
+            rename = "mountPoint",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub mount_point: ::std::option::Option<::std::string::String>,
+        ///Optional mount implementation to use (`mount`, `cmount`, or
+        /// `mount2`).
+        #[serde(
+            rename = "mountType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub mount_type: ::std::option::Option<::std::string::String>,
+        ///VFS options encoded as JSON, matching flags accepted by `rclone
+        /// mount`.
+        #[serde(
+            rename = "vfsOpt",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub vfs_opt: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&MountMountRequest> for MountMountRequest {
+        fn from(value: &MountMountRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountMountRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                filter: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                mount_opt: Default::default(),
+                mount_point: Default::default(),
+                mount_type: Default::default(),
+                vfs_opt: Default::default(),
+            }
+        }
+    }
+
+    ///`MountMountResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountMountResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&MountMountResponse> for MountMountResponse {
+        fn from(value: &MountMountResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountMountResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`MountTypesRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountTypesRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&MountTypesRequest> for MountTypesRequest {
+        fn from(value: &MountTypesRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountTypesRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`MountTypesResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2596,6 +5858,265 @@ pub mod types {
     impl ::std::convert::From<&MountTypesResponse> for MountTypesResponse {
         fn from(value: &MountTypesResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`MountUnmountRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "mountPoint": {
+    ///      "description": "Local mount point path to unmount.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountUnmountRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Local mount point path to unmount.
+        #[serde(
+            rename = "mountPoint",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub mount_point: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&MountUnmountRequest> for MountUnmountRequest {
+        fn from(value: &MountUnmountRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountUnmountRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                mount_point: Default::default(),
+            }
+        }
+    }
+
+    ///`MountUnmountResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountUnmountResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&MountUnmountResponse> for MountUnmountResponse {
+        fn from(value: &MountUnmountResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountUnmountResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`MountUnmountallRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountUnmountallRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&MountUnmountallRequest> for MountUnmountallRequest {
+        fn from(value: &MountUnmountallRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountUnmountallRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`MountUnmountallResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct MountUnmountallResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&MountUnmountallResponse> for MountUnmountallResponse {
+        fn from(value: &MountUnmountallResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for MountUnmountallResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsAboutRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to query for capacity
+    /// information.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsAboutRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path to query for capacity information.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsAboutRequest> for OperationsAboutRequest {
+        fn from(value: &OperationsAboutRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsAboutRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -2650,6 +6171,215 @@ pub mod types {
     impl ::std::convert::From<&OperationsAboutResponse> for OperationsAboutResponse {
         fn from(value: &OperationsAboutResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsCheckRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "checkFileFs": {
+    ///      "description": "Remote containing the checksum SUM file when using
+    /// `checkFileHash`.",
+    ///      "type": "string"
+    ///    },
+    ///    "checkFileHash": {
+    ///      "description": "Hash name to expect in the supplied SUM file, such
+    /// as `md5`.",
+    ///      "type": "string"
+    ///    },
+    ///    "checkFileRemote": {
+    ///      "description": "Path within `checkFileFs` to the checksum SUM
+    /// file.",
+    ///      "type": "string"
+    ///    },
+    ///    "combined": {
+    ///      "description": "Set to true to include a combined summary report in
+    /// the response.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "differ": {
+    ///      "description": "Set to true to include differing files in the
+    /// report.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "download": {
+    ///      "description": "Set to true to read file contents during comparison
+    /// instead of relying on hashes.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote name or path that should match
+    /// the source.",
+    ///      "type": "string"
+    ///    },
+    ///    "error": {
+    ///      "description": "Set to true to include entries that encountered
+    /// errors.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "match": {
+    ///      "description": "Set to true to include matching files in the
+    /// report.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "missingOnDst": {
+    ///      "description": "Set to true to report files missing from the
+    /// destination.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "missingOnSrc": {
+    ///      "description": "Set to true to report files missing from the
+    /// source.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "oneWay": {
+    ///      "description": "Set to true to only ensure that source files exist
+    /// on the destination.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote name or path to verify, e.g.
+    /// `drive:`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCheckRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote containing the checksum SUM file when using `checkFileHash`.
+        #[serde(
+            rename = "checkFileFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_file_fs: ::std::option::Option<::std::string::String>,
+        ///Hash name to expect in the supplied SUM file, such as `md5`.
+        #[serde(
+            rename = "checkFileHash",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_file_hash: ::std::option::Option<::std::string::String>,
+        ///Path within `checkFileFs` to the checksum SUM file.
+        #[serde(
+            rename = "checkFileRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_file_remote: ::std::option::Option<::std::string::String>,
+        ///Set to true to include a combined summary report in the response.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub combined: ::std::option::Option<bool>,
+        ///Set to true to include differing files in the report.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub differ: ::std::option::Option<bool>,
+        ///Set to true to read file contents during comparison instead of
+        /// relying on hashes.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub download: ::std::option::Option<bool>,
+        ///Destination remote name or path that should match the source.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///Set to true to include entries that encountered errors.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub error: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Set to true to include matching files in the report.
+        #[serde(
+            rename = "match",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub match_: ::std::option::Option<bool>,
+        ///Set to true to report files missing from the destination.
+        #[serde(
+            rename = "missingOnDst",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub missing_on_dst: ::std::option::Option<bool>,
+        ///Set to true to report files missing from the source.
+        #[serde(
+            rename = "missingOnSrc",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub missing_on_src: ::std::option::Option<bool>,
+        ///Set to true to only ensure that source files exist on the
+        /// destination.
+        #[serde(
+            rename = "oneWay",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub one_way: ::std::option::Option<bool>,
+        ///Source remote name or path to verify, e.g. `drive:`.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsCheckRequest> for OperationsCheckRequest {
+        fn from(value: &OperationsCheckRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCheckRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                check_file_fs: Default::default(),
+                check_file_hash: Default::default(),
+                check_file_remote: Default::default(),
+                combined: Default::default(),
+                differ: Default::default(),
+                download: Default::default(),
+                dst_fs: Default::default(),
+                error: Default::default(),
+                group: Default::default(),
+                match_: Default::default(),
+                missing_on_dst: Default::default(),
+                missing_on_src: Default::default(),
+                one_way: Default::default(),
+                src_fs: Default::default(),
+            }
         }
     }
 
@@ -2780,6 +6510,686 @@ pub mod types {
         }
     }
 
+    ///`OperationsCleanupRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to clean up, for example
+    /// `drive:`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCleanupRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path to clean up, for example `drive:`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsCleanupRequest> for OperationsCleanupRequest {
+        fn from(value: &OperationsCleanupRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCleanupRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsCleanupResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCleanupResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsCleanupResponse> for OperationsCleanupResponse {
+        fn from(value: &OperationsCleanupResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCleanupResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsCopyfileRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote name or path, such as `drive2:`
+    /// or `/` for local filesystem.",
+    ///      "type": "string"
+    ///    },
+    ///    "dstRemote": {
+    ///      "description": "Target path within `dstFs` where the file should be
+    /// written.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote name or path, such as `drive:` or `/`
+    /// for the local filesystem.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcRemote": {
+    ///      "description": "Path to the source object within `srcFs`, for
+    /// example `dir/file.txt`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCopyfileRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Destination remote name or path, such as `drive2:` or `/` for local
+        /// filesystem.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///Target path within `dstFs` where the file should be written.
+        #[serde(
+            rename = "dstRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_remote: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Source remote name or path, such as `drive:` or `/` for the local
+        /// filesystem.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+        ///Path to the source object within `srcFs`, for example
+        /// `dir/file.txt`.
+        #[serde(
+            rename = "srcRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsCopyfileRequest> for OperationsCopyfileRequest {
+        fn from(value: &OperationsCopyfileRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCopyfileRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                dst_fs: Default::default(),
+                dst_remote: Default::default(),
+                group: Default::default(),
+                src_fs: Default::default(),
+                src_remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsCopyfileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCopyfileResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsCopyfileResponse> for OperationsCopyfileResponse {
+        fn from(value: &OperationsCopyfileResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCopyfileResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsCopyurlRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "autoFilename": {
+    ///      "description": "Set to true to derive the destination filename from
+    /// the URL.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path that will receive the
+    /// downloaded file, e.g. `drive:`.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Destination path within `fs` where the fetched
+    /// object will be stored.",
+    ///      "type": "string"
+    ///    },
+    ///    "url": {
+    ///      "description": "Source URL to fetch the object from.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCopyurlRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Set to true to derive the destination filename from the URL.
+        #[serde(
+            rename = "autoFilename",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub auto_filename: ::std::option::Option<bool>,
+        ///Remote name or path that will receive the downloaded file, e.g.
+        /// `drive:`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Destination path within `fs` where the fetched object will be
+        /// stored.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+        ///Source URL to fetch the object from.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub url: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsCopyurlRequest> for OperationsCopyurlRequest {
+        fn from(value: &OperationsCopyurlRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCopyurlRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                auto_filename: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+                url: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsCopyurlResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsCopyurlResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsCopyurlResponse> for OperationsCopyurlResponse {
+        fn from(value: &OperationsCopyurlResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsCopyurlResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsDeleteRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path whose contents should be
+    /// removed.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsDeleteRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Remote name or path whose contents should be removed.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsDeleteRequest> for OperationsDeleteRequest {
+        fn from(value: &OperationsDeleteRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsDeleteRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                filter: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsDeleteResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsDeleteResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsDeleteResponse> for OperationsDeleteResponse {
+        fn from(value: &OperationsDeleteResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsDeleteResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsDeletefileRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path that contains the file to
+    /// delete.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Exact path to the file within `fs` that should be
+    /// deleted.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsDeletefileRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path that contains the file to delete.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Exact path to the file within `fs` that should be deleted.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsDeletefileRequest> for OperationsDeletefileRequest {
+        fn from(value: &OperationsDeletefileRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsDeletefileRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsDeletefileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsDeletefileResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsDeletefileResponse> for OperationsDeletefileResponse {
+        fn from(value: &OperationsDeletefileResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsDeletefileResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsFsinfoRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to inspect, e.g. `drive:`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsFsinfoRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path to inspect, e.g. `drive:`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsFsinfoRequest> for OperationsFsinfoRequest {
+        fn from(value: &OperationsFsinfoRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsFsinfoRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`OperationsFsinfoResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2860,6 +7270,102 @@ pub mod types {
         }
     }
 
+    ///`OperationsHashsumRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "base64": {
+    ///      "description": "Set to true to emit hash values in base64 rather
+    /// than hexadecimal.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "download": {
+    ///      "description": "Set to true to force reading the data instead of
+    /// using remote checksums.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to hash, such as `drive:` or
+    /// `/`.",
+    ///      "type": "string"
+    ///    },
+    ///    "hashType": {
+    ///      "description": "Hash algorithm to use, e.g. `md5`, `sha1`, or
+    /// another supported name.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsHashsumRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Set to true to emit hash values in base64 rather than hexadecimal.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub base64: ::std::option::Option<bool>,
+        ///Set to true to force reading the data instead of using remote
+        /// checksums.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub download: ::std::option::Option<bool>,
+        ///Remote name or path to hash, such as `drive:` or `/`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Hash algorithm to use, e.g. `md5`, `sha1`, or another supported
+        /// name.
+        #[serde(
+            rename = "hashType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub hash_type: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsHashsumRequest> for OperationsHashsumRequest {
+        fn from(value: &OperationsHashsumRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsHashsumRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                base64: Default::default(),
+                download: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                hash_type: Default::default(),
+            }
+        }
+    }
+
     ///`OperationsHashsumResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2895,6 +7401,110 @@ pub mod types {
     impl ::std::convert::From<&OperationsHashsumResponse> for OperationsHashsumResponse {
         fn from(value: &OperationsHashsumResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsHashsumfileRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "base64": {
+    ///      "description": "Set to true to emit the hash value in base64 rather
+    /// than hexadecimal.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "download": {
+    ///      "description": "Set to true to force reading the data instead of
+    /// using remote checksums.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path containing the file to hash.",
+    ///      "type": "string"
+    ///    },
+    ///    "hashType": {
+    ///      "description": "Hash algorithm to use, e.g. `md5`, `sha1`, or
+    /// another supported name.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path to the specific file within `fs` to hash.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsHashsumfileRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Set to true to emit the hash value in base64 rather than
+        /// hexadecimal.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub base64: ::std::option::Option<bool>,
+        ///Set to true to force reading the data instead of using remote
+        /// checksums.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub download: ::std::option::Option<bool>,
+        ///Remote name or path containing the file to hash.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Hash algorithm to use, e.g. `md5`, `sha1`, or another supported
+        /// name.
+        #[serde(
+            rename = "hashType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub hash_type: ::std::option::Option<::std::string::String>,
+        ///Path to the specific file within `fs` to hash.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsHashsumfileRequest> for OperationsHashsumfileRequest {
+        fn from(value: &OperationsHashsumfileRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsHashsumfileRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                base64: Default::default(),
+                download: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                hash_type: Default::default(),
+                remote: Default::default(),
+            }
         }
     }
 
@@ -2934,6 +7544,211 @@ pub mod types {
     impl ::std::convert::From<&OperationsHashsumfileResponse> for OperationsHashsumfileResponse {
         fn from(value: &OperationsHashsumfileResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "dirsOnly": {
+    ///      "description": "Set to true to return only directory entries.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "filesOnly": {
+    ///      "description": "Set to true to return only file entries.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to list, for example
+    /// `drive:`.",
+    ///      "type": "string"
+    ///    },
+    ///    "hashTypes": {
+    ///      "description": "Specify one or more hash algorithms to include when
+    /// `showHash` is true (e.g. `md5`).",
+    ///      "type": "array",
+    ///      "items": {
+    ///        "type": "string"
+    ///      }
+    ///    },
+    ///    "metadata": {
+    ///      "description": "Set to true to include backend-provided metadata
+    /// maps.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "noMimeType": {
+    ///      "description": "Set to true to omit MIME type detection.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "noModTime": {
+    ///      "description": "Set to true to omit modification times for faster
+    /// listings on some backends.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Optional JSON-encoded object of listing flags (e.g.
+    /// `{ \"recurse\": true, \"showHash\": true }`).",
+    ///      "type": "string"
+    ///    },
+    ///    "recurse": {
+    ///      "description": "Set to true to list directories recursively.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Directory path within `fs` to list; leave empty to
+    /// target the root.",
+    ///      "type": "string"
+    ///    },
+    ///    "showEncrypted": {
+    ///      "description": "Set to true to include encrypted names when using
+    /// crypt remotes.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "showHash": {
+    ///      "description": "Set to true to include hash digests for each
+    /// entry.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "showOrigIDs": {
+    ///      "description": "Set to true to include original backend identifiers
+    /// where available.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Set to true to return only directory entries.
+        #[serde(
+            rename = "dirsOnly",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dirs_only: ::std::option::Option<bool>,
+        ///Set to true to return only file entries.
+        #[serde(
+            rename = "filesOnly",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub files_only: ::std::option::Option<bool>,
+        ///Remote name or path to list, for example `drive:`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Specify one or more hash algorithms to include when `showHash` is
+        /// true (e.g. `md5`).
+        #[serde(
+            rename = "hashTypes",
+            default,
+            skip_serializing_if = "::std::vec::Vec::is_empty"
+        )]
+        pub hash_types: ::std::vec::Vec<::std::string::String>,
+        ///Set to true to include backend-provided metadata maps.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub metadata: ::std::option::Option<bool>,
+        ///Set to true to omit MIME type detection.
+        #[serde(
+            rename = "noMimeType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub no_mime_type: ::std::option::Option<bool>,
+        ///Set to true to omit modification times for faster listings on some
+        /// backends.
+        #[serde(
+            rename = "noModTime",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub no_mod_time: ::std::option::Option<bool>,
+        ///Optional JSON-encoded object of listing flags (e.g. `{ "recurse":
+        /// true, "showHash": true }`).
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+        ///Set to true to list directories recursively.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub recurse: ::std::option::Option<bool>,
+        ///Directory path within `fs` to list; leave empty to target the root.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+        ///Set to true to include encrypted names when using crypt remotes.
+        #[serde(
+            rename = "showEncrypted",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub show_encrypted: ::std::option::Option<bool>,
+        ///Set to true to include hash digests for each entry.
+        #[serde(
+            rename = "showHash",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub show_hash: ::std::option::Option<bool>,
+        ///Set to true to include original backend identifiers where available.
+        #[serde(
+            rename = "showOrigIDs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub show_orig_i_ds: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&OperationsListRequest> for OperationsListRequest {
+        fn from(value: &OperationsListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                dirs_only: Default::default(),
+                files_only: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                hash_types: Default::default(),
+                metadata: Default::default(),
+                no_mime_type: Default::default(),
+                no_mod_time: Default::default(),
+                opt: Default::default(),
+                recurse: Default::default(),
+                remote: Default::default(),
+                show_encrypted: Default::default(),
+                show_hash: Default::default(),
+                show_orig_i_ds: Default::default(),
+            }
         }
     }
 
@@ -3218,6 +8033,352 @@ pub mod types {
         }
     }
 
+    ///`OperationsMkdirRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path in which to create a
+    /// directory.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Directory path within `fs` to create.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsMkdirRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path in which to create a directory.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Directory path within `fs` to create.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsMkdirRequest> for OperationsMkdirRequest {
+        fn from(value: &OperationsMkdirRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsMkdirRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsMkdirResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsMkdirResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsMkdirResponse> for OperationsMkdirResponse {
+        fn from(value: &OperationsMkdirResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsMkdirResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsMovefileRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote name or path where the file will
+    /// be moved.",
+    ///      "type": "string"
+    ///    },
+    ///    "dstRemote": {
+    ///      "description": "Destination path within `dstFs` for the moved
+    /// object.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote name or path containing the file to
+    /// move.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcRemote": {
+    ///      "description": "Path to the source object within `srcFs`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsMovefileRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Destination remote name or path where the file will be moved.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///Destination path within `dstFs` for the moved object.
+        #[serde(
+            rename = "dstRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_remote: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Source remote name or path containing the file to move.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+        ///Path to the source object within `srcFs`.
+        #[serde(
+            rename = "srcRemote",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsMovefileRequest> for OperationsMovefileRequest {
+        fn from(value: &OperationsMovefileRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsMovefileRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                dst_fs: Default::default(),
+                dst_remote: Default::default(),
+                group: Default::default(),
+                src_fs: Default::default(),
+                src_remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsMovefileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsMovefileResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsMovefileResponse> for OperationsMovefileResponse {
+        fn from(value: &OperationsMovefileResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsMovefileResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsPubliclinkRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "expire": {
+    ///      "description": "Optional expiration time for the public link,
+    /// formatted as supported by the backend.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path hosting the object for which to
+    /// manage a public link.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path within `fs` to the object for which to create
+    /// or remove a public link.",
+    ///      "type": "string"
+    ///    },
+    ///    "unlink": {
+    ///      "description": "Set to true to remove an existing public link
+    /// instead of creating one.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsPubliclinkRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional expiration time for the public link, formatted as supported
+        /// by the backend.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub expire: ::std::option::Option<::std::string::String>,
+        ///Remote name or path hosting the object for which to manage a public
+        /// link.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Path within `fs` to the object for which to create or remove a
+        /// public link.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+        ///Set to true to remove an existing public link instead of creating
+        /// one.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub unlink: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&OperationsPubliclinkRequest> for OperationsPubliclinkRequest {
+        fn from(value: &OperationsPubliclinkRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsPubliclinkRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                expire: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+                unlink: Default::default(),
+            }
+        }
+    }
+
     ///`OperationsPubliclinkResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -3245,6 +8406,649 @@ pub mod types {
     impl ::std::convert::From<&OperationsPubliclinkResponse> for OperationsPubliclinkResponse {
         fn from(value: &OperationsPubliclinkResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsPurgeRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path from which to remove all
+    /// contents.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path within `fs` whose contents should be purged.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsPurgeRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Remote name or path from which to remove all contents.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Path within `fs` whose contents should be purged.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsPurgeRequest> for OperationsPurgeRequest {
+        fn from(value: &OperationsPurgeRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsPurgeRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                filter: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsPurgeResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsPurgeResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsPurgeResponse> for OperationsPurgeResponse {
+        fn from(value: &OperationsPurgeResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsPurgeResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsRmdirRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path containing the directory to
+    /// remove.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Directory path within `fs` to delete.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsRmdirRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path containing the directory to remove.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Directory path within `fs` to delete.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsRmdirRequest> for OperationsRmdirRequest {
+        fn from(value: &OperationsRmdirRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsRmdirRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsRmdirResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsRmdirResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsRmdirResponse> for OperationsRmdirResponse {
+        fn from(value: &OperationsRmdirResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsRmdirResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsRmdirsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to scan for empty
+    /// directories.",
+    ///      "type": "string"
+    ///    },
+    ///    "leaveRoot": {
+    ///      "description": "Set to true to preserve the top-level directory
+    /// even if empty.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path within `fs` whose empty subdirectories should
+    /// be removed.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsRmdirsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path to scan for empty directories.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Set to true to preserve the top-level directory even if empty.
+        #[serde(
+            rename = "leaveRoot",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub leave_root: ::std::option::Option<bool>,
+        ///Path within `fs` whose empty subdirectories should be removed.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsRmdirsRequest> for OperationsRmdirsRequest {
+        fn from(value: &OperationsRmdirsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsRmdirsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                leave_root: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsRmdirsResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsRmdirsResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsRmdirsResponse> for OperationsRmdirsResponse {
+        fn from(value: &OperationsRmdirsResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsRmdirsResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsSettierRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path whose storage class tier should
+    /// be changed.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsSettierRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path whose storage class tier should be changed.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsSettierRequest> for OperationsSettierRequest {
+        fn from(value: &OperationsSettierRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsSettierRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsSettierResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsSettierResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsSettierResponse> for OperationsSettierResponse {
+        fn from(value: &OperationsSettierResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsSettierResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsSettierfileRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path that contains the object whose
+    /// tier should change.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path within `fs` to the object whose storage class
+    /// tier should be updated.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsSettierfileRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path that contains the object whose tier should
+        /// change.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Path within `fs` to the object whose storage class tier should be
+        /// updated.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsSettierfileRequest> for OperationsSettierfileRequest {
+        fn from(value: &OperationsSettierfileRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsSettierfileRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                remote: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsSettierfileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsSettierfileResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsSettierfileResponse> for OperationsSettierfileResponse {
+        fn from(value: &OperationsSettierfileResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsSettierfileResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OperationsSizeRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path to measure aggregate size
+    /// information for.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsSizeRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path to measure aggregate size information for.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsSizeRequest> for OperationsSizeRequest {
+        fn from(value: &OperationsSizeRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsSizeRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -3284,6 +9088,88 @@ pub mod types {
     impl ::std::convert::From<&OperationsSizeResponse> for OperationsSizeResponse {
         fn from(value: &OperationsSizeResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsStatRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote name or path that contains the item to
+    /// inspect.",
+    ///      "type": "string"
+    ///    },
+    ///    "opt": {
+    ///      "description": "Optional JSON object of listing flags, matching
+    /// those accepted by `operations/list`.",
+    ///      "type": "string"
+    ///    },
+    ///    "remote": {
+    ///      "description": "Path to the file or directory within `fs` to
+    /// describe.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsStatRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Remote name or path that contains the item to inspect.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Optional JSON object of listing flags, matching those accepted by
+        /// `operations/list`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub opt: ::std::option::Option<::std::string::String>,
+        ///Path to the file or directory within `fs` to describe.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub remote: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OperationsStatRequest> for OperationsStatRequest {
+        fn from(value: &OperationsStatRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsStatRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                opt: Default::default(),
+                remote: Default::default(),
+            }
         }
     }
 
@@ -3558,6 +9444,98 @@ pub mod types {
         }
     }
 
+    ///`OperationsUploadfileResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OperationsUploadfileResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&OperationsUploadfileResponse> for OperationsUploadfileResponse {
+        fn from(value: &OperationsUploadfileResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OperationsUploadfileResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`OptionsBlocksRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OptionsBlocksRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OptionsBlocksRequest> for OptionsBlocksRequest {
+        fn from(value: &OptionsBlocksRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OptionsBlocksRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`OptionsBlocksResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -3587,6 +9565,69 @@ pub mod types {
     impl ::std::convert::From<&OptionsBlocksResponse> for OptionsBlocksResponse {
         fn from(value: &OptionsBlocksResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OptionsGetRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "blocks": {
+    ///      "description": "Optional comma-separated list of option block names
+    /// to return.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OptionsGetRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional comma-separated list of option block names to return.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub blocks: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OptionsGetRequest> for OptionsGetRequest {
+        fn from(value: &OptionsGetRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OptionsGetRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                blocks: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -4106,6 +10147,69 @@ pub mod types {
         }
     }
 
+    ///`OptionsInfoRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "blocks": {
+    ///      "description": "Optional comma-separated list of option block names
+    /// to describe.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OptionsInfoRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional comma-separated list of option block names to describe.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub blocks: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OptionsInfoRequest> for OptionsInfoRequest {
+        fn from(value: &OptionsInfoRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OptionsInfoRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                blocks: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`OptionsInfoResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -4256,6 +10360,60 @@ pub mod types {
     impl ::std::convert::From<&OptionsInfoResponse> for OptionsInfoResponse {
         fn from(value: &OptionsInfoResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OptionsLocalRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct OptionsLocalRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&OptionsLocalRequest> for OptionsLocalRequest {
+        fn from(value: &OptionsLocalRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for OptionsLocalRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -4457,8 +10615,7 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "DisableHTTP2": {
     ///          "type": "boolean"
@@ -4470,8 +10627,7 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "DryRun": {
     ///          "type": "boolean"
@@ -4498,8 +10654,7 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "HumanReadable": {
     ///          "type": "boolean"
@@ -4577,15 +10732,13 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "MetadataSet": {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "ModifyWindow": {
     ///          "type": "number"
@@ -4636,8 +10789,7 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "Progress": {
     ///          "type": "boolean"
@@ -4715,8 +10867,7 @@ pub mod types {
     ///          "type": [
     ///            "string",
     ///            "null"
-    ///          ],
-    ///          "format": "null"
+    ///          ]
     ///        },
     ///        "UseJSONLog": {
     ///          "type": "boolean"
@@ -5090,8 +11241,7 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "DisableHTTP2": {
     ///      "type": "boolean"
@@ -5103,8 +11253,7 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "DryRun": {
     ///      "type": "boolean"
@@ -5131,8 +11280,7 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "HumanReadable": {
     ///      "type": "boolean"
@@ -5210,15 +11358,13 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "MetadataSet": {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "ModifyWindow": {
     ///      "type": "number"
@@ -5269,8 +11415,7 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "Progress": {
     ///      "type": "boolean"
@@ -5348,8 +11493,7 @@ pub mod types {
     ///      "type": [
     ///        "string",
     ///        "null"
-    ///      ],
-    ///      "format": "null"
+    ///      ]
     ///    },
     ///    "UseJSONLog": {
     ///      "type": "boolean"
@@ -5869,1203 +12013,411 @@ pub mod types {
         }
     }
 
-    ///`OptionsSetDlnaValue`
+    ///`OptionsSetRequest`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
     ///      "type": "boolean"
     ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
     ///    },
-    ///    {
+    ///    "dlna": {
+    ///      "description": "Overrides for the `dlna` option block.",
     ///      "type": "object",
-    ///      "additionalProperties": {}
+    ///      "additionalProperties": true
+    ///    },
+    ///    "filter": {
+    ///      "description": "Overrides for the `filter` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "ftp": {
+    ///      "description": "Overrides for the `ftp` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "http": {
+    ///      "description": "Overrides for the `http` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "log": {
+    ///      "description": "Overrides for the `log` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "main": {
+    ///      "description": "Overrides for the `main` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "mount": {
+    ///      "description": "Overrides for the `mount` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "nfs": {
+    ///      "description": "Overrides for the `nfs` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "proxy": {
+    ///      "description": "Overrides for the `proxy` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "rc": {
+    ///      "description": "Overrides for the `rc` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "restic": {
+    ///      "description": "Overrides for the `restic` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "s3": {
+    ///      "description": "Overrides for the `s3` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "sftp": {
+    ///      "description": "Overrides for the `sftp` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "vfs": {
+    ///      "description": "Overrides for the `vfs` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
+    ///    },
+    ///    "webdav": {
+    ///      "description": "Overrides for the `webdav` option block.",
+    ///      "type": "object",
+    ///      "additionalProperties": true
     ///    }
-    ///  ]
+    ///  },
+    ///  "additionalProperties": true
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetDlnaValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
+    pub struct OptionsSetRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Overrides for the `dlna` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub dlna: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `filter` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub filter: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `ftp` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub ftp: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Overrides for the `http` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub http: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `log` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub log: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `main` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub main: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `mount` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub mount: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `nfs` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub nfs: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `proxy` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub proxy: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `rc` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub rc: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `restic` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub restic: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `s3` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub s3: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `sftp` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub sftp: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `vfs` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub vfs: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
+        ///Overrides for the `webdav` option block.
+        #[serde(default, skip_serializing_if = "::serde_json::Map::is_empty")]
+        pub webdav: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
     }
 
-    impl ::std::convert::From<&Self> for OptionsSetDlnaValue {
-        fn from(value: &OptionsSetDlnaValue) -> Self {
+    impl ::std::convert::From<&OptionsSetRequest> for OptionsSetRequest {
+        fn from(value: &OptionsSetRequest) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::convert::From<f64> for OptionsSetDlnaValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
+    impl ::std::default::Default for OptionsSetRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                dlna: Default::default(),
+                filter: Default::default(),
+                ftp: Default::default(),
+                group: Default::default(),
+                http: Default::default(),
+                log: Default::default(),
+                main: Default::default(),
+                mount: Default::default(),
+                nfs: Default::default(),
+                proxy: Default::default(),
+                rc: Default::default(),
+                restic: Default::default(),
+                s3: Default::default(),
+                sftp: Default::default(),
+                vfs: Default::default(),
+                webdav: Default::default(),
+            }
         }
     }
 
-    impl ::std::convert::From<i64> for OptionsSetDlnaValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetDlnaValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetDlnaValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetDlnaValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetFilterValue`
+    ///`OptionsSetResponse`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
     ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
     ///    }
-    ///  ]
+    ///  },
+    ///  "additionalProperties": true
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetFilterValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
+    pub struct OptionsSetResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
     }
 
-    impl ::std::convert::From<&Self> for OptionsSetFilterValue {
-        fn from(value: &OptionsSetFilterValue) -> Self {
+    impl ::std::convert::From<&OptionsSetResponse> for OptionsSetResponse {
+        fn from(value: &OptionsSetResponse) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::convert::From<f64> for OptionsSetFilterValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
+    impl ::std::default::Default for OptionsSetResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
         }
     }
 
-    impl ::std::convert::From<i64> for OptionsSetFilterValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetFilterValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetFilterValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetFilterValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetFtpValue`
+    ///`PluginsctlAddPluginRequest`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
     ///      "type": "boolean"
     ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
     ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
+    ///    "url": {
+    ///      "description": "Repository URL of the plugin to install.",
+    ///      "type": "string"
     ///    }
-    ///  ]
+    ///  }
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetFtpValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
+    pub struct PluginsctlAddPluginRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Repository URL of the plugin to install.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub url: ::std::option::Option<::std::string::String>,
     }
 
-    impl ::std::convert::From<&Self> for OptionsSetFtpValue {
-        fn from(value: &OptionsSetFtpValue) -> Self {
+    impl ::std::convert::From<&PluginsctlAddPluginRequest> for PluginsctlAddPluginRequest {
+        fn from(value: &PluginsctlAddPluginRequest) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::convert::From<f64> for OptionsSetFtpValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
+    impl ::std::default::Default for PluginsctlAddPluginRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                url: Default::default(),
+            }
         }
     }
 
-    impl ::std::convert::From<i64> for OptionsSetFtpValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetFtpValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetFtpValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetFtpValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetHttpValue`
+    ///`PluginsctlAddPluginResponse`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
     ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
     ///    }
-    ///  ]
+    ///  },
+    ///  "additionalProperties": true
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetHttpValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
+    pub struct PluginsctlAddPluginResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
     }
 
-    impl ::std::convert::From<&Self> for OptionsSetHttpValue {
-        fn from(value: &OptionsSetHttpValue) -> Self {
+    impl ::std::convert::From<&PluginsctlAddPluginResponse> for PluginsctlAddPluginResponse {
+        fn from(value: &PluginsctlAddPluginResponse) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::convert::From<f64> for OptionsSetHttpValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
+    impl ::std::default::Default for PluginsctlAddPluginResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
         }
     }
 
-    impl ::std::convert::From<i64> for OptionsSetHttpValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetHttpValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetHttpValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetHttpValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetLogValue`
+    ///`PluginsctlGetPluginsForTypeRequest`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
     ///      "type": "boolean"
     ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
     ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
+    ///    "pluginType": {
+    ///      "description": "Filter results by plugin type (e.g. `test`).",
+    ///      "type": "string"
+    ///    },
+    ///    "type": {
+    ///      "description": "MIME type to match when listing plugins.",
+    ///      "type": "string"
     ///    }
-    ///  ]
+    ///  }
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetLogValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
+    pub struct PluginsctlGetPluginsForTypeRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Filter results by plugin type (e.g. `test`).
+        #[serde(
+            rename = "pluginType",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub plugin_type: ::std::option::Option<::std::string::String>,
+        ///MIME type to match when listing plugins.
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub type_: ::std::option::Option<::std::string::String>,
     }
 
-    impl ::std::convert::From<&Self> for OptionsSetLogValue {
-        fn from(value: &OptionsSetLogValue) -> Self {
+    impl ::std::convert::From<&PluginsctlGetPluginsForTypeRequest>
+        for PluginsctlGetPluginsForTypeRequest
+    {
+        fn from(value: &PluginsctlGetPluginsForTypeRequest) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::convert::From<f64> for OptionsSetLogValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetLogValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetLogValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetLogValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetLogValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetMainValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetMainValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetMainValue {
-        fn from(value: &OptionsSetMainValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetMainValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetMainValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetMainValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetMainValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetMainValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetMountValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetMountValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetMountValue {
-        fn from(value: &OptionsSetMountValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetMountValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetMountValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetMountValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetMountValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetMountValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetNfsValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetNfsValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetNfsValue {
-        fn from(value: &OptionsSetNfsValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetNfsValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetNfsValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetNfsValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetNfsValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetNfsValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetProxyValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetProxyValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetProxyValue {
-        fn from(value: &OptionsSetProxyValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetProxyValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetProxyValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetProxyValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetProxyValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetProxyValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetRcValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetRcValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetRcValue {
-        fn from(value: &OptionsSetRcValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetRcValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetRcValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetRcValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetRcValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetRcValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetResticValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetResticValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetResticValue {
-        fn from(value: &OptionsSetResticValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetResticValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetResticValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetResticValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetResticValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetResticValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetS3Value`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetS3Value {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetS3Value {
-        fn from(value: &OptionsSetS3Value) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetS3Value {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetS3Value {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetS3Value {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetS3Value {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetS3Value
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetSftpValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetSftpValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetSftpValue {
-        fn from(value: &OptionsSetSftpValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetSftpValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetSftpValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetSftpValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetSftpValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetSftpValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetVfsValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetVfsValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetVfsValue {
-        fn from(value: &OptionsSetVfsValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetVfsValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetVfsValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetVfsValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetVfsValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetVfsValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
-        }
-    }
-
-    ///`OptionsSetWebdavValue`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "oneOf": [
-    ///    {
-    ///      "type": "string"
-    ///    },
-    ///    {
-    ///      "type": "number"
-    ///    },
-    ///    {
-    ///      "type": "integer"
-    ///    },
-    ///    {
-    ///      "type": "boolean"
-    ///    },
-    ///    {
-    ///      "type": "array",
-    ///      "items": {}
-    ///    },
-    ///    {
-    ///      "type": "object",
-    ///      "additionalProperties": {}
-    ///    }
-    ///  ]
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    #[serde(untagged)]
-    pub enum OptionsSetWebdavValue {
-        Variant0(::std::string::String),
-        Variant1(f64),
-        Variant2(i64),
-        Variant3(bool),
-        Variant4(::std::vec::Vec<::serde_json::Value>),
-        Variant5(::serde_json::Map<::std::string::String, ::serde_json::Value>),
-    }
-
-    impl ::std::convert::From<&Self> for OptionsSetWebdavValue {
-        fn from(value: &OptionsSetWebdavValue) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::convert::From<f64> for OptionsSetWebdavValue {
-        fn from(value: f64) -> Self {
-            Self::Variant1(value)
-        }
-    }
-
-    impl ::std::convert::From<i64> for OptionsSetWebdavValue {
-        fn from(value: i64) -> Self {
-            Self::Variant2(value)
-        }
-    }
-
-    impl ::std::convert::From<bool> for OptionsSetWebdavValue {
-        fn from(value: bool) -> Self {
-            Self::Variant3(value)
-        }
-    }
-
-    impl ::std::convert::From<::std::vec::Vec<::serde_json::Value>> for OptionsSetWebdavValue {
-        fn from(value: ::std::vec::Vec<::serde_json::Value>) -> Self {
-            Self::Variant4(value)
-        }
-    }
-
-    impl ::std::convert::From<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        for OptionsSetWebdavValue
-    {
-        fn from(value: ::serde_json::Map<::std::string::String, ::serde_json::Value>) -> Self {
-            Self::Variant5(value)
+    impl ::std::default::Default for PluginsctlGetPluginsForTypeRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                plugin_type: Default::default(),
+                type_: Default::default(),
+            }
         }
     }
 
@@ -7125,6 +12477,60 @@ pub mod types {
         }
     }
 
+    ///`PluginsctlListPluginsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct PluginsctlListPluginsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&PluginsctlListPluginsRequest> for PluginsctlListPluginsRequest {
+        fn from(value: &PluginsctlListPluginsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for PluginsctlListPluginsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`PluginsctlListPluginsResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7175,6 +12581,60 @@ pub mod types {
         }
     }
 
+    ///`PluginsctlListTestPluginsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct PluginsctlListTestPluginsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&PluginsctlListTestPluginsRequest> for PluginsctlListTestPluginsRequest {
+        fn from(value: &PluginsctlListTestPluginsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for PluginsctlListTestPluginsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`PluginsctlListTestPluginsResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7214,6 +12674,132 @@ pub mod types {
     {
         fn from(value: &PluginsctlListTestPluginsResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`PluginsctlRemovePluginRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the plugin to uninstall.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct PluginsctlRemovePluginRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the plugin to uninstall.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&PluginsctlRemovePluginRequest> for PluginsctlRemovePluginRequest {
+        fn from(value: &PluginsctlRemovePluginRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for PluginsctlRemovePluginRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+            }
+        }
+    }
+
+    ///`PluginsctlRemoveTestPluginRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "name": {
+    ///      "description": "Name of the test plugin to uninstall.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct PluginsctlRemoveTestPluginRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Name of the test plugin to uninstall.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub name: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&PluginsctlRemoveTestPluginRequest>
+        for PluginsctlRemoveTestPluginRequest
+    {
+        fn from(value: &PluginsctlRemoveTestPluginRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for PluginsctlRemoveTestPluginRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                name: Default::default(),
+            }
         }
     }
 
@@ -7265,6 +12851,103 @@ pub mod types {
     impl ::std::convert::From<&RcError> for RcError {
         fn from(value: &RcError) -> Self {
             value.clone()
+        }
+    }
+
+    ///`RcErrorRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct RcErrorRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&RcErrorRequest> for RcErrorRequest {
+        fn from(value: &RcErrorRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for RcErrorRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+            }
+        }
+    }
+
+    ///`RcListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct RcListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&RcListRequest> for RcListRequest {
+        fn from(value: &RcListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for RcListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -7407,6 +13090,146 @@ pub mod types {
                 needs_response: Default::default(),
                 path: Default::default(),
                 title: Default::default(),
+            }
+        }
+    }
+
+    ///`RcNoopAuthRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct RcNoopAuthRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&RcNoopAuthRequest> for RcNoopAuthRequest {
+        fn from(value: &RcNoopAuthRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for RcNoopAuthRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+            }
+        }
+    }
+
+    ///`RcNoopRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct RcNoopRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&RcNoopRequest> for RcNoopRequest {
+        fn from(value: &RcNoopRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for RcNoopRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeListRequest> for ServeListRequest {
+        fn from(value: &ServeListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
             }
         }
     }
@@ -7610,6 +13433,118 @@ pub mod types {
         }
     }
 
+    ///`ServeStartRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "addr": {
+    ///      "description": "Address and port to bind the server to, such as
+    /// `:5572` or `localhost:8080`.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Remote path that will be served.",
+    ///      "type": "string"
+    ///    },
+    ///    "type": {
+    ///      "description": "Type of server to start (e.g. `http`, `webdav`,
+    /// `ftp`, `sftp`).",
+    ///      "type": "string"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeStartRequest {
+        ///Address and port to bind the server to, such as `:5572` or
+        /// `localhost:8080`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub addr: ::std::option::Option<::std::string::String>,
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Remote path that will be served.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Type of server to start (e.g. `http`, `webdav`, `ftp`, `sftp`).
+        #[serde(
+            rename = "type",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub type_: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeStartRequest> for ServeStartRequest {
+        fn from(value: &ServeStartRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeStartRequest {
+        fn default() -> Self {
+            Self {
+                addr: Default::default(),
+                async_: Default::default(),
+                config: Default::default(),
+                filter: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                type_: Default::default(),
+            }
+        }
+    }
+
     ///`ServeStartResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7648,6 +13583,567 @@ pub mod types {
         }
     }
 
+    ///`ServeStopRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "id": {
+    ///      "description": "Identifier of the running serve instance returned
+    /// by `serve/start`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeStopRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Identifier of the running serve instance returned by `serve/start`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub id: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeStopRequest> for ServeStopRequest {
+        fn from(value: &ServeStopRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeStopRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+                id: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeStopResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeStopResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&ServeStopResponse> for ServeStopResponse {
+        fn from(value: &ServeStopResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeStopResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeStopallRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeStopallRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeStopallRequest> for ServeStopallRequest {
+        fn from(value: &ServeStopallRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeStopallRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeStopallResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeStopallResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&ServeStopallResponse> for ServeStopallResponse {
+        fn from(value: &ServeStopallResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeStopallResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeTypesRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeTypesRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeTypesRequest> for ServeTypesRequest {
+        fn from(value: &ServeTypesRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ServeTypesRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ServeTypesResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "required": [
+    ///    "types"
+    ///  ],
+    ///  "properties": {
+    ///    "types": {
+    ///      "type": "array",
+    ///      "items": {
+    ///        "type": "string"
+    ///      }
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ServeTypesResponse {
+        pub types: ::std::vec::Vec<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ServeTypesResponse> for ServeTypesResponse {
+        fn from(value: &ServeTypesResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    ///`SyncBisyncRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "backupdir1": {
+    ///      "description": "Backup directory on the first remote for changed
+    /// files.",
+    ///      "type": "string"
+    ///    },
+    ///    "backupdir2": {
+    ///      "description": "Backup directory on the second remote for changed
+    /// files.",
+    ///      "type": "string"
+    ///    },
+    ///    "checkAccess": {
+    ///      "description": "Set to true to abort if `RCLONE_TEST` files are
+    /// missing on either side.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "checkFilename": {
+    ///      "description": "Override the access-check sentinel filename;
+    /// defaults to `RCLONE_TEST`.",
+    ///      "type": "string"
+    ///    },
+    ///    "checkSync": {
+    ///      "description": "Controls final listing comparison; leave true for
+    /// normal verification or set false to skip.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "createEmptySrcDirs": {
+    ///      "description": "Set to true to mirror empty directories between the
+    /// two paths.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "dryRun": {
+    ///      "description": "Set to true to simulate the bisync run without
+    /// making changes.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "filtersFile": {
+    ///      "description": "Path to an rclone filters file applied to both
+    /// paths.",
+    ///      "type": "string"
+    ///    },
+    ///    "force": {
+    ///      "description": "Set to true to bypass the `maxDelete` safety
+    /// check.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "ignoreListingChecksum": {
+    ///      "description": "Set to true to ignore checksum differences when
+    /// comparing listings.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "maxDelete": {
+    ///      "description": "Abort the run if deletions exceed this percentage
+    /// (default 50).",
+    ///      "type": "number"
+    ///    },
+    ///    "noCleanup": {
+    ///      "description": "Set to true to keep bisync working files after
+    /// completion.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "path1": {
+    ///      "description": "First remote directory, e.g. `drive:path1`.",
+    ///      "type": "string"
+    ///    },
+    ///    "path2": {
+    ///      "description": "Second remote directory, e.g. `drive:path2`.",
+    ///      "type": "string"
+    ///    },
+    ///    "removeEmptyDirs": {
+    ///      "description": "Set to true to remove empty directories during
+    /// cleanup.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "resilient": {
+    ///      "description": "Set to true to allow retrying after certain
+    /// recoverable errors.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "resync": {
+    ///      "description": "Set to true to perform a one-time resync,
+    /// rebuilding bisync history.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "workdir": {
+    ///      "description": "Directory path used to store bisync working
+    /// files.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct SyncBisyncRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Backup directory on the first remote for changed files.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub backupdir1: ::std::option::Option<::std::string::String>,
+        ///Backup directory on the second remote for changed files.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub backupdir2: ::std::option::Option<::std::string::String>,
+        ///Set to true to abort if `RCLONE_TEST` files are missing on either
+        /// side.
+        #[serde(
+            rename = "checkAccess",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_access: ::std::option::Option<bool>,
+        ///Override the access-check sentinel filename; defaults to
+        /// `RCLONE_TEST`.
+        #[serde(
+            rename = "checkFilename",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_filename: ::std::option::Option<::std::string::String>,
+        ///Controls final listing comparison; leave true for normal
+        /// verification or set false to skip.
+        #[serde(
+            rename = "checkSync",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub check_sync: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///Set to true to mirror empty directories between the two paths.
+        #[serde(
+            rename = "createEmptySrcDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub create_empty_src_dirs: ::std::option::Option<bool>,
+        ///Set to true to simulate the bisync run without making changes.
+        #[serde(
+            rename = "dryRun",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dry_run: ::std::option::Option<bool>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Path to an rclone filters file applied to both paths.
+        #[serde(
+            rename = "filtersFile",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filters_file: ::std::option::Option<::std::string::String>,
+        ///Set to true to bypass the `maxDelete` safety check.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub force: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Set to true to ignore checksum differences when comparing listings.
+        #[serde(
+            rename = "ignoreListingChecksum",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub ignore_listing_checksum: ::std::option::Option<bool>,
+        #[serde(
+            rename = "maxDelete",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub max_delete: ::std::option::Option<f64>,
+        ///Set to true to keep bisync working files after completion.
+        #[serde(
+            rename = "noCleanup",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub no_cleanup: ::std::option::Option<bool>,
+        ///First remote directory, e.g. `drive:path1`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub path1: ::std::option::Option<::std::string::String>,
+        ///Second remote directory, e.g. `drive:path2`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub path2: ::std::option::Option<::std::string::String>,
+        ///Set to true to remove empty directories during cleanup.
+        #[serde(
+            rename = "removeEmptyDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub remove_empty_dirs: ::std::option::Option<bool>,
+        ///Set to true to allow retrying after certain recoverable errors.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub resilient: ::std::option::Option<bool>,
+        ///Set to true to perform a one-time resync, rebuilding bisync history.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub resync: ::std::option::Option<bool>,
+        ///Directory path used to store bisync working files.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub workdir: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&SyncBisyncRequest> for SyncBisyncRequest {
+        fn from(value: &SyncBisyncRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for SyncBisyncRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                backupdir1: Default::default(),
+                backupdir2: Default::default(),
+                check_access: Default::default(),
+                check_filename: Default::default(),
+                check_sync: Default::default(),
+                config: Default::default(),
+                create_empty_src_dirs: Default::default(),
+                dry_run: Default::default(),
+                filter: Default::default(),
+                filters_file: Default::default(),
+                force: Default::default(),
+                group: Default::default(),
+                ignore_listing_checksum: Default::default(),
+                max_delete: Default::default(),
+                no_cleanup: Default::default(),
+                path1: Default::default(),
+                path2: Default::default(),
+                remove_empty_dirs: Default::default(),
+                resilient: Default::default(),
+                resync: Default::default(),
+                workdir: Default::default(),
+            }
+        }
+    }
+
     ///`SyncBisyncResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7681,6 +14177,124 @@ pub mod types {
         fn default() -> Self {
             Self {
                 jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`SyncCopyRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "createEmptySrcDirs": {
+    ///      "description": "Set to true to replicate empty source directories
+    /// on the destination.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote path to copy to.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote path to copy from.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct SyncCopyRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///Set to true to replicate empty source directories on the
+        /// destination.
+        #[serde(
+            rename = "createEmptySrcDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub create_empty_src_dirs: ::std::option::Option<bool>,
+        ///Destination remote path to copy to.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Source remote path to copy from.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&SyncCopyRequest> for SyncCopyRequest {
+        fn from(value: &SyncCopyRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for SyncCopyRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                create_empty_src_dirs: Default::default(),
+                dst_fs: Default::default(),
+                filter: Default::default(),
+                group: Default::default(),
+                src_fs: Default::default(),
             }
         }
     }
@@ -7722,6 +14336,138 @@ pub mod types {
         }
     }
 
+    ///`SyncMoveRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "createEmptySrcDirs": {
+    ///      "description": "Set to true to create empty source directories on
+    /// the destination.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "deleteEmptySrcDirs": {
+    ///      "description": "Set to true to delete empty directories from the
+    /// source after the move completes.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote path that will receive moved
+    /// files.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote path whose contents will be moved.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct SyncMoveRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///Set to true to create empty source directories on the destination.
+        #[serde(
+            rename = "createEmptySrcDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub create_empty_src_dirs: ::std::option::Option<bool>,
+        ///Set to true to delete empty directories from the source after the
+        /// move completes.
+        #[serde(
+            rename = "deleteEmptySrcDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub delete_empty_src_dirs: ::std::option::Option<bool>,
+        ///Destination remote path that will receive moved files.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Source remote path whose contents will be moved.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&SyncMoveRequest> for SyncMoveRequest {
+        fn from(value: &SyncMoveRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for SyncMoveRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                create_empty_src_dirs: Default::default(),
+                delete_empty_src_dirs: Default::default(),
+                dst_fs: Default::default(),
+                filter: Default::default(),
+                group: Default::default(),
+                src_fs: Default::default(),
+            }
+        }
+    }
+
     ///`SyncMoveResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7755,6 +14501,125 @@ pub mod types {
         fn default() -> Self {
             Self {
                 jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`SyncSyncRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_config": {
+    ///      "description": "JSON encoded config overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_filter": {
+    ///      "description": "JSON encoded filter overrides applied for this call
+    /// only.",
+    ///      "type": "string"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "createEmptySrcDirs": {
+    ///      "description": "Set to true to create empty source directories on
+    /// the destination.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "dstFs": {
+    ///      "description": "Destination remote path to sync to, e.g.
+    /// `drive:dst`.",
+    ///      "type": "string"
+    ///    },
+    ///    "srcFs": {
+    ///      "description": "Source remote path to sync from, e.g.
+    /// `drive:src`.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct SyncSyncRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///JSON encoded config overrides applied for this call only.
+        #[serde(
+            rename = "_config",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub config: ::std::option::Option<::std::string::String>,
+        ///Set to true to create empty source directories on the destination.
+        #[serde(
+            rename = "createEmptySrcDirs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub create_empty_src_dirs: ::std::option::Option<bool>,
+        ///Destination remote path to sync to, e.g. `drive:dst`.
+        #[serde(
+            rename = "dstFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub dst_fs: ::std::option::Option<::std::string::String>,
+        ///JSON encoded filter overrides applied for this call only.
+        #[serde(
+            rename = "_filter",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub filter: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Source remote path to sync from, e.g. `drive:src`.
+        #[serde(
+            rename = "srcFs",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub src_fs: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&SyncSyncRequest> for SyncSyncRequest {
+        fn from(value: &SyncSyncRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for SyncSyncRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                config: Default::default(),
+                create_empty_src_dirs: Default::default(),
+                dst_fs: Default::default(),
+                filter: Default::default(),
+                group: Default::default(),
+                src_fs: Default::default(),
             }
         }
     }
@@ -7796,6 +14661,71 @@ pub mod types {
         }
     }
 
+    ///`VfsForgetRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier to target; required when
+    /// more than one VFS is active.",
+    ///      "type": "string"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsForgetRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier to target; required when more than one VFS
+        /// is active.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&VfsForgetRequest> for VfsForgetRequest {
+        fn from(value: &VfsForgetRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsForgetRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
     ///`VfsForgetResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7827,6 +14757,69 @@ pub mod types {
     impl ::std::convert::From<&VfsForgetResponse> for VfsForgetResponse {
         fn from(value: &VfsForgetResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`VfsListRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier; omit to list all active
+    /// VFS instances.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsListRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier; omit to list all active VFS instances.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&VfsListRequest> for VfsListRequest {
+        fn from(value: &VfsListRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsListRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -7862,6 +14855,152 @@ pub mod types {
     impl ::std::convert::From<&VfsListResponse> for VfsListResponse {
         fn from(value: &VfsListResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`VfsPollIntervalRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier whose poll interval should
+    /// be queried or modified.",
+    ///      "type": "string"
+    ///    },
+    ///    "interval": {
+    ///      "description": "Duration string (e.g. `5m`) to set as the new poll
+    /// interval.",
+    ///      "type": "string"
+    ///    },
+    ///    "timeout": {
+    ///      "description": "Duration to wait for the poll interval change to
+    /// take effect; `0` waits indefinitely.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsPollIntervalRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier whose poll interval should be queried or
+        /// modified.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Duration string (e.g. `5m`) to set as the new poll interval.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub interval: ::std::option::Option<::std::string::String>,
+        ///Duration to wait for the poll interval change to take effect; `0`
+        /// waits indefinitely.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub timeout: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&VfsPollIntervalRequest> for VfsPollIntervalRequest {
+        fn from(value: &VfsPollIntervalRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsPollIntervalRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                interval: Default::default(),
+                timeout: Default::default(),
+            }
+        }
+    }
+
+    ///`VfsQueueRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier whose upload queue should
+    /// be inspected.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsQueueRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier whose upload queue should be inspected.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&VfsQueueRequest> for VfsQueueRequest {
+        fn from(value: &VfsQueueRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsQueueRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -7906,6 +15045,203 @@ pub mod types {
         }
     }
 
+    ///`VfsQueueSetExpiryRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "expiry": {
+    ///      "description": "New eligibility time in seconds (may be negative
+    /// for immediate upload).",
+    ///      "type": "number"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier for the queued item.",
+    ///      "type": "string"
+    ///    },
+    ///    "id": {
+    ///      "description": "Queue item ID as returned by `vfs/queue`.",
+    ///      "type": "integer"
+    ///    },
+    ///    "relative": {
+    ///      "description": "Set to true to treat `expiry` as relative to the
+    /// current value.",
+    ///      "type": "boolean"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsQueueSetExpiryRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub expiry: ::std::option::Option<f64>,
+        ///Optional VFS identifier for the queued item.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Queue item ID as returned by `vfs/queue`.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub id: ::std::option::Option<i64>,
+        ///Set to true to treat `expiry` as relative to the current value.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub relative: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&VfsQueueSetExpiryRequest> for VfsQueueSetExpiryRequest {
+        fn from(value: &VfsQueueSetExpiryRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsQueueSetExpiryRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                expiry: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                id: Default::default(),
+                relative: Default::default(),
+            }
+        }
+    }
+
+    ///`VfsQueueSetExpiryResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "jobid": {
+    ///      "description": "Job ID returned when _async=true.",
+    ///      "type": "integer"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsQueueSetExpiryResponse {
+        ///Job ID returned when _async=true.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub jobid: ::std::option::Option<i64>,
+    }
+
+    impl ::std::convert::From<&VfsQueueSetExpiryResponse> for VfsQueueSetExpiryResponse {
+        fn from(value: &VfsQueueSetExpiryResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsQueueSetExpiryResponse {
+        fn default() -> Self {
+            Self {
+                jobid: Default::default(),
+            }
+        }
+    }
+
+    ///`VfsRefreshRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier whose directory cache
+    /// should be refreshed.",
+    ///      "type": "string"
+    ///    },
+    ///    "recursive": {
+    ///      "description": "Set to true to refresh entire directory trees.",
+    ///      "type": "boolean"
+    ///    }
+    ///  },
+    ///  "additionalProperties": true
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsRefreshRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier whose directory cache should be refreshed.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+        ///Set to true to refresh entire directory trees.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub recursive: ::std::option::Option<bool>,
+    }
+
+    impl ::std::convert::From<&VfsRefreshRequest> for VfsRefreshRequest {
+        fn from(value: &VfsRefreshRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsRefreshRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+                recursive: Default::default(),
+            }
+        }
+    }
+
     ///`VfsRefreshResponse`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7937,6 +15273,69 @@ pub mod types {
     impl ::std::convert::From<&VfsRefreshResponse> for VfsRefreshResponse {
         fn from(value: &VfsRefreshResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`VfsStatsRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    },
+    ///    "fs": {
+    ///      "description": "Optional VFS identifier whose statistics should be
+    /// returned.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct VfsStatsRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Optional VFS identifier whose statistics should be returned.
+        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
+        pub fs: ::std::option::Option<::std::string::String>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&VfsStatsRequest> for VfsStatsRequest {
+        fn from(value: &VfsStatsRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for VfsStatsRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                fs: Default::default(),
+                group: Default::default(),
+            }
         }
     }
 
@@ -8020,7 +15419,7 @@ pub mod types {
 ///
 ///Full OpenAPI specification for the Rclone RC API.
 ///
-///Version: 1.73.0
+///Version: 1.73.4
 pub struct Client {
     pub(crate) baseurl: String,
     pub(crate) client: reqwest::Client,
@@ -8061,7 +15460,7 @@ impl Client {
 
 impl ClientInfo<()> for Client {
     fn api_version() -> &'static str {
-        "1.73.0"
+        "1.73.4"
     }
 
     fn baseurl(&self) -> &str {
@@ -8091,10 +15490,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `body`
     pub async fn rc_noop<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::RcNoopRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
@@ -8113,6 +15514,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("params", &params))
             .headers(header_map)
@@ -8147,15 +15549,14 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to clean up, for example `drive:`.
+    /// - `body`
     pub async fn operations_cleanup<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        body: &'a types::OperationsCleanupRequest,
+    ) -> Result<ResponseValue<types::OperationsCleanupResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/cleanup", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8170,6 +15571,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -8213,18 +15615,17 @@ impl Client {
     ///   local filesystem.
     /// - `src_remote`: Path to the source object within `srcFs`, for example
     ///   `dir/file.txt`.
+    /// - `body`
     pub async fn operations_copyfile<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        dst_fs: &'a str,
-        dst_remote: &'a str,
-        src_fs: &'a str,
-        src_remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        dst_fs: Option<&'a str>,
+        dst_remote: Option<&'a str>,
+        src_fs: Option<&'a str>,
+        src_remote: Option<&'a str>,
+        body: &'a types::OperationsCopyfileRequest,
+    ) -> Result<ResponseValue<types::OperationsCopyfileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/copyfile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8239,6 +15640,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("dstFs", &dst_fs))
@@ -8289,18 +15691,17 @@ impl Client {
     /// - `remote`: Destination path within `fs` where the fetched object will
     ///   be stored.
     /// - `url`: Source URL to fetch the object from.
+    /// - `body`
     pub async fn operations_copyurl<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         auto_filename: Option<bool>,
-        fs: &'a str,
-        remote: &'a str,
-        url: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        url: Option<&'a str>,
+        body: &'a types::OperationsCopyurlRequest,
+    ) -> Result<ResponseValue<types::OperationsCopyurlResponse>, Error<types::RcError>> {
         let _url = format!("{}/operations/copyurl", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8315,6 +15716,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -8359,17 +15761,16 @@ impl Client {
     /// - `filter`: JSON encoded filter overrides applied for this call only.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path whose contents should be removed.
+    /// - `body`
     pub async fn operations_delete<'a>(
         &'a self,
         async_: Option<bool>,
         config: Option<&'a str>,
         filter: Option<&'a str>,
         group: Option<&'a str>,
-        fs: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        body: &'a types::OperationsDeleteRequest,
+    ) -> Result<ResponseValue<types::OperationsDeleteResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/delete", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8384,6 +15785,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -8422,16 +15824,15 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path that contains the file to delete.
     /// - `remote`: Exact path to the file within `fs` that should be deleted.
+    /// - `body`
     pub async fn operations_deletefile<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsDeletefileRequest,
+    ) -> Result<ResponseValue<types::OperationsDeletefileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/deletefile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8446,6 +15847,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -8483,11 +15885,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to inspect, e.g. `drive:`.
+    /// - `body`
     pub async fn operations_fsinfo<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
+        body: &'a types::OperationsFsinfoRequest,
     ) -> Result<ResponseValue<types::OperationsFsinfoResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/fsinfo", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -8503,6 +15907,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -8545,14 +15950,16 @@ impl Client {
     /// - `fs`: Remote name or path to hash, such as `drive:` or `/`.
     /// - `hash_type`: Hash algorithm to use, e.g. `md5`, `sha1`, or another
     ///   supported name.
+    /// - `body`
     pub async fn operations_hashsum<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         base64: Option<bool>,
         download: Option<bool>,
-        fs: &'a str,
-        hash_type: &'a str,
+        fs: Option<&'a str>,
+        hash_type: Option<&'a str>,
+        body: &'a types::OperationsHashsumRequest,
     ) -> Result<ResponseValue<types::OperationsHashsumResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/hashsum", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -8568,6 +15975,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("base64", &base64))
@@ -8613,15 +16021,17 @@ impl Client {
     /// - `hash_type`: Hash algorithm to use, e.g. `md5`, `sha1`, or another
     ///   supported name.
     /// - `remote`: Path to the specific file within `fs` to hash.
+    /// - `body`
     pub async fn operations_hashsumfile<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         base64: Option<bool>,
         download: Option<bool>,
-        fs: &'a str,
-        hash_type: &'a str,
-        remote: &'a str,
+        fs: Option<&'a str>,
+        hash_type: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsHashsumfileRequest,
     ) -> Result<ResponseValue<types::OperationsHashsumfileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/hashsumfile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -8637,6 +16047,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("base64", &base64))
@@ -8681,18 +16092,17 @@ impl Client {
     /// - `dst_remote`: Destination path within `dstFs` for the moved object.
     /// - `src_fs`: Source remote name or path containing the file to move.
     /// - `src_remote`: Path to the source object within `srcFs`.
+    /// - `body`
     pub async fn operations_movefile<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        dst_fs: &'a str,
-        dst_remote: &'a str,
-        src_fs: &'a str,
-        src_remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        dst_fs: Option<&'a str>,
+        dst_remote: Option<&'a str>,
+        src_fs: Option<&'a str>,
+        src_remote: Option<&'a str>,
+        body: &'a types::OperationsMovefileRequest,
+    ) -> Result<ResponseValue<types::OperationsMovefileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/movefile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8707,6 +16117,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("dstFs", &dst_fs))
@@ -8759,14 +16170,16 @@ impl Client {
     ///   a public link.
     /// - `unlink`: Set to true to remove an existing public link instead of
     ///   creating one.
+    /// - `body`
     pub async fn operations_publiclink<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         expire: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
         unlink: Option<bool>,
+        body: &'a types::OperationsPubliclinkRequest,
     ) -> Result<ResponseValue<types::OperationsPubliclinkResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/publiclink", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -8782,6 +16195,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("expire", &expire))
@@ -8825,17 +16239,16 @@ impl Client {
     ///   empty.
     /// - `remote`: Path within `fs` whose empty subdirectories should be
     ///   removed.
+    /// - `body`
     pub async fn operations_rmdirs<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
         leave_root: Option<bool>,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        remote: Option<&'a str>,
+        body: &'a types::OperationsRmdirsRequest,
+    ) -> Result<ResponseValue<types::OperationsRmdirsResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/rmdirs", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8850,6 +16263,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -8891,15 +16305,14 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path whose storage class tier should be changed.
+    /// - `body`
     pub async fn operations_settier<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        body: &'a types::OperationsSettierRequest,
+    ) -> Result<ResponseValue<types::OperationsSettierResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/settier", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8914,6 +16327,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -8952,16 +16366,15 @@ impl Client {
     ///   change.
     /// - `remote`: Path within `fs` to the object whose storage class tier
     ///   should be updated.
+    /// - `body`
     pub async fn operations_settierfile<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsSettierfileRequest,
+    ) -> Result<ResponseValue<types::OperationsSettierfileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/settierfile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -8976,6 +16389,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -9013,11 +16427,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to measure aggregate size information for.
+    /// - `body`
     pub async fn operations_size<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
+        body: &'a types::OperationsSizeRequest,
     ) -> Result<ResponseValue<types::OperationsSizeResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/size", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9033,6 +16449,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -9070,11 +16487,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Bandwidth limit to apply, for example `off`, `5M`, or a
     ///   schedule string.
+    /// - `body`
     pub async fn core_bwlimit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         rate: Option<&'a str>,
+        body: &'a types::CoreBwlimitRequest,
     ) -> Result<ResponseValue<types::CoreBwlimitResponse>, Error<types::RcError>> {
         let url = format!("{}/core/bwlimit", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9090,6 +16509,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("rate", &rate))
@@ -9133,14 +16553,16 @@ impl Client {
     /// - `return_type`: Controls how output is returned; accepts
     ///   `COMBINED_OUTPUT`, `STREAM`, `STREAM_ONLY_STDOUT`, or
     ///   `STREAM_ONLY_STDERR`.
+    /// - `body`
     pub async fn core_command<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         arg: Option<&'a ::std::vec::Vec<::std::string::String>>,
-        command: &'a str,
+        command: Option<&'a str>,
         opt: Option<&'a str>,
         return_type: Option<&'a str>,
+        body: &'a types::CoreCommandRequest,
     ) -> Result<ResponseValue<types::CoreCommandResponse>, Error<types::RcError>> {
         let url = format!("{}/core/command", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9156,6 +16578,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("arg", &arg))
@@ -9186,6 +16609,62 @@ impl Client {
         }
     }
 
+    ///List locally accessible paths
+    ///
+    ///Returns a list of locally accessible paths including mount points, user
+    /// directories, and removable volumes.
+    ///
+    ///Sends a `POST` request to `/core/disks`
+    ///
+    ///Arguments:
+    /// - `async_`: Run the command asynchronously. Returns a job id
+    ///   immediately.
+    /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
+    pub async fn core_disks<'a>(
+        &'a self,
+        async_: Option<bool>,
+        group: Option<&'a str>,
+        body: &'a types::CoreDisksRequest,
+    ) -> Result<ResponseValue<types::CoreDisksResponse>, Error<types::RcError>> {
+        let url = format!("{}/core/disks", self.baseurl,);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        header_map.append(
+            ::reqwest::header::HeaderName::from_static("api-version"),
+            ::reqwest::header::HeaderValue::from_static(Self::api_version()),
+        );
+        #[allow(unused_mut)]
+        let mut request = self
+            .client
+            .post(url)
+            .header(
+                ::reqwest::header::ACCEPT,
+                ::reqwest::header::HeaderValue::from_static("application/json"),
+            )
+            .json(&body)
+            .query(&progenitor_client::QueryParam::new("_async", &async_))
+            .query(&progenitor_client::QueryParam::new("_group", &group))
+            .headers(header_map)
+            .build()?;
+        let info = OperationInfo {
+            operation_id: "core_disks",
+        };
+        self.pre(&mut request, &info).await?;
+        let result = self.exec(request, &info).await;
+        self.post(&result, &info).await?;
+        let response = result?;
+        match response.status().as_u16() {
+            200u16 => ResponseValue::from_response(response).await,
+            400u16..=499u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            500u16..=599u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            _ => Err(Error::UnexpectedResponse(response)),
+        }
+    }
+
     ///Report disk usage
     ///
     ///Returns disk usage statistics for the supplied local directory (defaults
@@ -9199,11 +16678,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `dir`: Local directory path to report disk usage for. Defaults to the
     ///   rclone cache directory when omitted.
+    /// - `body`
     pub async fn core_du<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         dir: Option<&'a str>,
+        body: &'a types::CoreDuRequest,
     ) -> Result<ResponseValue<types::CoreDuResponse>, Error<types::RcError>> {
         let url = format!("{}/core/du", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9219,6 +16700,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("dir", &dir))
@@ -9253,14 +16735,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn core_gc<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::CoreGcRequest,
+    ) -> Result<ResponseValue<types::CoreGcResponse>, Error<types::RcError>> {
         let url = format!("{}/core/gc", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9275,6 +16756,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -9308,10 +16790,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn core_group_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::CoreGroupListRequest,
     ) -> Result<ResponseValue<types::CoreGroupListResponse>, Error<types::RcError>> {
         let url = format!("{}/core/group-list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9327,6 +16811,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -9360,10 +16845,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn core_memstats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::CoreMemstatsRequest,
     ) -> Result<
         ResponseValue<::std::collections::HashMap<::std::string::String, f64>>,
         Error<types::RcError>,
@@ -9382,6 +16869,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -9416,11 +16904,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `clear`: Plain-text string to obscure for storage in the config file.
+    /// - `body`
     pub async fn core_obscure<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        clear: &'a str,
+        clear: Option<&'a str>,
+        body: &'a types::CoreObscureRequest,
     ) -> Result<ResponseValue<types::CoreObscureResponse>, Error<types::RcError>> {
         let url = format!("{}/core/obscure", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9436,6 +16926,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("clear", &clear))
@@ -9470,10 +16961,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn core_pid<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::CorePidRequest,
     ) -> Result<ResponseValue<types::CorePidResponse>, Error<types::RcError>> {
         let url = format!("{}/core/pid", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9489,6 +16982,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -9524,15 +17018,14 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `exit_code`: Optional exit code to use when terminating the rclone
     ///   process.
+    /// - `body`
     pub async fn core_quit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         exit_code: Option<i64>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::CoreQuitRequest,
+    ) -> Result<ResponseValue<types::CoreQuitResponse>, Error<types::RcError>> {
         let url = format!("{}/core/quit", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9547,6 +17040,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("exitCode", &exit_code))
@@ -9582,15 +17076,14 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier to remove.
+    /// - `body`
     pub async fn core_stats_delete<'a>(
         &'a self,
         async_: Option<bool>,
         _group: Option<&'a str>,
-        group: &'a str
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        group: Option<&'a str>,
+        body: &'a types::CoreStatsDeleteRequest
+    ) -> Result<ResponseValue<types::CoreStatsDeleteResponse>, Error<types::RcError>> {
         let url = format!("{}/core/stats-delete", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9605,6 +17098,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("group", &group))
@@ -9642,15 +17136,14 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier whose counters should be reset. Leave
     ///   unset to reset all groups.
+    /// - `body`
     pub async fn core_stats_reset<'a>(
         &'a self,
         async_: Option<bool>,
         _group: Option<&'a str>,
-        group: Option<&'a str>
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        group: Option<&'a str>,
+        body: &'a types::CoreStatsResetRequest
+    ) -> Result<ResponseValue<types::CoreStatsResetResponse>, Error<types::RcError>> {
         let url = format!("{}/core/stats-reset", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9665,6 +17158,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("group", &group))
@@ -9702,11 +17196,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier to filter the completed transfer list.
     ///   Leave unset for all groups.
+    /// - `body`
     pub async fn core_transferred<'a>(
         &'a self,
         async_: Option<bool>,
         _group: Option<&'a str>,
-        group: Option<&'a str>
+        group: Option<&'a str>,
+        body: &'a types::CoreTransferredRequest
     ) -> Result<ResponseValue<types::CoreTransferredResponse>, Error<types::RcError>> {
         let url = format!("{}/core/transferred", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9722,6 +17218,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("group", &group))
@@ -9754,15 +17251,14 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Sampling interval in nanoseconds for blocking profile
     ///   collection; use 1 to capture all events.
+    /// - `body`
     pub async fn debug_set_block_profile_rate<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        rate: i64,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        rate: Option<i64>,
+        body: &'a types::DebugSetBlockProfileRateRequest,
+    ) -> Result<ResponseValue<types::DebugSetBlockProfileRateResponse>, Error<types::RcError>> {
         let url = format!("{}/debug/set-block-profile-rate", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9777,6 +17273,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("rate", &rate))
@@ -9809,11 +17306,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `gc_percent`: Target percentage of newly allocated data to trigger
     ///   garbage collection.
+    /// - `body`
     pub async fn debug_set_gc_percent<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        gc_percent: i64,
+        gc_percent: Option<i64>,
+        body: &'a types::DebugSetGcPercentRequest,
     ) -> Result<ResponseValue<types::DebugSetGcPercentResponse>, Error<types::RcError>> {
         let url = format!("{}/debug/set-gc-percent", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9829,6 +17328,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -9864,11 +17364,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Sampling fraction for mutex contention profiling; set to 0 to
     ///   disable.
+    /// - `body`
     pub async fn debug_set_mutex_profile_fraction<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        rate: i64,
+        rate: Option<i64>,
+        body: &'a types::DebugSetMutexProfileFractionRequest,
     ) -> Result<ResponseValue<types::DebugSetMutexProfileFractionResponse>, Error<types::RcError>>
     {
         let url = format!("{}/debug/set-mutex-profile-fraction", self.baseurl,);
@@ -9885,6 +17387,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("rate", &rate))
@@ -9916,11 +17419,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `mem_limit`: Soft memory limit for the Go runtime in bytes.
+    /// - `body`
     pub async fn debug_set_soft_memory_limit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        mem_limit: i64,
+        mem_limit: Option<i64>,
+        body: &'a types::DebugSetSoftMemoryLimitRequest,
     ) -> Result<ResponseValue<types::DebugSetSoftMemoryLimitResponse>, Error<types::RcError>> {
         let url = format!("{}/debug/set-soft-memory-limit", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -9936,6 +17441,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("mem-limit", &mem_limit))
@@ -9966,14 +17472,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn fscache_clear<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::FscacheClearRequest,
+    ) -> Result<ResponseValue<types::FscacheClearResponse>, Error<types::RcError>> {
         let url = format!("{}/fscache/clear", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -9988,6 +17493,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10017,10 +17523,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn fscache_entries<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::FscacheEntriesRequest,
     ) -> Result<ResponseValue<types::FscacheEntriesResponse>, Error<types::RcError>> {
         let url = format!("{}/fscache/entries", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10036,6 +17544,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10065,10 +17574,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn mount_listmounts<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::MountListmountsRequest,
     ) -> Result<ResponseValue<types::MountListmountsResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/listmounts", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10084,6 +17595,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10123,21 +17635,20 @@ impl Client {
     ///   or `mount2`).
     /// - `vfs_opt`: VFS options encoded as JSON, matching flags accepted by
     ///   `rclone mount`.
+    /// - `body`
     pub async fn mount_mount<'a>(
         &'a self,
         async_: Option<bool>,
         config: Option<&'a str>,
         filter: Option<&'a str>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
         mount_opt: Option<&'a str>,
-        mount_point: &'a str,
+        mount_point: Option<&'a str>,
         mount_type: Option<&'a str>,
         vfs_opt: Option<&'a str>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::MountMountRequest,
+    ) -> Result<ResponseValue<types::MountMountResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/mount", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -10152,6 +17663,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -10194,10 +17706,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn mount_types<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::MountTypesRequest,
     ) -> Result<ResponseValue<types::MountTypesResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/types", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10213,6 +17727,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10243,15 +17758,14 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `mount_point`: Local mount point path to unmount.
+    /// - `body`
     pub async fn mount_unmount<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        mount_point: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        mount_point: Option<&'a str>,
+        body: &'a types::MountUnmountRequest,
+    ) -> Result<ResponseValue<types::MountUnmountResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/unmount", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -10266,6 +17780,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -10299,14 +17814,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn mount_unmountall<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::MountUnmountallRequest,
+    ) -> Result<ResponseValue<types::MountUnmountallResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/unmountall", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -10321,6 +17835,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10355,10 +17870,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `body`
     pub async fn rc_noop_auth<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::RcNoopAuthRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
@@ -10377,6 +17894,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("params", &params))
             .headers(header_map)
@@ -10411,10 +17929,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `body`
     pub async fn rc_error<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::RcErrorRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/rc/error", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10430,6 +17950,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("params", &params))
             .headers(header_map)
@@ -10464,10 +17985,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn rc_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::RcListRequest,
     ) -> Result<ResponseValue<types::RcListResponse>, Error<types::RcError>> {
         let url = format!("{}/rc/list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10483,6 +18006,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10521,14 +18045,16 @@ impl Client {
     /// - `command`: Backend-specific command to invoke.
     /// - `fs`: Remote name or path the backend command should target.
     /// - `opt`: Backend command options encoded as a JSON string.
+    /// - `body`
     pub async fn backend_command<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         arg: Option<&'a ::std::vec::Vec<::std::string::String>>,
-        command: &'a str,
+        command: Option<&'a str>,
         fs: Option<&'a str>,
         opt: Option<&'a str>,
+        body: &'a types::BackendCommandRequest,
     ) -> Result<ResponseValue<types::BackendCommandResponse>, Error<types::RcError>> {
         let url = format!("{}/backend/command", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10544,6 +18070,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("arg", &arg))
@@ -10586,12 +18113,14 @@ impl Client {
     ///   `remote:path/to/dir`.
     /// - `with_data`: Set to true to drop cached chunk data along with
     ///   directory entries.
+    /// - `body`
     pub async fn cache_expire<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        remote: &'a str,
+        remote: Option<&'a str>,
         with_data: Option<bool>,
+        body: &'a types::CacheExpireRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/expire", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10607,6 +18136,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("remote", &remote))
@@ -10645,12 +18175,14 @@ impl Client {
     /// - `chunks`: Comma-separated chunk specifier list (e.g. `0:10,25:30`)
     ///   describing file pieces to prefetch.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `body`
     pub async fn cache_fetch<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         chunks: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::CacheFetchRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/fetch", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10666,6 +18198,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("chunks", &chunks))
@@ -10701,10 +18234,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn cache_stats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::CacheStatsRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/stats", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10720,6 +18255,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10759,18 +18295,17 @@ impl Client {
     /// - `parameters`: JSON object of configuration key/value pairs required
     ///   for the remote.
     /// - `type_`: Backend type identifier, such as `drive`, `s3`, or `dropbox`.
+    /// - `body`
     pub async fn config_create<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
         opt: Option<&'a str>,
-        parameters: &'a str,
-        type_: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        parameters: Option<&'a str>,
+        type_: Option<&'a str>,
+        body: &'a types::ConfigCreateRequest,
+    ) -> Result<ResponseValue<types::ConfigCreateResponse>, Error<types::RcError>> {
         let url = format!("{}/config/create", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -10785,6 +18320,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -10826,11 +18362,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the remote configuration to delete.
+    /// - `body`
     pub async fn config_delete<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
+        body: &'a types::ConfigDeleteRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/delete", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10846,6 +18384,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -10881,10 +18420,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn config_dump<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::ConfigDumpRequest,
     ) -> Result<
         ResponseValue<
             ::std::collections::HashMap<
@@ -10908,6 +18449,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -10942,11 +18484,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the remote configuration to fetch.
+    /// - `body`
     pub async fn config_get<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
+        body: &'a types::ConfigGetRequest,
     ) -> Result<ResponseValue<types::ConfigGetResponse>, Error<types::RcError>> {
         let url = format!("{}/config/get", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -10962,6 +18506,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -10996,10 +18541,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn config_listremotes<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::ConfigListremotesRequest,
     ) -> Result<ResponseValue<types::ConfigListremotesResponse>, Error<types::RcError>> {
         let url = format!("{}/config/listremotes", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11015,6 +18562,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -11051,12 +18599,14 @@ impl Client {
     /// - `name`: Name of the remote whose secrets should be updated.
     /// - `parameters`: JSON object of password answers, typically including
     ///   `pass`.
+    /// - `body`
     pub async fn config_password<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
-        parameters: &'a str,
+        name: Option<&'a str>,
+        parameters: Option<&'a str>,
+        body: &'a types::ConfigPasswordRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/password", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11072,6 +18622,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -11111,10 +18662,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn config_paths<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::ConfigPathsRequest,
     ) -> Result<ResponseValue<types::ConfigPathsResponse>, Error<types::RcError>> {
         let url = format!("{}/config/paths", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11130,6 +18683,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -11163,10 +18717,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn config_providers<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::ConfigProvidersRequest,
     ) -> Result<ResponseValue<types::ConfigProvidersResponse>, Error<types::RcError>> {
         let url = format!("{}/config/providers", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11182,6 +18738,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -11217,11 +18774,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `path`: Absolute path to the `rclone.conf` file that rclone should
     ///   use.
+    /// - `body`
     pub async fn config_setpath<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        path: &'a str,
+        path: Option<&'a str>,
+        body: &'a types::ConfigSetpathRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/setpath", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11237,6 +18796,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("path", &path))
@@ -11272,11 +18832,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `config_password`: Password used to unlock an encrypted config file.
+    /// - `body`
     pub async fn config_unlock<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        config_password: &'a str,
+        config_password: Option<&'a str>,
+        body: &'a types::ConfigUnlockRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/unlock", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11292,6 +18854,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -11334,17 +18897,16 @@ impl Client {
     ///   `obscure`, `continue`).
     /// - `parameters`: JSON object of configuration key/value pairs to apply to
     ///   the remote.
+    /// - `body`
     pub async fn config_update<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
         opt: Option<&'a str>,
-        parameters: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        parameters: Option<&'a str>,
+        body: &'a types::ConfigUpdateRequest,
+    ) -> Result<ResponseValue<types::ConfigUpdateResponse>, Error<types::RcError>> {
         let url = format!("{}/config/update", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -11359,6 +18921,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -11399,10 +18962,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn core_version<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::CoreVersionRequest,
     ) -> Result<ResponseValue<types::CoreVersionResponse>, Error<types::RcError>> {
         let url = format!("{}/core/version", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11418,6 +18983,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -11456,12 +19022,14 @@ impl Client {
     ///   to include all groups.
     /// - `short`: When true, omit the `transferring` and `checking` arrays from
     ///   the response.
+    /// - `body`
     pub async fn core_stats<'a>(
         &'a self,
         async_: Option<bool>,
         _group: Option<&'a str>,
         group: Option<&'a str>,
-        short: Option<bool>
+        short: Option<bool>,
+        body: &'a types::CoreStatsRequest
     ) -> Result<ResponseValue<types::CoreStatsResponse>, Error<types::RcError>> {
         let url = format!("{}/core/stats", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11477,6 +19045,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("group", &group))
@@ -11574,9 +19143,11 @@ impl Client {
     ///Arguments:
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
+    /// - `body`
     pub async fn job_list<'a>(
         &'a self,
         async_: Option<bool>,
+        body: &'a types::JobListRequest,
     ) -> Result<ResponseValue<types::JobListResponse>, Error<types::RcError>> {
         let url = format!("{}/job/list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11592,6 +19163,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .headers(header_map)
             .build()?;
@@ -11625,10 +19197,12 @@ impl Client {
     ///   immediately.
     /// - `jobid`: Numeric identifier of the job to query, as returned from an
     ///   async call.
+    /// - `body`
     pub async fn job_status<'a>(
         &'a self,
         async_: Option<bool>,
-        jobid: f64,
+        jobid: Option<f64>,
+        body: &'a types::JobStatusRequest,
     ) -> Result<ResponseValue<types::JobStatusResponse>, Error<types::RcError>> {
         let url = format!("{}/job/status", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11644,6 +19218,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("jobid", &jobid))
             .headers(header_map)
@@ -11677,14 +19252,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `jobid`: Numeric identifier of the job to cancel.
+    /// - `body`
     pub async fn job_stop<'a>(
         &'a self,
         async_: Option<bool>,
-        jobid: f64,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        jobid: Option<f64>,
+        body: &'a types::JobStopRequest,
+    ) -> Result<ResponseValue<types::JobStopResponse>, Error<types::RcError>> {
         let url = format!("{}/job/stop", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -11699,6 +19273,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("jobid", &jobid))
             .headers(header_map)
@@ -11732,14 +19307,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Stats group name whose active jobs should be stopped.
+    /// - `body`
     pub async fn job_stopgroup<'a>(
         &'a self,
         async_: Option<bool>,
-        group: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        group: Option<&'a str>,
+        body: &'a types::JobStopgroupRequest,
+    ) -> Result<ResponseValue<types::JobStopgroupResponse>, Error<types::RcError>> {
         let url = format!("{}/job/stopgroup", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -11754,6 +19328,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("group", &group))
             .headers(header_map)
@@ -11807,23 +19382,25 @@ impl Client {
     /// - `show_hash`: Set to true to include hash digests for each entry.
     /// - `show_orig_i_ds`: Set to true to include original backend identifiers
     ///   where available.
+    /// - `body`
     pub async fn operations_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         dirs_only: Option<bool>,
         files_only: Option<bool>,
-        fs: &'a str,
+        fs: Option<&'a str>,
         hash_types: Option<&'a ::std::vec::Vec<::std::string::String>>,
         metadata: Option<bool>,
         no_mime_type: Option<bool>,
         no_mod_time: Option<bool>,
         opt: Option<&'a str>,
         recurse: Option<bool>,
-        remote: &'a str,
+        remote: Option<&'a str>,
         show_encrypted: Option<bool>,
         show_hash: Option<bool>,
         show_orig_i_ds: Option<bool>,
+        body: &'a types::OperationsListRequest,
     ) -> Result<ResponseValue<types::OperationsListResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11839,6 +19416,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("dirsOnly", &dirs_only))
@@ -11908,13 +19486,15 @@ impl Client {
     /// - `opt`: Optional JSON object of listing flags, matching those accepted
     ///   by `operations/list`.
     /// - `remote`: Path to the file or directory within `fs` to describe.
+    /// - `body`
     pub async fn operations_stat<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
         opt: Option<&'a str>,
-        remote: &'a str,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsStatRequest,
     ) -> Result<ResponseValue<types::OperationsStatResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/stat", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11930,6 +19510,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -11968,11 +19549,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to query for capacity information.
+    /// - `body`
     pub async fn operations_about<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
+        fs: Option<&'a str>,
+        body: &'a types::OperationsAboutRequest,
     ) -> Result<ResponseValue<types::OperationsAboutResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/about", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -11988,6 +19571,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -12030,13 +19614,10 @@ impl Client {
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
         body: B,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+    ) -> Result<ResponseValue<types::OperationsUploadfileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/uploadfile", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -12095,18 +19676,17 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path from which to remove all contents.
     /// - `remote`: Path within `fs` whose contents should be purged.
+    /// - `body`
     pub async fn operations_purge<'a>(
         &'a self,
         async_: Option<bool>,
         config: Option<&'a str>,
         filter: Option<&'a str>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsPurgeRequest,
+    ) -> Result<ResponseValue<types::OperationsPurgeResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/purge", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -12121,6 +19701,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -12160,16 +19741,15 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path in which to create a directory.
     /// - `remote`: Directory path within `fs` to create.
+    /// - `body`
     pub async fn operations_mkdir<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsMkdirRequest,
+    ) -> Result<ResponseValue<types::OperationsMkdirResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/mkdir", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -12184,6 +19764,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -12221,16 +19802,15 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path containing the directory to remove.
     /// - `remote`: Directory path within `fs` to delete.
+    /// - `body`
     pub async fn operations_rmdir<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        fs: &'a str,
-        remote: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        fs: Option<&'a str>,
+        remote: Option<&'a str>,
+        body: &'a types::OperationsRmdirRequest,
+    ) -> Result<ResponseValue<types::OperationsRmdirResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/rmdir", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -12245,6 +19825,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -12302,6 +19883,7 @@ impl Client {
     /// - `one_way`: Set to true to only ensure that source files exist on the
     ///   destination.
     /// - `src_fs`: Source remote name or path to verify, e.g. `drive:`.
+    /// - `body`
     pub async fn operations_check<'a>(
         &'a self,
         async_: Option<bool>,
@@ -12312,13 +19894,14 @@ impl Client {
         combined: Option<bool>,
         differ: Option<bool>,
         download: Option<bool>,
-        dst_fs: &'a str,
+        dst_fs: Option<&'a str>,
         error: Option<bool>,
         match_: Option<bool>,
         missing_on_dst: Option<bool>,
         missing_on_src: Option<bool>,
         one_way: Option<bool>,
-        src_fs: &'a str,
+        src_fs: Option<&'a str>,
+        body: &'a types::OperationsCheckRequest,
     ) -> Result<ResponseValue<types::OperationsCheckResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/check", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12334,6 +19917,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -12402,6 +19986,7 @@ impl Client {
     ///   directories on the destination.
     /// - `dst_fs`: Destination remote path to sync to, e.g. `drive:dst`.
     /// - `src_fs`: Source remote path to sync from, e.g. `drive:src`.
+    /// - `body`
     pub async fn sync_sync<'a>(
         &'a self,
         async_: Option<bool>,
@@ -12409,8 +19994,9 @@ impl Client {
         filter: Option<&'a str>,
         group: Option<&'a str>,
         create_empty_src_dirs: Option<bool>,
-        dst_fs: &'a str,
-        src_fs: &'a str,
+        dst_fs: Option<&'a str>,
+        src_fs: Option<&'a str>,
+        body: &'a types::SyncSyncRequest,
     ) -> Result<ResponseValue<types::SyncSyncResponse>, Error<types::RcError>> {
         let url = format!("{}/sync/sync", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12426,6 +20012,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -12474,6 +20061,7 @@ impl Client {
     ///   directories on the destination.
     /// - `dst_fs`: Destination remote path to copy to.
     /// - `src_fs`: Source remote path to copy from.
+    /// - `body`
     pub async fn sync_copy<'a>(
         &'a self,
         async_: Option<bool>,
@@ -12481,8 +20069,9 @@ impl Client {
         filter: Option<&'a str>,
         group: Option<&'a str>,
         create_empty_src_dirs: Option<bool>,
-        dst_fs: &'a str,
-        src_fs: &'a str,
+        dst_fs: Option<&'a str>,
+        src_fs: Option<&'a str>,
+        body: &'a types::SyncCopyRequest,
     ) -> Result<ResponseValue<types::SyncCopyResponse>, Error<types::RcError>> {
         let url = format!("{}/sync/copy", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12498,6 +20087,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -12548,6 +20138,7 @@ impl Client {
     ///   the source after the move completes.
     /// - `dst_fs`: Destination remote path that will receive moved files.
     /// - `src_fs`: Source remote path whose contents will be moved.
+    /// - `body`
     pub async fn sync_move<'a>(
         &'a self,
         async_: Option<bool>,
@@ -12556,8 +20147,9 @@ impl Client {
         group: Option<&'a str>,
         create_empty_src_dirs: Option<bool>,
         delete_empty_src_dirs: Option<bool>,
-        dst_fs: &'a str,
-        src_fs: &'a str,
+        dst_fs: Option<&'a str>,
+        src_fs: Option<&'a str>,
+        body: &'a types::SyncMoveRequest,
     ) -> Result<ResponseValue<types::SyncMoveResponse>, Error<types::RcError>> {
         let url = format!("{}/sync/move", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12573,6 +20165,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -12650,6 +20243,7 @@ impl Client {
     /// - `resync`: Set to true to perform a one-time resync, rebuilding bisync
     ///   history.
     /// - `workdir`: Directory path used to store bisync working files.
+    /// - `body`
     pub async fn sync_bisync<'a>(
         &'a self,
         async_: Option<bool>,
@@ -12668,12 +20262,13 @@ impl Client {
         ignore_listing_checksum: Option<bool>,
         max_delete: Option<f64>,
         no_cleanup: Option<bool>,
-        path1: &'a str,
-        path2: &'a str,
+        path1: Option<&'a str>,
+        path2: Option<&'a str>,
         remove_empty_dirs: Option<bool>,
         resilient: Option<bool>,
         resync: Option<bool>,
         workdir: Option<&'a str>,
+        body: &'a types::SyncBisyncRequest,
     ) -> Result<ResponseValue<types::SyncBisyncResponse>, Error<types::RcError>> {
         let url = format!("{}/sync/bisync", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12689,6 +20284,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -12775,10 +20371,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn options_blocks<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::OptionsBlocksRequest,
     ) -> Result<ResponseValue<types::OptionsBlocksResponse>, Error<types::RcError>> {
         let url = format!("{}/options/blocks", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12794,6 +20392,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -12829,11 +20428,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `blocks`: Optional comma-separated list of option block names to
     ///   return.
+    /// - `body`
     pub async fn options_get<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         blocks: Option<&'a str>,
+        body: &'a types::OptionsGetRequest,
     ) -> Result<ResponseValue<types::OptionsGetResponse>, Error<types::RcError>> {
         let url = format!("{}/options/get", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12849,6 +20450,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("blocks", &blocks))
@@ -12886,11 +20488,13 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `blocks`: Optional comma-separated list of option block names to
     ///   describe.
+    /// - `body`
     pub async fn options_info<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         blocks: Option<&'a str>,
+        body: &'a types::OptionsInfoRequest,
     ) -> Result<ResponseValue<types::OptionsInfoResponse>, Error<types::RcError>> {
         let url = format!("{}/options/info", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -12906,6 +20510,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("blocks", &blocks))
@@ -12960,59 +20565,28 @@ impl Client {
     /// - `sftp`: Overrides for the `sftp` option block.
     /// - `vfs`: Overrides for the `vfs` option block.
     /// - `webdav`: Overrides for the `webdav` option block.
+    /// - `body`
     pub async fn options_set<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        dlna: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetDlnaValue>,
-        >,
-        filter: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetFilterValue>,
-        >,
-        ftp: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetFtpValue>,
-        >,
-        http: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetHttpValue>,
-        >,
-        log: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetLogValue>,
-        >,
-        main: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetMainValue>,
-        >,
-        mount: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetMountValue>,
-        >,
-        nfs: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetNfsValue>,
-        >,
-        proxy: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetProxyValue>,
-        >,
-        rc: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetRcValue>,
-        >,
-        restic: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetResticValue>,
-        >,
-        s3: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetS3Value>,
-        >,
-        sftp: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetSftpValue>,
-        >,
-        vfs: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetVfsValue>,
-        >,
-        webdav: Option<
-            &'a ::std::collections::HashMap<::std::string::String, types::OptionsSetWebdavValue>,
-        >,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        dlna: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        filter: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        ftp: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        http: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        log: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        main: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        mount: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        nfs: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        proxy: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        rc: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        restic: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        s3: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        sftp: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        vfs: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        webdav: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::OptionsSetRequest,
+    ) -> Result<ResponseValue<types::OptionsSetResponse>, Error<types::RcError>> {
         let url = format!("{}/options/set", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13027,6 +20601,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("dlna", &dlna))
@@ -13076,10 +20651,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn options_local<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::OptionsLocalRequest,
     ) -> Result<ResponseValue<types::OptionsLocalResponse>, Error<types::RcError>> {
         let url = format!("{}/options/local", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13095,6 +20672,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -13128,10 +20706,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn serve_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::ServeListRequest,
     ) -> Result<ResponseValue<types::ServeListResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13147,6 +20727,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -13189,16 +20770,18 @@ impl Client {
     /// - `params`: Additional arbitrary parameters allowed.
     /// - `type_`: Type of server to start (e.g. `http`, `webdav`, `ftp`,
     ///   `sftp`).
+    /// - `body`
     pub async fn serve_start<'a>(
         &'a self,
         async_: Option<bool>,
         config: Option<&'a str>,
         filter: Option<&'a str>,
         group: Option<&'a str>,
-        addr: &'a str,
-        fs: &'a str,
+        addr: Option<&'a str>,
+        fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        type_: &'a str,
+        type_: Option<&'a str>,
+        body: &'a types::ServeStartRequest,
     ) -> Result<ResponseValue<types::ServeStartResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/start", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13214,6 +20797,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_config", &config))
             .query(&progenitor_client::QueryParam::new("_filter", &filter))
@@ -13255,15 +20839,14 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `id`: Identifier of the running serve instance returned by
     ///   `serve/start`.
+    /// - `body`
     pub async fn serve_stop<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        id: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        id: Option<&'a str>,
+        body: &'a types::ServeStopRequest,
+    ) -> Result<ResponseValue<types::ServeStopResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/stop", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13278,6 +20861,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("id", &id))
@@ -13312,14 +20896,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn serve_stopall<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::ServeStopallRequest,
+    ) -> Result<ResponseValue<types::ServeStopallResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/stopall", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13334,6 +20917,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -13367,11 +20951,13 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn serve_types<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-    ) -> Result<ResponseValue<()>, Error<types::RcError>> {
+        body: &'a types::ServeTypesRequest,
+    ) -> Result<ResponseValue<types::ServeTypesResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/types", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13386,6 +20972,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -13398,7 +20985,7 @@ impl Client {
         self.post(&result, &info).await?;
         let response = result?;
         match response.status().as_u16() {
-            200u16 => Ok(ResponseValue::empty(response)),
+            200u16 => ResponseValue::from_response(response).await,
             400u16..=499u16 => Err(Error::ErrorResponse(
                 ResponseValue::from_response(response).await?,
             )),
@@ -13422,12 +21009,14 @@ impl Client {
     /// - `fs`: Optional VFS identifier to target; required when more than one
     ///   VFS is active.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `body`
     pub async fn vfs_forget<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        body: &'a types::VfsForgetRequest,
     ) -> Result<ResponseValue<types::VfsForgetResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/forget", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13443,6 +21032,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13479,11 +21069,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier; omit to list all active VFS instances.
+    /// - `body`
     pub async fn vfs_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        body: &'a types::VfsListRequest,
     ) -> Result<ResponseValue<types::VfsListResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/list", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13499,6 +21091,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13540,6 +21133,7 @@ impl Client {
     ///   interval.
     /// - `timeout`: Duration to wait for the poll interval change to take
     ///   effect; `0` waits indefinitely.
+    /// - `body`
     pub async fn vfs_poll_interval<'a>(
         &'a self,
         async_: Option<bool>,
@@ -13547,6 +21141,7 @@ impl Client {
         fs: Option<&'a str>,
         interval: Option<&'a str>,
         timeout: Option<&'a str>,
+        body: &'a types::VfsPollIntervalRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
@@ -13565,6 +21160,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13602,11 +21198,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier whose upload queue should be inspected.
+    /// - `body`
     pub async fn vfs_queue<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        body: &'a types::VfsQueueRequest,
     ) -> Result<ResponseValue<types::VfsQueueResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/queue", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13622,6 +21220,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13663,18 +21262,17 @@ impl Client {
     /// - `id`: Queue item ID as returned by `vfs/queue`.
     /// - `relative`: Set to true to treat `expiry` as relative to the current
     ///   value.
+    /// - `body`
     pub async fn vfs_queue_set_expiry<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        expiry: f64,
+        expiry: Option<f64>,
         fs: Option<&'a str>,
-        id: i64,
+        id: Option<i64>,
         relative: Option<bool>,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        body: &'a types::VfsQueueSetExpiryRequest,
+    ) -> Result<ResponseValue<types::VfsQueueSetExpiryResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/queue-set-expiry", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13689,6 +21287,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("expiry", &expiry))
@@ -13731,6 +21330,7 @@ impl Client {
     ///   refreshed.
     /// - `params`: Additional arbitrary parameters allowed.
     /// - `recursive`: Set to true to refresh entire directory trees.
+    /// - `body`
     pub async fn vfs_refresh<'a>(
         &'a self,
         async_: Option<bool>,
@@ -13738,6 +21338,7 @@ impl Client {
         fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         recursive: Option<bool>,
+        body: &'a types::VfsRefreshRequest,
     ) -> Result<ResponseValue<types::VfsRefreshResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/refresh", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13753,6 +21354,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13791,11 +21393,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier whose statistics should be returned.
+    /// - `body`
     pub async fn vfs_stats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        body: &'a types::VfsStatsRequest,
     ) -> Result<ResponseValue<types::VfsStatsResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/stats", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13811,6 +21415,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("fs", &fs))
@@ -13847,15 +21452,14 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `url`: Repository URL of the plugin to install.
+    /// - `body`
     pub async fn pluginsctl_add_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        url: &'a str,
-    ) -> Result<
-        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        Error<types::RcError>,
-    > {
+        url: Option<&'a str>,
+        body: &'a types::PluginsctlAddPluginRequest,
+    ) -> Result<ResponseValue<types::PluginsctlAddPluginResponse>, Error<types::RcError>> {
         let _url = format!("{}/pluginsctl/addPlugin", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
         header_map.append(
@@ -13870,6 +21474,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("url", &url))
@@ -13907,12 +21512,14 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `plugin_type`: Filter results by plugin type (e.g. `test`).
     /// - `type_`: MIME type to match when listing plugins.
+    /// - `body`
     pub async fn pluginsctl_get_plugins_for_type<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         plugin_type: Option<&'a str>,
         type_: Option<&'a str>,
+        body: &'a types::PluginsctlGetPluginsForTypeRequest,
     ) -> Result<ResponseValue<types::PluginsctlGetPluginsForTypeResponse>, Error<types::RcError>>
     {
         let url = format!("{}/pluginsctl/getPluginsForType", self.baseurl,);
@@ -13929,6 +21536,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new(
@@ -13967,10 +21575,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn pluginsctl_list_plugins<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::PluginsctlListPluginsRequest,
     ) -> Result<ResponseValue<types::PluginsctlListPluginsResponse>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/listPlugins", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -13986,6 +21596,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -14019,10 +21630,12 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `body`
     pub async fn pluginsctl_list_test_plugins<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        body: &'a types::PluginsctlListTestPluginsRequest,
     ) -> Result<ResponseValue<types::PluginsctlListTestPluginsResponse>, Error<types::RcError>>
     {
         let url = format!("{}/pluginsctl/listTestPlugins", self.baseurl,);
@@ -14039,6 +21652,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .headers(header_map)
@@ -14073,11 +21687,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the plugin to uninstall.
+    /// - `body`
     pub async fn pluginsctl_remove_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
+        body: &'a types::PluginsctlRemovePluginRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/removePlugin", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -14093,6 +21709,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))
@@ -14128,11 +21745,13 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the test plugin to uninstall.
+    /// - `body`
     pub async fn pluginsctl_remove_test_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
-        name: &'a str,
+        name: Option<&'a str>,
+        body: &'a types::PluginsctlRemoveTestPluginRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/removeTestPlugin", self.baseurl,);
         let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
@@ -14148,6 +21767,7 @@ impl Client {
                 ::reqwest::header::ACCEPT,
                 ::reqwest::header::HeaderValue::from_static("application/json"),
             )
+            .json(&body)
             .query(&progenitor_client::QueryParam::new("_async", &async_))
             .query(&progenitor_client::QueryParam::new("_group", &group))
             .query(&progenitor_client::QueryParam::new("name", &name))

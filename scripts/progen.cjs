@@ -2,7 +2,7 @@
 The purpose of this script is to take our OpenAPI v3.1.x spec and
 1. Convert it to v3.0.x (using openapi-down-convert)
 2. Convert the /operations/uploadfile request body to an octet-stream binary payload supported by progenitor
-3. Make the "MetadataInfo" and "ConfigProviderOptionAny" anyOfs from type: 'null' to nullable: true
+3. Convert all anyOf schemas containing type: 'null' to nullable: true (OpenAPI 3.1 -> 3.0)
 4. Change the DeepObject fields to something simpler/compatible with progenitor (> cargo progenitor -i openapi-3.0.json -o keeper -n keeper -v 0.1.0 gen fail: UnexpectedFormat("unsupported style of query parameter DeepObject"))
 5. Run cargo progenitor using the workspace package version and add crate metadata
 6. Clean up temporary artifacts once generation completes
@@ -122,20 +122,34 @@ function normalizeArbitraryJsonSchema(schema) {
     })
 }
 
+function walkSchemaNodes(node, visitor) {
+    if (!node || typeof node !== 'object' || Array.isArray(node)) return
+    visitor(node)
+    if (node.properties) {
+        for (const prop of Object.values(node.properties)) walkSchemaNodes(prop, visitor)
+    }
+    if (node.items) walkSchemaNodes(node.items, visitor)
+    if (node.additionalProperties && typeof node.additionalProperties === 'object') {
+        walkSchemaNodes(node.additionalProperties, visitor)
+    }
+    for (const key of ['anyOf', 'oneOf', 'allOf']) {
+        if (Array.isArray(node[key])) node[key].forEach((s) => walkSchemaNodes(s, visitor))
+    }
+}
+
 function adjustNullableSchemas(doc) {
     const schemas = doc.components?.schemas
     if (!schemas) {
         return
     }
 
-    const configProvider = schemas.ConfigProvider
-    if (configProvider?.properties?.MetadataInfo) {
-        convertAnyOfNullToNullable(configProvider.properties.MetadataInfo)
-    }
-
     const optionAny = schemas.ConfigProviderOptionAny
     if (optionAny) {
         normalizeArbitraryJsonSchema(optionAny)
+    }
+
+    for (const schema of Object.values(schemas)) {
+        walkSchemaNodes(schema, convertAnyOfNullToNullable)
     }
 }
 
@@ -325,12 +339,26 @@ function fixGroupParameterCollisions() {
 
     let content = fs.readFileSync(libPath, 'utf8')
 
-    // Pattern: methods with duplicate `group` parameters
-    // We need to rename the first occurrence (which maps to _group) to _group
+    // Fix struct fields: rename `pub group:` to `pub group_:` only when the
+    // struct has BOTH a `rename = "_group"` field and a second `pub group:` field.
+    // [^}]*? constrains matching within the same struct block.
+    content = content.replace(
+        /(rename = "_group"[^}]*?)pub group:([^}]*?pub group:)/g,
+        '$1pub group_:$2'
+    )
+
+    // Fix Default impls: consecutive duplicate `group:` initialisers.
+    // After the struct fix above the first should now be `group_:`.
+    content = content.replace(
+        /(\s+)group:\s*Default::default\(\),(\s+)group:\s*Default::default\(\),/g,
+        '$1group_: Default::default(),$2group: Default::default(),'
+    )
+
+    // Fix method signatures: rename the first `group` parameter to `_group`
+    // when there are two `group` parameters.
     const methodPattern = /pub async fn (\w+)<'a>\(\s*&'a self,\s*([^)]+)\)/gs
 
     content = content.replace(methodPattern, (match, methodName, params) => {
-        // Split parameters and check for duplicate 'group'
         const paramLines = params
             .split(',')
             .map((p) => p.trim())
@@ -343,7 +371,6 @@ function fixGroupParameterCollisions() {
             }
         })
 
-        // If we have exactly 2 'group' parameters, rename the first to '_group'
         if (groupIndices.length === 2) {
             const firstGroupIdx = groupIndices[0]
             paramLines[firstGroupIdx] = paramLines[firstGroupIdx].replace(
@@ -351,7 +378,6 @@ function fixGroupParameterCollisions() {
                 '_group:'
             )
 
-            // Reconstruct the method signature
             const newParams = paramLines.join(',\n        ')
             return `pub async fn ${methodName}<'a>(\n        &'a self,\n        ${newParams}\n    )`
         }
