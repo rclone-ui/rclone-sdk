@@ -1,12 +1,13 @@
 import createFetchClient, { type Client, type ClientOptions } from 'openapi-fetch'
 import type { MediaType } from 'openapi-typescript-helpers'
-import type { paths } from 'rclone-openapi'
 import {
     createImmutableHook,
     createInfiniteHook,
     createMutateHook,
     createQueryHook,
 } from 'swr-openapi'
+
+import { type SyncPaths, preferAsyncMiddleware } from './shared.js'
 
 type SWRHooks<P extends {}, M extends MediaType, Prefix extends string> = {
     useQuery: ReturnType<typeof createQueryHook<P, M, Prefix>>
@@ -24,8 +25,9 @@ type SWRHooks<P extends {}, M extends MediaType, Prefix extends string> = {
  */
 export default function createRCDSWR(
     options: ClientOptions = {}
-): SWRHooks<paths, `${string}/${string}`, 'rclone-swr'> {
-    const client: Client<paths> = createFetchClient<paths>(options)
+): SWRHooks<SyncPaths, `${string}/${string}`, 'rclone-swr'> {
+    const client: Client<SyncPaths> = createFetchClient<SyncPaths>(options)
+    client.use(preferAsyncMiddleware)
 
     return {
         useQuery: createQueryHook(client, 'rclone-swr'),

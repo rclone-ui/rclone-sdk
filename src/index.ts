@@ -1,5 +1,4 @@
 import createFetchClient, { type Client, type ClientOptions } from 'openapi-fetch'
-import type { paths } from 'rclone-openapi'
 export type {
     Client as OpenApiClient,
     ClientPathsWithMethod as OpenApiClientPathsWithMethod,
@@ -7,8 +6,12 @@ export type {
     MethodResponse as OpenApiMethodResponse,
 } from 'openapi-fetch'
 export type { RequiredKeysOf as OpenApiRequiredKeysOf } from 'openapi-typescript-helpers'
+export type { paths } from 'rclone-openapi'
 
-export type RCDClient = Client<paths>
+export type { AsyncJobResponse, Strip202, SyncPaths } from './shared.js'
+import { type SyncPaths, preferAsyncMiddleware } from './shared.js'
+
+export type RCDClient = Client<SyncPaths>
 
 /**
  * Creates a typed fetch client for the Rclone RC daemon.
@@ -18,5 +21,7 @@ export type RCDClient = Client<paths>
  * Note: Rclone RC routes are exposed as POST calls, even for read operations.
  */
 export default function createRCDClient(options: ClientOptions = {}): RCDClient {
-    return createFetchClient<paths>(options)
+    const client = createFetchClient<SyncPaths>(options)
+    client.use(preferAsyncMiddleware)
+    return client
 }
