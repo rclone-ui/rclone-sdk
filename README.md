@@ -4,6 +4,7 @@
 
 **Full OpenAPI-based client for the Rclone RC API**
 
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?&logo=discord&logoColor=white)](https://discord.gg/rclone)
 [![npm version](https://img.shields.io/npm/v/rclone-sdk?color=cb0000&label=npm&logo=npm)](https://www.npmjs.com/package/rclone-sdk)
 [![npm downloads](https://img.shields.io/npm/dm/rclone-sdk?color=cb0000&logo=npm)](https://www.npmjs.com/package/rclone-sdk)
 [![crates.io](https://img.shields.io/crates/v/rclone-sdk?color=fc8d62&logo=rust)](https://crates.io/crates/rclone-sdk)
@@ -22,7 +23,7 @@ cargo add rclone-sdk
 
 ```toml
 [dependencies]
-rclone-sdk = "1.73.0"
+rclone-sdk = "1.74.1"
 tokio = { version = "1", features = ["full"] }
 ```
 
@@ -152,6 +153,32 @@ function FileList({ remote, path }: { remote: string; path: string }) {
 }
 ```
 
+## Async Operations
+
+Many rclone endpoints support asynchronous execution. Pass `_async: true` in the request body and the SDK will automatically add the `Prefer: respond-async` header so the server responds with **HTTP 202** and a job ID:
+
+```ts
+import createRCDClient, { type AsyncJobResponse } from 'rclone-sdk'
+
+const rcd = createRCDClient({ baseUrl: 'http://localhost:5572' })
+
+// Start an async copy — cast the response since the default types are for sync (200) responses
+const { data } = await rcd.POST('/sync/copy', {
+    body: { srcFs: 'gdrive:docs', dstFs: 'b2:backup', _async: true },
+})
+const { jobid } = data as unknown as AsyncJobResponse
+
+// Poll until finished
+const { data: status } = await rcd.POST('/job/status', { body: { jobid } })
+console.log(status?.finished, status?.success)
+```
+
+By default, response types reflect the synchronous (200) response for ergonomic access. If you need the raw OpenAPI types (including 202), they're available as `paths`:
+
+```ts
+import { type paths } from 'rclone-sdk'
+```
+
 ## Tips
 
 Even though the client supports all HTTP methods, **`rclone`** expects everything as a _POST_ request.
@@ -226,5 +253,5 @@ Contributions = welcome! Just make sure to check if the PR isn't a better fit fo
 <br />
 
 <div align="center">
-<sub>Made with ☁️ for the rclone community</sub>
+<sub>Made with ☁️ for the <a href="https://discord.gg/rclone">rclone community</a></sub>
 </div>
