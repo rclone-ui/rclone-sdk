@@ -20,6 +20,20 @@ export type Strip202<P> = {
 /** Default paths with 202 responses stripped for clean sync usage. */
 export type SyncPaths = Strip202<paths>
 
+/** Strips 200 responses, keeping only 202 (async) + error codes. */
+export type Strip200<P> = {
+    [Path in keyof P]: {
+        [Method in keyof P[Path]]: P[Path][Method] extends {
+            responses: infer R extends Record<string | number, any>
+        }
+            ? Omit<P[Path][Method], 'responses'> & { responses: Omit<R, 200> }
+            : P[Path][Method]
+    }
+}
+
+/** Paths with only the 202 response for async calls. */
+export type AsyncPaths = Strip200<paths>
+
 /** The response body for async job submissions (HTTP 202). */
 export type AsyncJobResponse = { jobid: number }
 
