@@ -155,25 +155,27 @@ function FileList({ remote, path }: { remote: string; path: string }) {
 
 ## Async Operations
 
-Many rclone endpoints support asynchronous execution. Pass `_async: true` in the request body and the SDK will automatically add the `Prefer: respond-async` header so the server responds with **HTTP 202** and a job ID:
+Many rclone endpoints support asynchronous execution. Use `rcd.ASYNC()` instead of `rcd.POST()` to get a properly typed `{ jobid }` response:
 
 ```ts
-import createRCDClient, { type AsyncJobResponse } from 'rclone-sdk'
+import createRCDClient from 'rclone-sdk'
 
 const rcd = createRCDClient({ baseUrl: 'http://localhost:5572' })
 
-// Start an async copy — cast the response since the default types are for sync (200) responses
-const { data } = await rcd.POST('/sync/copy', {
-    body: { srcFs: 'gdrive:docs', dstFs: 'b2:backup', _async: true },
+// Start an async copy — ASYNC sets _async and Prefer header automatically
+const { data } = await rcd.ASYNC('/sync/copy', {
+    body: { srcFs: 'gdrive:docs', dstFs: 'b2:backup' },
 })
-const { jobid } = data as unknown as AsyncJobResponse
+console.log(data?.jobid) // number — fully typed
 
 // Poll until finished
-const { data: status } = await rcd.POST('/job/status', { body: { jobid } })
+const { data: status } = await rcd.POST('/job/status', { body: { jobid: data!.jobid } })
 console.log(status?.finished, status?.success)
 ```
 
-By default, response types reflect the synchronous (200) response for ergonomic access. If you need the raw OpenAPI types (including 202), they're available as `paths`:
+`POST()` returns the synchronous (200) response type. `ASYNC()` returns the async (202) response type (`{ jobid: number }`). Both accept the same path and parameters — `ASYNC()` just adds `_async: true` and the `Prefer: respond-async` header for you.
+
+If you need the raw OpenAPI types (including both 200 and 202), they're available as `paths`:
 
 ```ts
 import { type paths } from 'rclone-sdk'
