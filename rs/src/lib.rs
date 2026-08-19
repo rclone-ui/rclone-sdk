@@ -35,6 +35,85 @@ pub mod types {
         }
     }
 
+    ///`BackendCommandPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum BackendCommandPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for BackendCommandPrefer {
+        fn from(value: &BackendCommandPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for BackendCommandPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for BackendCommandPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for BackendCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for BackendCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for BackendCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`BackendCommandRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -163,6 +242,85 @@ pub mod types {
         }
     }
 
+    ///`CacheExpirePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CacheExpirePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CacheExpirePrefer {
+        fn from(value: &CacheExpirePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CacheExpirePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CacheExpirePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CacheExpirePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CacheExpirePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CacheExpirePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CacheExpireRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -239,6 +397,85 @@ pub mod types {
         }
     }
 
+    ///`CacheFetchPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CacheFetchPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CacheFetchPrefer {
+        fn from(value: &CacheFetchPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CacheFetchPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CacheFetchPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CacheFetchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CacheFetchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CacheFetchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CacheFetchRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -304,6 +541,85 @@ pub mod types {
         }
     }
 
+    ///`CacheStatsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CacheStatsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CacheStatsPrefer {
+        fn from(value: &CacheStatsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CacheStatsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CacheStatsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CacheStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CacheStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CacheStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CacheStatsRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -355,6 +671,85 @@ pub mod types {
                 async_: Default::default(),
                 group: Default::default(),
             }
+        }
+    }
+
+    ///`ConfigCreatePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigCreatePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigCreatePrefer {
+        fn from(value: &ConfigCreatePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigCreatePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigCreatePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigCreatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigCreatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigCreatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -453,41 +848,82 @@ pub mod types {
         }
     }
 
-    ///`ConfigCreateResponse`
+    ///`ConfigDeletePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct ConfigCreateResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigDeletePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&ConfigCreateResponse> for ConfigCreateResponse {
-        fn from(value: &ConfigCreateResponse) -> Self {
+    impl ::std::convert::From<&Self> for ConfigDeletePrefer {
+        fn from(value: &ConfigDeletePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for ConfigCreateResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for ConfigDeletePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigDeletePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -553,6 +989,85 @@ pub mod types {
         }
     }
 
+    ///`ConfigDumpPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigDumpPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigDumpPrefer {
+        fn from(value: &ConfigDumpPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigDumpPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigDumpPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigDumpPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigDumpPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigDumpPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ConfigDumpRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -604,6 +1119,85 @@ pub mod types {
                 async_: Default::default(),
                 group: Default::default(),
             }
+        }
+    }
+
+    ///`ConfigGetPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigGetPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigGetPrefer {
+        fn from(value: &ConfigGetPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigGetPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigGetPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -704,6 +1298,85 @@ pub mod types {
         }
     }
 
+    ///`ConfigListremotesPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigListremotesPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigListremotesPrefer {
+        fn from(value: &ConfigListremotesPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigListremotesPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigListremotesPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigListremotesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigListremotesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigListremotesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ConfigListremotesRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -790,6 +1463,486 @@ pub mod types {
         }
     }
 
+    ///`ConfigOauthstatusPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigOauthstatusPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigOauthstatusPrefer {
+        fn from(value: &ConfigOauthstatusPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigOauthstatusPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigOauthstatusPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigOauthstatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigOauthstatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigOauthstatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    ///`ConfigOauthstatusRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigOauthstatusRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigOauthstatusRequest> for ConfigOauthstatusRequest {
+        fn from(value: &ConfigOauthstatusRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigOauthstatusRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigOauthstatusResponse`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "required": [
+    ///    "status"
+    ///  ],
+    ///  "properties": {
+    ///    "authUrl": {
+    ///      "description": "Authorization URL to open in a browser. Present
+    /// only when status is \"running\".",
+    ///      "type": "string"
+    ///    },
+    ///    "status": {
+    ///      "description": "Whether the OAuth authentication server is
+    /// currently running.",
+    ///      "type": "string",
+    ///      "enum": [
+    ///        "running",
+    ///        "stopped"
+    ///      ]
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigOauthstatusResponse {
+        ///Authorization URL to open in a browser. Present only when status is
+        /// "running".
+        #[serde(
+            rename = "authUrl",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub auth_url: ::std::option::Option<::std::string::String>,
+        ///Whether the OAuth authentication server is currently running.
+        pub status: ConfigOauthstatusResponseStatus,
+    }
+
+    impl ::std::convert::From<&ConfigOauthstatusResponse> for ConfigOauthstatusResponse {
+        fn from(value: &ConfigOauthstatusResponse) -> Self {
+            value.clone()
+        }
+    }
+
+    ///Whether the OAuth authentication server is currently running.
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "description": "Whether the OAuth authentication server is currently
+    /// running.",
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "running",
+    ///    "stopped"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigOauthstatusResponseStatus {
+        #[serde(rename = "running")]
+        Running,
+        #[serde(rename = "stopped")]
+        Stopped,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigOauthstatusResponseStatus {
+        fn from(value: &ConfigOauthstatusResponseStatus) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigOauthstatusResponseStatus {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::Running => f.write_str("running"),
+                Self::Stopped => f.write_str("stopped"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigOauthstatusResponseStatus {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "running" => Ok(Self::Running),
+                "stopped" => Ok(Self::Stopped),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigOauthstatusResponseStatus {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigOauthstatusResponseStatus {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigOauthstatusResponseStatus {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    ///`ConfigOauthstopPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigOauthstopPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigOauthstopPrefer {
+        fn from(value: &ConfigOauthstopPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigOauthstopPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigOauthstopPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigOauthstopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigOauthstopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigOauthstopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    ///`ConfigOauthstopRequest`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "object",
+    ///  "properties": {
+    ///    "_async": {
+    ///      "description": "Run the command asynchronously. Returns a job id
+    /// immediately.",
+    ///      "type": "boolean"
+    ///    },
+    ///    "_group": {
+    ///      "description": "Assign the request to a custom stats group.",
+    ///      "type": "string"
+    ///    }
+    ///  }
+    ///}
+    /// ```
+    /// </details>
+    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
+    pub struct ConfigOauthstopRequest {
+        ///Run the command asynchronously. Returns a job id immediately.
+        #[serde(
+            rename = "_async",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub async_: ::std::option::Option<bool>,
+        ///Assign the request to a custom stats group.
+        #[serde(
+            rename = "_group",
+            default,
+            skip_serializing_if = "::std::option::Option::is_none"
+        )]
+        pub group: ::std::option::Option<::std::string::String>,
+    }
+
+    impl ::std::convert::From<&ConfigOauthstopRequest> for ConfigOauthstopRequest {
+        fn from(value: &ConfigOauthstopRequest) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::default::Default for ConfigOauthstopRequest {
+        fn default() -> Self {
+            Self {
+                async_: Default::default(),
+                group: Default::default(),
+            }
+        }
+    }
+
+    ///`ConfigPasswordPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigPasswordPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigPasswordPrefer {
+        fn from(value: &ConfigPasswordPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigPasswordPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigPasswordPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigPasswordPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigPasswordPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigPasswordPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ConfigPasswordRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -859,6 +2012,85 @@ pub mod types {
                 name: Default::default(),
                 parameters: Default::default(),
             }
+        }
+    }
+
+    ///`ConfigPathsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigPathsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigPathsPrefer {
+        fn from(value: &ConfigPathsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigPathsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigPathsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigPathsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigPathsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigPathsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -1405,40 +2637,25 @@ pub mod types {
         }
     }
 
-    ///Arbitrary JSON value. (arbitrary JSON value)
+    ///`ConfigProviderOptionAny`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
-    ///{
-    ///  "description": "Arbitrary JSON value. (arbitrary JSON value)",
-    ///  "type": [
-    ///    "object",
-    ///    "null"
-    ///  ],
-    ///  "additionalProperties": true
-    ///}
+    ///{}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
     #[serde(transparent)]
-    pub struct ConfigProviderOptionAny(
-        pub ::std::option::Option<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-    );
+    pub struct ConfigProviderOptionAny(pub ::serde_json::Value);
     impl ::std::ops::Deref for ConfigProviderOptionAny {
-        type Target =
-            ::std::option::Option<::serde_json::Map<::std::string::String, ::serde_json::Value>>;
-        fn deref(
-            &self,
-        ) -> &::std::option::Option<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-        {
+        type Target = ::serde_json::Value;
+        fn deref(&self) -> &::serde_json::Value {
             &self.0
         }
     }
 
-    impl ::std::convert::From<ConfigProviderOptionAny>
-        for ::std::option::Option<::serde_json::Map<::std::string::String, ::serde_json::Value>>
-    {
+    impl ::std::convert::From<ConfigProviderOptionAny> for ::serde_json::Value {
         fn from(value: ConfigProviderOptionAny) -> Self {
             value.0
         }
@@ -1450,16 +2667,8 @@ pub mod types {
         }
     }
 
-    impl
-        ::std::convert::From<
-            ::std::option::Option<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
-        > for ConfigProviderOptionAny
-    {
-        fn from(
-            value: ::std::option::Option<
-                ::serde_json::Map<::std::string::String, ::serde_json::Value>,
-            >,
-        ) -> Self {
+    impl ::std::convert::From<::serde_json::Value> for ConfigProviderOptionAny {
+        fn from(value: ::serde_json::Value) -> Self {
             Self(value)
         }
     }
@@ -1641,6 +2850,85 @@ pub mod types {
         }
     }
 
+    ///`ConfigProvidersPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigProvidersPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigProvidersPrefer {
+        fn from(value: &ConfigProvidersPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigProvidersPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigProvidersPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigProvidersPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigProvidersPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigProvidersPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ConfigProvidersRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -1728,6 +3016,85 @@ pub mod types {
         }
     }
 
+    ///`ConfigSetpathPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigSetpathPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigSetpathPrefer {
+        fn from(value: &ConfigSetpathPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigSetpathPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigSetpathPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigSetpathPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigSetpathPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigSetpathPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ConfigSetpathRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -1788,6 +3155,85 @@ pub mod types {
                 group: Default::default(),
                 path: Default::default(),
             }
+        }
+    }
+
+    ///`ConfigUnlockPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigUnlockPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigUnlockPrefer {
+        fn from(value: &ConfigUnlockPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigUnlockPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigUnlockPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigUnlockPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigUnlockPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigUnlockPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -1854,6 +3300,85 @@ pub mod types {
                 config_password: Default::default(),
                 group: Default::default(),
             }
+        }
+    }
+
+    ///`ConfigUpdatePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ConfigUpdatePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ConfigUpdatePrefer {
+        fn from(value: &ConfigUpdatePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ConfigUpdatePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ConfigUpdatePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ConfigUpdatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ConfigUpdatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ConfigUpdatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -1938,41 +3463,82 @@ pub mod types {
         }
     }
 
-    ///`ConfigUpdateResponse`
+    ///`CoreBwlimitPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct ConfigUpdateResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreBwlimitPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&ConfigUpdateResponse> for ConfigUpdateResponse {
-        fn from(value: &ConfigUpdateResponse) -> Self {
+    impl ::std::convert::From<&Self> for CoreBwlimitPrefer {
+        fn from(value: &CoreBwlimitPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for ConfigUpdateResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for CoreBwlimitPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreBwlimitPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreBwlimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreBwlimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreBwlimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -2084,6 +3650,85 @@ pub mod types {
     impl ::std::convert::From<&CoreBwlimitResponse> for CoreBwlimitResponse {
         fn from(value: &CoreBwlimitResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`CoreCommandPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreCommandPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreCommandPrefer {
+        fn from(value: &CoreCommandPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreCommandPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreCommandPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreCommandPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -2236,6 +3881,85 @@ pub mod types {
         }
     }
 
+    ///`CoreDisksPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreDisksPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreDisksPrefer {
+        fn from(value: &CoreDisksPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreDisksPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreDisksPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreDisksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreDisksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreDisksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreDisksRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2323,6 +4047,85 @@ pub mod types {
     impl ::std::convert::From<&CoreDisksResponse> for CoreDisksResponse {
         fn from(value: &CoreDisksResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`CoreDuPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreDuPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreDuPrefer {
+        fn from(value: &CoreDuPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreDuPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreDuPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreDuPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreDuPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreDuPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -2482,6 +4285,85 @@ pub mod types {
         }
     }
 
+    ///`CoreGcPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreGcPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreGcPrefer {
+        fn from(value: &CoreGcPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreGcPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreGcPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreGcPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreGcPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreGcPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreGcRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2536,41 +4418,82 @@ pub mod types {
         }
     }
 
-    ///`CoreGcResponse`
+    ///`CoreGroupListPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct CoreGcResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreGroupListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&CoreGcResponse> for CoreGcResponse {
-        fn from(value: &CoreGcResponse) -> Self {
+    impl ::std::convert::From<&Self> for CoreGroupListPrefer {
+        fn from(value: &CoreGroupListPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for CoreGcResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for CoreGroupListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreGroupListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreGroupListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreGroupListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreGroupListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -2660,6 +4583,85 @@ pub mod types {
         }
     }
 
+    ///`CoreMemstatsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreMemstatsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreMemstatsPrefer {
+        fn from(value: &CoreMemstatsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreMemstatsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreMemstatsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreMemstatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreMemstatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreMemstatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreMemstatsRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2711,6 +4713,85 @@ pub mod types {
                 async_: Default::default(),
                 group: Default::default(),
             }
+        }
+    }
+
+    ///`CoreObscurePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreObscurePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreObscurePrefer {
+        fn from(value: &CoreObscurePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreObscurePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreObscurePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreObscurePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreObscurePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreObscurePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -2806,6 +4887,85 @@ pub mod types {
         }
     }
 
+    ///`CorePidPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CorePidPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CorePidPrefer {
+        fn from(value: &CorePidPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CorePidPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CorePidPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CorePidPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CorePidPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CorePidPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CorePidRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2889,6 +5049,85 @@ pub mod types {
         }
     }
 
+    ///`CoreQuitPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreQuitPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreQuitPrefer {
+        fn from(value: &CoreQuitPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreQuitPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreQuitPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreQuitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreQuitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreQuitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreQuitRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -2956,44 +5195,6 @@ pub mod types {
         }
     }
 
-    ///`CoreQuitResponse`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct CoreQuitResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
-    }
-
-    impl ::std::convert::From<&CoreQuitResponse> for CoreQuitResponse {
-        fn from(value: &CoreQuitResponse) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::default::Default for CoreQuitResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
-            }
-        }
-    }
-
     ///Metadata for an item currently undergoing verification.
     ///
     /// <details><summary>JSON schema</summary>
@@ -3047,6 +5248,85 @@ pub mod types {
                 name: Default::default(),
                 size: Default::default(),
             }
+        }
+    }
+
+    ///`CoreStatsDeletePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreStatsDeletePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreStatsDeletePrefer {
+        fn from(value: &CoreStatsDeletePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreStatsDeletePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreStatsDeletePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreStatsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreStatsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreStatsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -3112,41 +5392,82 @@ pub mod types {
         }
     }
 
-    ///`CoreStatsDeleteResponse`
+    ///`CoreStatsPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct CoreStatsDeleteResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreStatsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&CoreStatsDeleteResponse> for CoreStatsDeleteResponse {
-        fn from(value: &CoreStatsDeleteResponse) -> Self {
+    impl ::std::convert::From<&Self> for CoreStatsPrefer {
+        fn from(value: &CoreStatsPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for CoreStatsDeleteResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for CoreStatsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreStatsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -3224,6 +5545,85 @@ pub mod types {
         }
     }
 
+    ///`CoreStatsResetPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreStatsResetPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreStatsResetPrefer {
+        fn from(value: &CoreStatsResetPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreStatsResetPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreStatsResetPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreStatsResetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreStatsResetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreStatsResetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreStatsResetRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -3284,44 +5684,6 @@ pub mod types {
                 async_: Default::default(),
                 group_: Default::default(),
                 group: Default::default(),
-            }
-        }
-    }
-
-    ///`CoreStatsResetResponse`
-    ///
-    /// <details><summary>JSON schema</summary>
-    ///
-    /// ```json
-    ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
-    ///}
-    /// ```
-    /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct CoreStatsResetResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
-    }
-
-    impl ::std::convert::From<&CoreStatsResetResponse> for CoreStatsResetResponse {
-        fn from(value: &CoreStatsResetResponse) -> Self {
-            value.clone()
-        }
-    }
-
-    impl ::std::default::Default for CoreStatsResetResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
             }
         }
     }
@@ -3645,6 +6007,85 @@ pub mod types {
                 src_fs: Default::default(),
                 src_remote: Default::default(),
             }
+        }
+    }
+
+    ///`CoreTransferredPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreTransferredPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreTransferredPrefer {
+        fn from(value: &CoreTransferredPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreTransferredPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreTransferredPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreTransferredPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreTransferredPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreTransferredPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -4085,6 +6526,85 @@ pub mod types {
         }
     }
 
+    ///`CoreVersionPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum CoreVersionPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for CoreVersionPrefer {
+        fn from(value: &CoreVersionPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for CoreVersionPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for CoreVersionPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for CoreVersionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for CoreVersionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for CoreVersionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`CoreVersionRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -4269,6 +6789,85 @@ pub mod types {
         }
     }
 
+    ///`DebugSetBlockProfileRatePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum DebugSetBlockProfileRatePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for DebugSetBlockProfileRatePrefer {
+        fn from(value: &DebugSetBlockProfileRatePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for DebugSetBlockProfileRatePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for DebugSetBlockProfileRatePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for DebugSetBlockProfileRatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for DebugSetBlockProfileRatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for DebugSetBlockProfileRatePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`DebugSetBlockProfileRateRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -4333,41 +6932,82 @@ pub mod types {
         }
     }
 
-    ///`DebugSetBlockProfileRateResponse`
+    ///`DebugSetGcPercentPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct DebugSetBlockProfileRateResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum DebugSetGcPercentPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&DebugSetBlockProfileRateResponse> for DebugSetBlockProfileRateResponse {
-        fn from(value: &DebugSetBlockProfileRateResponse) -> Self {
+    impl ::std::convert::From<&Self> for DebugSetGcPercentPrefer {
+        fn from(value: &DebugSetGcPercentPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for DebugSetBlockProfileRateResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for DebugSetGcPercentPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for DebugSetGcPercentPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for DebugSetGcPercentPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for DebugSetGcPercentPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for DebugSetGcPercentPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -4469,6 +7109,85 @@ pub mod types {
         }
     }
 
+    ///`DebugSetMutexProfileFractionPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum DebugSetMutexProfileFractionPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for DebugSetMutexProfileFractionPrefer {
+        fn from(value: &DebugSetMutexProfileFractionPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for DebugSetMutexProfileFractionPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for DebugSetMutexProfileFractionPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for DebugSetMutexProfileFractionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for DebugSetMutexProfileFractionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for DebugSetMutexProfileFractionPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`DebugSetMutexProfileFractionRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -4564,6 +7283,85 @@ pub mod types {
     {
         fn from(value: &DebugSetMutexProfileFractionResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`DebugSetSoftMemoryLimitPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum DebugSetSoftMemoryLimitPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for DebugSetSoftMemoryLimitPrefer {
+        fn from(value: &DebugSetSoftMemoryLimitPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for DebugSetSoftMemoryLimitPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for DebugSetSoftMemoryLimitPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for DebugSetSoftMemoryLimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for DebugSetSoftMemoryLimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for DebugSetSoftMemoryLimitPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -4663,6 +7461,85 @@ pub mod types {
         }
     }
 
+    ///`FscacheClearPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum FscacheClearPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for FscacheClearPrefer {
+        fn from(value: &FscacheClearPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for FscacheClearPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for FscacheClearPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for FscacheClearPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for FscacheClearPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for FscacheClearPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`FscacheClearRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -4717,41 +7594,82 @@ pub mod types {
         }
     }
 
-    ///`FscacheClearResponse`
+    ///`FscacheEntriesPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct FscacheClearResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum FscacheEntriesPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&FscacheClearResponse> for FscacheClearResponse {
-        fn from(value: &FscacheClearResponse) -> Self {
+    impl ::std::convert::From<&Self> for FscacheEntriesPrefer {
+        fn from(value: &FscacheEntriesPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for FscacheClearResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for FscacheEntriesPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for FscacheEntriesPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for FscacheEntriesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for FscacheEntriesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for FscacheEntriesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -4868,6 +7786,85 @@ pub mod types {
     impl ::std::convert::From<&JobBatchInputsItem> for JobBatchInputsItem {
         fn from(value: &JobBatchInputsItem) -> Self {
             value.clone()
+        }
+    }
+
+    ///`JobBatchPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum JobBatchPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for JobBatchPrefer {
+        fn from(value: &JobBatchPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for JobBatchPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for JobBatchPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for JobBatchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for JobBatchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for JobBatchPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -5017,6 +8014,85 @@ pub mod types {
         }
     }
 
+    ///`JobListPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum JobListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for JobListPrefer {
+        fn from(value: &JobListPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for JobListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for JobListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for JobListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for JobListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for JobListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`JobListRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -5121,6 +8197,85 @@ pub mod types {
     impl ::std::convert::From<&JobListResponse> for JobListResponse {
         fn from(value: &JobListResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`JobStatusPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum JobStatusPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for JobStatusPrefer {
+        fn from(value: &JobStatusPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for JobStatusPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for JobStatusPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for JobStatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for JobStatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for JobStatusPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -5264,6 +8419,85 @@ pub mod types {
         }
     }
 
+    ///`JobStopPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum JobStopPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for JobStopPrefer {
+        fn from(value: &JobStopPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for JobStopPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for JobStopPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for JobStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for JobStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for JobStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`JobStopRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -5313,41 +8547,82 @@ pub mod types {
         }
     }
 
-    ///`JobStopResponse`
+    ///`JobStopgroupPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct JobStopResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum JobStopgroupPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&JobStopResponse> for JobStopResponse {
-        fn from(value: &JobStopResponse) -> Self {
+    impl ::std::convert::From<&Self> for JobStopgroupPrefer {
+        fn from(value: &JobStopgroupPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for JobStopResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for JobStopgroupPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for JobStopgroupPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for JobStopgroupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for JobStopgroupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for JobStopgroupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -5402,41 +8677,82 @@ pub mod types {
         }
     }
 
-    ///`JobStopgroupResponse`
+    ///`MountListmountsPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct JobStopgroupResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum MountListmountsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&JobStopgroupResponse> for JobStopgroupResponse {
-        fn from(value: &JobStopgroupResponse) -> Self {
+    impl ::std::convert::From<&Self> for MountListmountsPrefer {
+        fn from(value: &MountListmountsPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for JobStopgroupResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for MountListmountsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for MountListmountsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for MountListmountsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for MountListmountsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for MountListmountsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -5592,6 +8908,85 @@ pub mod types {
         }
     }
 
+    ///`MountMountPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum MountMountPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for MountMountPrefer {
+        fn from(value: &MountMountPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for MountMountPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for MountMountPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for MountMountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for MountMountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for MountMountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`MountMountRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -5743,21 +9138,25 @@ pub mod types {
     /// ```json
     ///{
     ///  "type": "object",
+    ///  "required": [
+    ///    "mountPoint"
+    ///  ],
     ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
+    ///    "mountPoint": {
+    ///      "description": "Actual local path where the remote was mounted. May
+    /// differ from the requested path (e.g. when '*' is used on Windows).",
+    ///      "type": "string"
     ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  }
     ///}
     /// ```
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
     pub struct MountMountResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+        ///Actual local path where the remote was mounted. May differ from the
+        /// requested path (e.g. when '*' is used on Windows).
+        #[serde(rename = "mountPoint")]
+        pub mount_point: ::std::string::String,
     }
 
     impl ::std::convert::From<&MountMountResponse> for MountMountResponse {
@@ -5766,11 +9165,82 @@ pub mod types {
         }
     }
 
-    impl ::std::default::Default for MountMountResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    ///`MountTypesPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum MountTypesPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for MountTypesPrefer {
+        fn from(value: &MountTypesPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for MountTypesPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for MountTypesPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for MountTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for MountTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for MountTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -5861,6 +9331,85 @@ pub mod types {
         }
     }
 
+    ///`MountUnmountPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum MountUnmountPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for MountUnmountPrefer {
+        fn from(value: &MountUnmountPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for MountUnmountPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for MountUnmountPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for MountUnmountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for MountUnmountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for MountUnmountPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`MountUnmountRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -5927,41 +9476,82 @@ pub mod types {
         }
     }
 
-    ///`MountUnmountResponse`
+    ///`MountUnmountallPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct MountUnmountResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum MountUnmountallPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&MountUnmountResponse> for MountUnmountResponse {
-        fn from(value: &MountUnmountResponse) -> Self {
+    impl ::std::convert::From<&Self> for MountUnmountallPrefer {
+        fn from(value: &MountUnmountallPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for MountUnmountResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for MountUnmountallPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for MountUnmountallPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for MountUnmountallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for MountUnmountallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for MountUnmountallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6019,41 +9609,82 @@ pub mod types {
         }
     }
 
-    ///`MountUnmountallResponse`
+    ///`OperationsAboutPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct MountUnmountallResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsAboutPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&MountUnmountallResponse> for MountUnmountallResponse {
-        fn from(value: &MountUnmountallResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsAboutPrefer {
+        fn from(value: &OperationsAboutPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for MountUnmountallResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsAboutPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsAboutPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsAboutPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsAboutPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsAboutPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6171,6 +9802,85 @@ pub mod types {
     impl ::std::convert::From<&OperationsAboutResponse> for OperationsAboutResponse {
         fn from(value: &OperationsAboutResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsCheckPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsCheckPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsCheckPrefer {
+        fn from(value: &OperationsCheckPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsCheckPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsCheckPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsCheckPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsCheckPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsCheckPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6510,6 +10220,85 @@ pub mod types {
         }
     }
 
+    ///`OperationsCleanupPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsCleanupPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsCleanupPrefer {
+        fn from(value: &OperationsCleanupPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsCleanupPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsCleanupPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsCleanupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsCleanupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsCleanupPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OperationsCleanupRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -6573,41 +10362,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsCleanupResponse`
+    ///`OperationsCopyfilePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsCleanupResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsCopyfilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsCleanupResponse> for OperationsCleanupResponse {
-        fn from(value: &OperationsCleanupResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsCopyfilePrefer {
+        fn from(value: &OperationsCopyfilePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsCleanupResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsCopyfilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsCopyfilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsCopyfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsCopyfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsCopyfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6720,41 +10550,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsCopyfileResponse`
+    ///`OperationsCopyurlPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsCopyfileResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsCopyurlPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsCopyfileResponse> for OperationsCopyfileResponse {
-        fn from(value: &OperationsCopyfileResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsCopyurlPrefer {
+        fn from(value: &OperationsCopyurlPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsCopyfileResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsCopyurlPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsCopyurlPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsCopyurlPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsCopyurlPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsCopyurlPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6853,41 +10724,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsCopyurlResponse`
+    ///`OperationsDeletePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsCopyurlResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsDeletePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsCopyurlResponse> for OperationsCopyurlResponse {
-        fn from(value: &OperationsCopyurlResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsDeletePrefer {
+        fn from(value: &OperationsDeletePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsCopyurlResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsDeletePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsDeletePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsDeletePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -6980,41 +10892,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsDeleteResponse`
+    ///`OperationsDeletefilePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsDeleteResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsDeletefilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsDeleteResponse> for OperationsDeleteResponse {
-        fn from(value: &OperationsDeleteResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsDeletefilePrefer {
+        fn from(value: &OperationsDeletefilePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsDeleteResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsDeletefilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsDeletefilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsDeletefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsDeletefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsDeletefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -7090,41 +11043,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsDeletefileResponse`
+    ///`OperationsFsinfoPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsDeletefileResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsFsinfoPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsDeletefileResponse> for OperationsDeletefileResponse {
-        fn from(value: &OperationsDeletefileResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsFsinfoPrefer {
+        fn from(value: &OperationsFsinfoPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsDeletefileResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsFsinfoPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsFsinfoPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsFsinfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsFsinfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsFsinfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -7270,6 +11264,85 @@ pub mod types {
         }
     }
 
+    ///`OperationsHashsumPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsHashsumPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsHashsumPrefer {
+        fn from(value: &OperationsHashsumPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsHashsumPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsHashsumPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsHashsumPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsHashsumPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsHashsumPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OperationsHashsumRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -7401,6 +11474,85 @@ pub mod types {
     impl ::std::convert::From<&OperationsHashsumResponse> for OperationsHashsumResponse {
         fn from(value: &OperationsHashsumResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsHashsumfilePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsHashsumfilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsHashsumfilePrefer {
+        fn from(value: &OperationsHashsumfilePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsHashsumfilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsHashsumfilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsHashsumfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsHashsumfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsHashsumfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -7544,6 +11696,85 @@ pub mod types {
     impl ::std::convert::From<&OperationsHashsumfileResponse> for OperationsHashsumfileResponse {
         fn from(value: &OperationsHashsumfileResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsListPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsListPrefer {
+        fn from(value: &OperationsListPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8033,6 +12264,85 @@ pub mod types {
         }
     }
 
+    ///`OperationsMkdirPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsMkdirPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsMkdirPrefer {
+        fn from(value: &OperationsMkdirPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsMkdirPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsMkdirPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsMkdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsMkdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsMkdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OperationsMkdirRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -8104,41 +12414,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsMkdirResponse`
+    ///`OperationsMovefilePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsMkdirResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsMovefilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsMkdirResponse> for OperationsMkdirResponse {
-        fn from(value: &OperationsMkdirResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsMovefilePrefer {
+        fn from(value: &OperationsMovefilePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsMkdirResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsMovefilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsMovefilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsMovefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsMovefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsMovefilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8247,41 +12598,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsMovefileResponse`
+    ///`OperationsPubliclinkPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsMovefileResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsPubliclinkPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsMovefileResponse> for OperationsMovefileResponse {
-        fn from(value: &OperationsMovefileResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsPubliclinkPrefer {
+        fn from(value: &OperationsPubliclinkPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsMovefileResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsPubliclinkPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsPubliclinkPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsPubliclinkPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsPubliclinkPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsPubliclinkPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8409,6 +12801,85 @@ pub mod types {
         }
     }
 
+    ///`OperationsPurgePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsPurgePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsPurgePrefer {
+        fn from(value: &OperationsPurgePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsPurgePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsPurgePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsPurgePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsPurgePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsPurgePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OperationsPurgeRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -8506,41 +12977,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsPurgeResponse`
+    ///`OperationsRmdirPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsPurgeResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsRmdirPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsPurgeResponse> for OperationsPurgeResponse {
-        fn from(value: &OperationsPurgeResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsRmdirPrefer {
+        fn from(value: &OperationsRmdirPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsPurgeResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsRmdirPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsRmdirPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsRmdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsRmdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsRmdirPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8615,41 +13127,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsRmdirResponse`
+    ///`OperationsRmdirsPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsRmdirResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsRmdirsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsRmdirResponse> for OperationsRmdirResponse {
-        fn from(value: &OperationsRmdirResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsRmdirsPrefer {
+        fn from(value: &OperationsRmdirsPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsRmdirResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsRmdirsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsRmdirsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsRmdirsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsRmdirsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsRmdirsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8738,41 +13291,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsRmdirsResponse`
+    ///`OperationsSettierPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsRmdirsResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsSettierPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsRmdirsResponse> for OperationsRmdirsResponse {
-        fn from(value: &OperationsRmdirsResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsSettierPrefer {
+        fn from(value: &OperationsSettierPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsRmdirsResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsSettierPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsSettierPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsSettierPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsSettierPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsSettierPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8839,41 +13433,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsSettierResponse`
+    ///`OperationsSettierfilePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsSettierResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsSettierfilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsSettierResponse> for OperationsSettierResponse {
-        fn from(value: &OperationsSettierResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsSettierfilePrefer {
+        fn from(value: &OperationsSettierfilePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsSettierResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsSettierfilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsSettierfilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsSettierfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsSettierfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsSettierfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -8951,41 +13586,82 @@ pub mod types {
         }
     }
 
-    ///`OperationsSettierfileResponse`
+    ///`OperationsSizePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsSettierfileResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsSizePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsSettierfileResponse> for OperationsSettierfileResponse {
-        fn from(value: &OperationsSettierfileResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsSizePrefer {
+        fn from(value: &OperationsSizePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsSettierfileResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsSizePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsSizePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsSizePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsSizePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsSizePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -9088,6 +13764,85 @@ pub mod types {
     impl ::std::convert::From<&OperationsSizeResponse> for OperationsSizeResponse {
         fn from(value: &OperationsSizeResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OperationsStatPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsStatPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OperationsStatPrefer {
+        fn from(value: &OperationsStatPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OperationsStatPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsStatPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsStatPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsStatPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsStatPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -9444,41 +14199,161 @@ pub mod types {
         }
     }
 
-    ///`OperationsUploadfileResponse`
+    ///`OperationsUploadfilePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OperationsUploadfileResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OperationsUploadfilePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OperationsUploadfileResponse> for OperationsUploadfileResponse {
-        fn from(value: &OperationsUploadfileResponse) -> Self {
+    impl ::std::convert::From<&Self> for OperationsUploadfilePrefer {
+        fn from(value: &OperationsUploadfilePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OperationsUploadfileResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for OperationsUploadfilePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for OperationsUploadfilePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OperationsUploadfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OperationsUploadfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OperationsUploadfilePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    ///`OptionsBlocksPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OptionsBlocksPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OptionsBlocksPrefer {
+        fn from(value: &OptionsBlocksPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OptionsBlocksPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OptionsBlocksPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OptionsBlocksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OptionsBlocksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OptionsBlocksPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -9565,6 +14440,85 @@ pub mod types {
     impl ::std::convert::From<&OptionsBlocksResponse> for OptionsBlocksResponse {
         fn from(value: &OptionsBlocksResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OptionsGetPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OptionsGetPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OptionsGetPrefer {
+        fn from(value: &OptionsGetPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OptionsGetPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OptionsGetPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OptionsGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OptionsGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OptionsGetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -10147,6 +15101,85 @@ pub mod types {
         }
     }
 
+    ///`OptionsInfoPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OptionsInfoPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OptionsInfoPrefer {
+        fn from(value: &OptionsInfoPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OptionsInfoPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OptionsInfoPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OptionsInfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OptionsInfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OptionsInfoPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OptionsInfoRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -10360,6 +15393,85 @@ pub mod types {
     impl ::std::convert::From<&OptionsInfoResponse> for OptionsInfoResponse {
         fn from(value: &OptionsInfoResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`OptionsLocalPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OptionsLocalPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OptionsLocalPrefer {
+        fn from(value: &OptionsLocalPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OptionsLocalPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OptionsLocalPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OptionsLocalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OptionsLocalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OptionsLocalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -12013,6 +17125,85 @@ pub mod types {
         }
     }
 
+    ///`OptionsSetPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum OptionsSetPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for OptionsSetPrefer {
+        fn from(value: &OptionsSetPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for OptionsSetPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for OptionsSetPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for OptionsSetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for OptionsSetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for OptionsSetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`OptionsSetRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -12203,41 +17394,82 @@ pub mod types {
         }
     }
 
-    ///`OptionsSetResponse`
+    ///`PluginsctlAddPluginPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct OptionsSetResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlAddPluginPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&OptionsSetResponse> for OptionsSetResponse {
-        fn from(value: &OptionsSetResponse) -> Self {
+    impl ::std::convert::From<&Self> for PluginsctlAddPluginPrefer {
+        fn from(value: &PluginsctlAddPluginPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for OptionsSetResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for PluginsctlAddPluginPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlAddPluginPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlAddPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlAddPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlAddPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -12303,41 +17535,82 @@ pub mod types {
         }
     }
 
-    ///`PluginsctlAddPluginResponse`
+    ///`PluginsctlGetPluginsForTypePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct PluginsctlAddPluginResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlGetPluginsForTypePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&PluginsctlAddPluginResponse> for PluginsctlAddPluginResponse {
-        fn from(value: &PluginsctlAddPluginResponse) -> Self {
+    impl ::std::convert::From<&Self> for PluginsctlGetPluginsForTypePrefer {
+        fn from(value: &PluginsctlGetPluginsForTypePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for PluginsctlAddPluginResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for PluginsctlGetPluginsForTypePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlGetPluginsForTypePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlGetPluginsForTypePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlGetPluginsForTypePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlGetPluginsForTypePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -12477,6 +17750,85 @@ pub mod types {
         }
     }
 
+    ///`PluginsctlListPluginsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlListPluginsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for PluginsctlListPluginsPrefer {
+        fn from(value: &PluginsctlListPluginsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for PluginsctlListPluginsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlListPluginsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlListPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlListPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlListPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`PluginsctlListPluginsRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -12581,6 +17933,85 @@ pub mod types {
         }
     }
 
+    ///`PluginsctlListTestPluginsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlListTestPluginsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for PluginsctlListTestPluginsPrefer {
+        fn from(value: &PluginsctlListTestPluginsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for PluginsctlListTestPluginsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlListTestPluginsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlListTestPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlListTestPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlListTestPluginsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`PluginsctlListTestPluginsRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -12677,6 +18108,85 @@ pub mod types {
         }
     }
 
+    ///`PluginsctlRemovePluginPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlRemovePluginPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for PluginsctlRemovePluginPrefer {
+        fn from(value: &PluginsctlRemovePluginPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for PluginsctlRemovePluginPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlRemovePluginPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlRemovePluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlRemovePluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlRemovePluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`PluginsctlRemovePluginRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -12736,6 +18246,85 @@ pub mod types {
                 group: Default::default(),
                 name: Default::default(),
             }
+        }
+    }
+
+    ///`PluginsctlRemoveTestPluginPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum PluginsctlRemoveTestPluginPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for PluginsctlRemoveTestPluginPrefer {
+        fn from(value: &PluginsctlRemoveTestPluginPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for PluginsctlRemoveTestPluginPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for PluginsctlRemoveTestPluginPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for PluginsctlRemoveTestPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for PluginsctlRemoveTestPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for PluginsctlRemoveTestPluginPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -12854,6 +18443,85 @@ pub mod types {
         }
     }
 
+    ///`RcErrorPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum RcErrorPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for RcErrorPrefer {
+        fn from(value: &RcErrorPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for RcErrorPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for RcErrorPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for RcErrorPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for RcErrorPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for RcErrorPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`RcErrorRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -12894,6 +18562,85 @@ pub mod types {
             Self {
                 async_: Default::default(),
             }
+        }
+    }
+
+    ///`RcListPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum RcListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for RcListPrefer {
+        fn from(value: &RcListPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for RcListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for RcListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for RcListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for RcListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for RcListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -13094,6 +18841,85 @@ pub mod types {
         }
     }
 
+    ///`RcNoopAuthPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum RcNoopAuthPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for RcNoopAuthPrefer {
+        fn from(value: &RcNoopAuthPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for RcNoopAuthPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for RcNoopAuthPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for RcNoopAuthPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for RcNoopAuthPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for RcNoopAuthPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`RcNoopAuthRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -13137,6 +18963,85 @@ pub mod types {
         }
     }
 
+    ///`RcNoopPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum RcNoopPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for RcNoopPrefer {
+        fn from(value: &RcNoopPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for RcNoopPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for RcNoopPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for RcNoopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for RcNoopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for RcNoopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`RcNoopRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -13177,6 +19082,85 @@ pub mod types {
             Self {
                 async_: Default::default(),
             }
+        }
+    }
+
+    ///`ServeListPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ServeListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ServeListPrefer {
+        fn from(value: &ServeListPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ServeListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ServeListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ServeListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ServeListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ServeListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -13433,6 +19417,85 @@ pub mod types {
         }
     }
 
+    ///`ServeStartPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ServeStartPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ServeStartPrefer {
+        fn from(value: &ServeStartPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ServeStartPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ServeStartPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ServeStartPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ServeStartPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ServeStartPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ServeStartRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -13583,6 +19646,85 @@ pub mod types {
         }
     }
 
+    ///`ServeStopPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ServeStopPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for ServeStopPrefer {
+        fn from(value: &ServeStopPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for ServeStopPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for ServeStopPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ServeStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ServeStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ServeStopPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`ServeStopRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -13646,41 +19788,82 @@ pub mod types {
         }
     }
 
-    ///`ServeStopResponse`
+    ///`ServeStopallPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct ServeStopResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ServeStopallPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&ServeStopResponse> for ServeStopResponse {
-        fn from(value: &ServeStopResponse) -> Self {
+    impl ::std::convert::From<&Self> for ServeStopallPrefer {
+        fn from(value: &ServeStopallPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for ServeStopResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for ServeStopallPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for ServeStopallPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ServeStopallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ServeStopallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ServeStopallPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -13738,41 +19921,82 @@ pub mod types {
         }
     }
 
-    ///`ServeStopallResponse`
+    ///`ServeTypesPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct ServeStopallResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum ServeTypesPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&ServeStopallResponse> for ServeStopallResponse {
-        fn from(value: &ServeStopallResponse) -> Self {
+    impl ::std::convert::From<&Self> for ServeTypesPrefer {
+        fn from(value: &ServeTypesPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for ServeStopallResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for ServeTypesPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for ServeTypesPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for ServeTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for ServeTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for ServeTypesPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -13859,6 +20083,85 @@ pub mod types {
     impl ::std::convert::From<&ServeTypesResponse> for ServeTypesResponse {
         fn from(value: &ServeTypesResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`SyncBisyncPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum SyncBisyncPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for SyncBisyncPrefer {
+        fn from(value: &SyncBisyncPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for SyncBisyncPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for SyncBisyncPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for SyncBisyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for SyncBisyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for SyncBisyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -14151,10 +20454,43 @@ pub mod types {
     /// ```json
     ///{
     ///  "type": "object",
+    ///  "required": [
+    ///    "basePath",
+    ///    "listing1",
+    ///    "listing2",
+    ///    "logFile",
+    ///    "output",
+    ///    "session",
+    ///    "workDir"
+    ///  ],
     ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID of the operation.",
-    ///      "type": "integer"
+    ///    "basePath": {
+    ///      "description": "Base path for listing files.",
+    ///      "type": "string"
+    ///    },
+    ///    "listing1": {
+    ///      "description": "Path to the Path1 listing file.",
+    ///      "type": "string"
+    ///    },
+    ///    "listing2": {
+    ///      "description": "Path to the Path2 listing file.",
+    ///      "type": "string"
+    ///    },
+    ///    "logFile": {
+    ///      "description": "Path to the log file.",
+    ///      "type": "string"
+    ///    },
+    ///    "output": {
+    ///      "description": "Captured output from the bisync operation.",
+    ///      "type": "string"
+    ///    },
+    ///    "session": {
+    ///      "description": "Session name derived from the two filesystems.",
+    ///      "type": "string"
+    ///    },
+    ///    "workDir": {
+    ///      "description": "Absolute path to the bisync working directory.",
+    ///      "type": "string"
     ///    }
     ///  }
     ///}
@@ -14162,9 +20498,23 @@ pub mod types {
     /// </details>
     #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
     pub struct SyncBisyncResponse {
-        ///Job ID of the operation.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+        ///Base path for listing files.
+        #[serde(rename = "basePath")]
+        pub base_path: ::std::string::String,
+        ///Path to the Path1 listing file.
+        pub listing1: ::std::string::String,
+        ///Path to the Path2 listing file.
+        pub listing2: ::std::string::String,
+        ///Path to the log file.
+        #[serde(rename = "logFile")]
+        pub log_file: ::std::string::String,
+        ///Captured output from the bisync operation.
+        pub output: ::std::string::String,
+        ///Session name derived from the two filesystems.
+        pub session: ::std::string::String,
+        ///Absolute path to the bisync working directory.
+        #[serde(rename = "workDir")]
+        pub work_dir: ::std::string::String,
     }
 
     impl ::std::convert::From<&SyncBisyncResponse> for SyncBisyncResponse {
@@ -14173,11 +20523,82 @@ pub mod types {
         }
     }
 
-    impl ::std::default::Default for SyncBisyncResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    ///`SyncCopyPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum SyncCopyPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for SyncCopyPrefer {
+        fn from(value: &SyncCopyPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for SyncCopyPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for SyncCopyPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for SyncCopyPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for SyncCopyPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for SyncCopyPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -14299,40 +20720,82 @@ pub mod types {
         }
     }
 
-    ///`SyncCopyResponse`
+    ///`SyncMovePrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID of the operation.",
-    ///      "type": "integer"
-    ///    }
-    ///  }
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct SyncCopyResponse {
-        ///Job ID of the operation.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum SyncMovePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&SyncCopyResponse> for SyncCopyResponse {
-        fn from(value: &SyncCopyResponse) -> Self {
+    impl ::std::convert::From<&Self> for SyncMovePrefer {
+        fn from(value: &SyncMovePrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for SyncCopyResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for SyncMovePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for SyncMovePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for SyncMovePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for SyncMovePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for SyncMovePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -14468,40 +20931,82 @@ pub mod types {
         }
     }
 
-    ///`SyncMoveResponse`
+    ///`SyncSyncPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID of the operation.",
-    ///      "type": "integer"
-    ///    }
-    ///  }
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct SyncMoveResponse {
-        ///Job ID of the operation.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum SyncSyncPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&SyncMoveResponse> for SyncMoveResponse {
-        fn from(value: &SyncMoveResponse) -> Self {
+    impl ::std::convert::From<&Self> for SyncSyncPrefer {
+        fn from(value: &SyncSyncPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for SyncMoveResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for SyncSyncPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for SyncSyncPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for SyncSyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for SyncSyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for SyncSyncPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -14624,40 +21129,82 @@ pub mod types {
         }
     }
 
-    ///`SyncSyncResponse`
+    ///`VfsForgetPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID of the operation.",
-    ///      "type": "integer"
-    ///    }
-    ///  }
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct SyncSyncResponse {
-        ///Job ID of the operation.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsForgetPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&SyncSyncResponse> for SyncSyncResponse {
-        fn from(value: &SyncSyncResponse) -> Self {
+    impl ::std::convert::From<&Self> for VfsForgetPrefer {
+        fn from(value: &VfsForgetPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for SyncSyncResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for VfsForgetPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsForgetPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsForgetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsForgetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsForgetPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -14760,6 +21307,85 @@ pub mod types {
         }
     }
 
+    ///`VfsListPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsListPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for VfsListPrefer {
+        fn from(value: &VfsListPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for VfsListPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsListPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsListPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`VfsListRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -14858,6 +21484,85 @@ pub mod types {
         }
     }
 
+    ///`VfsPollIntervalPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsPollIntervalPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for VfsPollIntervalPrefer {
+        fn from(value: &VfsPollIntervalPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for VfsPollIntervalPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsPollIntervalPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsPollIntervalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsPollIntervalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsPollIntervalPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`VfsPollIntervalRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -14938,6 +21643,85 @@ pub mod types {
                 interval: Default::default(),
                 timeout: Default::default(),
             }
+        }
+    }
+
+    ///`VfsQueuePrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsQueuePrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for VfsQueuePrefer {
+        fn from(value: &VfsQueuePrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for VfsQueuePrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsQueuePrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsQueuePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsQueuePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsQueuePrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -15045,6 +21829,85 @@ pub mod types {
         }
     }
 
+    ///`VfsQueueSetExpiryPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsQueueSetExpiryPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for VfsQueueSetExpiryPrefer {
+        fn from(value: &VfsQueueSetExpiryPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for VfsQueueSetExpiryPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsQueueSetExpiryPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsQueueSetExpiryPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsQueueSetExpiryPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsQueueSetExpiryPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
     ///`VfsQueueSetExpiryRequest`
     ///
     /// <details><summary>JSON schema</summary>
@@ -15132,41 +21995,82 @@ pub mod types {
         }
     }
 
-    ///`VfsQueueSetExpiryResponse`
+    ///`VfsRefreshPrefer`
     ///
     /// <details><summary>JSON schema</summary>
     ///
     /// ```json
     ///{
-    ///  "type": "object",
-    ///  "properties": {
-    ///    "jobid": {
-    ///      "description": "Job ID returned when _async=true.",
-    ///      "type": "integer"
-    ///    }
-    ///  },
-    ///  "additionalProperties": true
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
     ///}
     /// ```
     /// </details>
-    #[derive(:: serde :: Deserialize, :: serde :: Serialize, Clone, Debug)]
-    pub struct VfsQueueSetExpiryResponse {
-        ///Job ID returned when _async=true.
-        #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
-        pub jobid: ::std::option::Option<i64>,
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsRefreshPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
     }
 
-    impl ::std::convert::From<&VfsQueueSetExpiryResponse> for VfsQueueSetExpiryResponse {
-        fn from(value: &VfsQueueSetExpiryResponse) -> Self {
+    impl ::std::convert::From<&Self> for VfsRefreshPrefer {
+        fn from(value: &VfsRefreshPrefer) -> Self {
             value.clone()
         }
     }
 
-    impl ::std::default::Default for VfsQueueSetExpiryResponse {
-        fn default() -> Self {
-            Self {
-                jobid: Default::default(),
+    impl ::std::fmt::Display for VfsRefreshPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
             }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsRefreshPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsRefreshPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsRefreshPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsRefreshPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -15273,6 +22177,85 @@ pub mod types {
     impl ::std::convert::From<&VfsRefreshResponse> for VfsRefreshResponse {
         fn from(value: &VfsRefreshResponse) -> Self {
             value.clone()
+        }
+    }
+
+    ///`VfsStatsPrefer`
+    ///
+    /// <details><summary>JSON schema</summary>
+    ///
+    /// ```json
+    ///{
+    ///  "type": "string",
+    ///  "enum": [
+    ///    "respond-async"
+    ///  ]
+    ///}
+    /// ```
+    /// </details>
+    #[derive(
+        :: serde :: Deserialize,
+        :: serde :: Serialize,
+        Clone,
+        Copy,
+        Debug,
+        Eq,
+        Hash,
+        Ord,
+        PartialEq,
+        PartialOrd,
+    )]
+    pub enum VfsStatsPrefer {
+        #[serde(rename = "respond-async")]
+        RespondAsync,
+    }
+
+    impl ::std::convert::From<&Self> for VfsStatsPrefer {
+        fn from(value: &VfsStatsPrefer) -> Self {
+            value.clone()
+        }
+    }
+
+    impl ::std::fmt::Display for VfsStatsPrefer {
+        fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
+            match *self {
+                Self::RespondAsync => f.write_str("respond-async"),
+            }
+        }
+    }
+
+    impl ::std::str::FromStr for VfsStatsPrefer {
+        type Err = self::error::ConversionError;
+        fn from_str(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            match value {
+                "respond-async" => Ok(Self::RespondAsync),
+                _ => Err("invalid value".into()),
+            }
+        }
+    }
+
+    impl ::std::convert::TryFrom<&str> for VfsStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(value: &str) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<&::std::string::String> for VfsStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: &::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
+        }
+    }
+
+    impl ::std::convert::TryFrom<::std::string::String> for VfsStatsPrefer {
+        type Error = self::error::ConversionError;
+        fn try_from(
+            value: ::std::string::String,
+        ) -> ::std::result::Result<Self, self::error::ConversionError> {
+            value.parse()
         }
     }
 
@@ -15419,7 +22402,7 @@ pub mod types {
 ///
 ///Full OpenAPI specification for the Rclone RC API.
 ///
-///Version: 1.73.4
+///Version: 1.75.0
 pub struct Client {
     pub(crate) baseurl: String,
     pub(crate) client: reqwest::Client,
@@ -15460,7 +22443,7 @@ impl Client {
 
 impl ClientInfo<()> for Client {
     fn api_version() -> &'static str {
-        "1.73.4"
+        "1.75.0"
     }
 
     fn baseurl(&self) -> &str {
@@ -15490,22 +22473,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn rc_noop<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::RcNoopPrefer>,
         body: &'a types::RcNoopRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
     > {
         let url = format!("{}/rc/noop", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15549,20 +22539,30 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to clean up, for example `drive:`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_cleanup<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsCleanupPrefer>,
         body: &'a types::OperationsCleanupRequest,
-    ) -> Result<ResponseValue<types::OperationsCleanupResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/cleanup", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15615,6 +22615,8 @@ impl Client {
     ///   local filesystem.
     /// - `src_remote`: Path to the source object within `srcFs`, for example
     ///   `dir/file.txt`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_copyfile<'a>(
         &'a self,
@@ -15624,14 +22626,22 @@ impl Client {
         dst_remote: Option<&'a str>,
         src_fs: Option<&'a str>,
         src_remote: Option<&'a str>,
+        prefer: Option<types::OperationsCopyfilePrefer>,
         body: &'a types::OperationsCopyfileRequest,
-    ) -> Result<ResponseValue<types::OperationsCopyfileResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/copyfile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15691,6 +22701,8 @@ impl Client {
     /// - `remote`: Destination path within `fs` where the fetched object will
     ///   be stored.
     /// - `url`: Source URL to fetch the object from.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_copyurl<'a>(
         &'a self,
@@ -15700,14 +22712,22 @@ impl Client {
         fs: Option<&'a str>,
         remote: Option<&'a str>,
         url: Option<&'a str>,
+        prefer: Option<types::OperationsCopyurlPrefer>,
         body: &'a types::OperationsCopyurlRequest,
-    ) -> Result<ResponseValue<types::OperationsCopyurlResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let _url = format!("{}/operations/copyurl", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15761,6 +22781,8 @@ impl Client {
     /// - `filter`: JSON encoded filter overrides applied for this call only.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path whose contents should be removed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_delete<'a>(
         &'a self,
@@ -15769,14 +22791,22 @@ impl Client {
         filter: Option<&'a str>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsDeletePrefer>,
         body: &'a types::OperationsDeleteRequest,
-    ) -> Result<ResponseValue<types::OperationsDeleteResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/delete", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15824,6 +22854,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path that contains the file to delete.
     /// - `remote`: Exact path to the file within `fs` that should be deleted.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_deletefile<'a>(
         &'a self,
@@ -15831,14 +22863,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsDeletefilePrefer>,
         body: &'a types::OperationsDeletefileRequest,
-    ) -> Result<ResponseValue<types::OperationsDeletefileResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/deletefile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15885,20 +22925,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to inspect, e.g. `drive:`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_fsinfo<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsFsinfoPrefer>,
         body: &'a types::OperationsFsinfoRequest,
     ) -> Result<ResponseValue<types::OperationsFsinfoResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/fsinfo", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -15950,6 +22997,8 @@ impl Client {
     /// - `fs`: Remote name or path to hash, such as `drive:` or `/`.
     /// - `hash_type`: Hash algorithm to use, e.g. `md5`, `sha1`, or another
     ///   supported name.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_hashsum<'a>(
         &'a self,
@@ -15959,14 +23008,19 @@ impl Client {
         download: Option<bool>,
         fs: Option<&'a str>,
         hash_type: Option<&'a str>,
+        prefer: Option<types::OperationsHashsumPrefer>,
         body: &'a types::OperationsHashsumRequest,
     ) -> Result<ResponseValue<types::OperationsHashsumResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/hashsum", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16021,6 +23075,8 @@ impl Client {
     /// - `hash_type`: Hash algorithm to use, e.g. `md5`, `sha1`, or another
     ///   supported name.
     /// - `remote`: Path to the specific file within `fs` to hash.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_hashsumfile<'a>(
         &'a self,
@@ -16031,14 +23087,19 @@ impl Client {
         fs: Option<&'a str>,
         hash_type: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsHashsumfilePrefer>,
         body: &'a types::OperationsHashsumfileRequest,
     ) -> Result<ResponseValue<types::OperationsHashsumfileResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/hashsumfile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16092,6 +23153,8 @@ impl Client {
     /// - `dst_remote`: Destination path within `dstFs` for the moved object.
     /// - `src_fs`: Source remote name or path containing the file to move.
     /// - `src_remote`: Path to the source object within `srcFs`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_movefile<'a>(
         &'a self,
@@ -16101,14 +23164,22 @@ impl Client {
         dst_remote: Option<&'a str>,
         src_fs: Option<&'a str>,
         src_remote: Option<&'a str>,
+        prefer: Option<types::OperationsMovefilePrefer>,
         body: &'a types::OperationsMovefileRequest,
-    ) -> Result<ResponseValue<types::OperationsMovefileResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/movefile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16170,6 +23241,8 @@ impl Client {
     ///   a public link.
     /// - `unlink`: Set to true to remove an existing public link instead of
     ///   creating one.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_publiclink<'a>(
         &'a self,
@@ -16179,14 +23252,19 @@ impl Client {
         fs: Option<&'a str>,
         remote: Option<&'a str>,
         unlink: Option<bool>,
+        prefer: Option<types::OperationsPubliclinkPrefer>,
         body: &'a types::OperationsPubliclinkRequest,
     ) -> Result<ResponseValue<types::OperationsPubliclinkResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/publiclink", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16239,6 +23317,8 @@ impl Client {
     ///   empty.
     /// - `remote`: Path within `fs` whose empty subdirectories should be
     ///   removed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_rmdirs<'a>(
         &'a self,
@@ -16247,14 +23327,22 @@ impl Client {
         fs: Option<&'a str>,
         leave_root: Option<bool>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsRmdirsPrefer>,
         body: &'a types::OperationsRmdirsRequest,
-    ) -> Result<ResponseValue<types::OperationsRmdirsResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/rmdirs", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16305,20 +23393,30 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path whose storage class tier should be changed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_settier<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsSettierPrefer>,
         body: &'a types::OperationsSettierRequest,
-    ) -> Result<ResponseValue<types::OperationsSettierResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/settier", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16366,6 +23464,8 @@ impl Client {
     ///   change.
     /// - `remote`: Path within `fs` to the object whose storage class tier
     ///   should be updated.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_settierfile<'a>(
         &'a self,
@@ -16373,14 +23473,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsSettierfilePrefer>,
         body: &'a types::OperationsSettierfileRequest,
-    ) -> Result<ResponseValue<types::OperationsSettierfileResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/settierfile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16427,20 +23535,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to measure aggregate size information for.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_size<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsSizePrefer>,
         body: &'a types::OperationsSizeRequest,
     ) -> Result<ResponseValue<types::OperationsSizeResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/size", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16487,20 +23602,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Bandwidth limit to apply, for example `off`, `5M`, or a
     ///   schedule string.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_bwlimit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         rate: Option<&'a str>,
+        prefer: Option<types::CoreBwlimitPrefer>,
         body: &'a types::CoreBwlimitRequest,
     ) -> Result<ResponseValue<types::CoreBwlimitResponse>, Error<types::RcError>> {
         let url = format!("{}/core/bwlimit", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16553,6 +23675,8 @@ impl Client {
     /// - `return_type`: Controls how output is returned; accepts
     ///   `COMBINED_OUTPUT`, `STREAM`, `STREAM_ONLY_STDOUT`, or
     ///   `STREAM_ONLY_STDERR`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_command<'a>(
         &'a self,
@@ -16562,14 +23686,19 @@ impl Client {
         command: Option<&'a str>,
         opt: Option<&'a str>,
         return_type: Option<&'a str>,
+        prefer: Option<types::CoreCommandPrefer>,
         body: &'a types::CoreCommandRequest,
     ) -> Result<ResponseValue<types::CoreCommandResponse>, Error<types::RcError>> {
         let url = format!("{}/core/command", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16620,19 +23749,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_disks<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreDisksPrefer>,
         body: &'a types::CoreDisksRequest,
     ) -> Result<ResponseValue<types::CoreDisksResponse>, Error<types::RcError>> {
         let url = format!("{}/core/disks", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16678,20 +23814,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `dir`: Local directory path to report disk usage for. Defaults to the
     ///   rclone cache directory when omitted.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_du<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         dir: Option<&'a str>,
+        prefer: Option<types::CoreDuPrefer>,
         body: &'a types::CoreDuRequest,
     ) -> Result<ResponseValue<types::CoreDuResponse>, Error<types::RcError>> {
         let url = format!("{}/core/du", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16735,19 +23878,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_gc<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreGcPrefer>,
         body: &'a types::CoreGcRequest,
-    ) -> Result<ResponseValue<types::CoreGcResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/core/gc", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16790,19 +23943,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_group_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreGroupListPrefer>,
         body: &'a types::CoreGroupListRequest,
     ) -> Result<ResponseValue<types::CoreGroupListResponse>, Error<types::RcError>> {
         let url = format!("{}/core/group-list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16845,22 +24005,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_memstats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreMemstatsPrefer>,
         body: &'a types::CoreMemstatsRequest,
     ) -> Result<
         ResponseValue<::std::collections::HashMap<::std::string::String, f64>>,
         Error<types::RcError>,
     > {
         let url = format!("{}/core/memstats", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16904,20 +24071,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `clear`: Plain-text string to obscure for storage in the config file.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_obscure<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         clear: Option<&'a str>,
+        prefer: Option<types::CoreObscurePrefer>,
         body: &'a types::CoreObscureRequest,
     ) -> Result<ResponseValue<types::CoreObscureResponse>, Error<types::RcError>> {
         let url = format!("{}/core/obscure", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -16961,19 +24135,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_pid<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CorePidPrefer>,
         body: &'a types::CorePidRequest,
     ) -> Result<ResponseValue<types::CorePidResponse>, Error<types::RcError>> {
         let url = format!("{}/core/pid", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17018,20 +24199,30 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `exit_code`: Optional exit code to use when terminating the rclone
     ///   process.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_quit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         exit_code: Option<i64>,
+        prefer: Option<types::CoreQuitPrefer>,
         body: &'a types::CoreQuitRequest,
-    ) -> Result<ResponseValue<types::CoreQuitResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/core/quit", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17076,20 +24267,30 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier to remove.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_stats_delete<'a>(
         &'a self,
         async_: Option<bool>,
-        _group: Option<&'a str>,
+        group_: Option<&'a str>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreStatsDeletePrefer>,
         body: &'a types::CoreStatsDeleteRequest
-    ) -> Result<ResponseValue<types::CoreStatsDeleteResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/core/stats-delete", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17136,20 +24337,30 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier whose counters should be reset. Leave
     ///   unset to reset all groups.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_stats_reset<'a>(
         &'a self,
         async_: Option<bool>,
-        _group: Option<&'a str>,
+        group_: Option<&'a str>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreStatsResetPrefer>,
         body: &'a types::CoreStatsResetRequest
-    ) -> Result<ResponseValue<types::CoreStatsResetResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/core/stats-reset", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17196,20 +24407,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `group`: Stats group identifier to filter the completed transfer list.
     ///   Leave unset for all groups.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_transferred<'a>(
         &'a self,
         async_: Option<bool>,
-        _group: Option<&'a str>,
+        group_: Option<&'a str>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreTransferredPrefer>,
         body: &'a types::CoreTransferredRequest
     ) -> Result<ResponseValue<types::CoreTransferredResponse>, Error<types::RcError>> {
         let url = format!("{}/core/transferred", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17251,20 +24469,30 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Sampling interval in nanoseconds for blocking profile
     ///   collection; use 1 to capture all events.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn debug_set_block_profile_rate<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         rate: Option<i64>,
+        prefer: Option<types::DebugSetBlockProfileRatePrefer>,
         body: &'a types::DebugSetBlockProfileRateRequest,
-    ) -> Result<ResponseValue<types::DebugSetBlockProfileRateResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/debug/set-block-profile-rate", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17306,20 +24534,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `gc_percent`: Target percentage of newly allocated data to trigger
     ///   garbage collection.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn debug_set_gc_percent<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         gc_percent: Option<i64>,
+        prefer: Option<types::DebugSetGcPercentPrefer>,
         body: &'a types::DebugSetGcPercentRequest,
     ) -> Result<ResponseValue<types::DebugSetGcPercentResponse>, Error<types::RcError>> {
         let url = format!("{}/debug/set-gc-percent", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17364,21 +24599,28 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `rate`: Sampling fraction for mutex contention profiling; set to 0 to
     ///   disable.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn debug_set_mutex_profile_fraction<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         rate: Option<i64>,
+        prefer: Option<types::DebugSetMutexProfileFractionPrefer>,
         body: &'a types::DebugSetMutexProfileFractionRequest,
     ) -> Result<ResponseValue<types::DebugSetMutexProfileFractionResponse>, Error<types::RcError>>
     {
         let url = format!("{}/debug/set-mutex-profile-fraction", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17419,20 +24661,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `mem_limit`: Soft memory limit for the Go runtime in bytes.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn debug_set_soft_memory_limit<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         mem_limit: Option<i64>,
+        prefer: Option<types::DebugSetSoftMemoryLimitPrefer>,
         body: &'a types::DebugSetSoftMemoryLimitRequest,
     ) -> Result<ResponseValue<types::DebugSetSoftMemoryLimitResponse>, Error<types::RcError>> {
         let url = format!("{}/debug/set-soft-memory-limit", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17472,19 +24721,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn fscache_clear<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::FscacheClearPrefer>,
         body: &'a types::FscacheClearRequest,
-    ) -> Result<ResponseValue<types::FscacheClearResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/fscache/clear", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17523,19 +24782,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn fscache_entries<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::FscacheEntriesPrefer>,
         body: &'a types::FscacheEntriesRequest,
     ) -> Result<ResponseValue<types::FscacheEntriesResponse>, Error<types::RcError>> {
         let url = format!("{}/fscache/entries", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17574,19 +24840,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn mount_listmounts<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::MountListmountsPrefer>,
         body: &'a types::MountListmountsRequest,
     ) -> Result<ResponseValue<types::MountListmountsResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/listmounts", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17635,6 +24908,8 @@ impl Client {
     ///   or `mount2`).
     /// - `vfs_opt`: VFS options encoded as JSON, matching flags accepted by
     ///   `rclone mount`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn mount_mount<'a>(
         &'a self,
@@ -17647,14 +24922,19 @@ impl Client {
         mount_point: Option<&'a str>,
         mount_type: Option<&'a str>,
         vfs_opt: Option<&'a str>,
+        prefer: Option<types::MountMountPrefer>,
         body: &'a types::MountMountRequest,
     ) -> Result<ResponseValue<types::MountMountResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/mount", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17706,19 +24986,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn mount_types<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::MountTypesPrefer>,
         body: &'a types::MountTypesRequest,
     ) -> Result<ResponseValue<types::MountTypesResponse>, Error<types::RcError>> {
         let url = format!("{}/mount/types", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17758,20 +25045,30 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `mount_point`: Local mount point path to unmount.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn mount_unmount<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         mount_point: Option<&'a str>,
+        prefer: Option<types::MountUnmountPrefer>,
         body: &'a types::MountUnmountRequest,
-    ) -> Result<ResponseValue<types::MountUnmountResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/mount/unmount", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17814,19 +25111,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn mount_unmountall<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::MountUnmountallPrefer>,
         body: &'a types::MountUnmountallRequest,
-    ) -> Result<ResponseValue<types::MountUnmountallResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/mount/unmountall", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17870,22 +25177,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn rc_noop_auth<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::RcNoopAuthPrefer>,
         body: &'a types::RcNoopAuthRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
     > {
         let url = format!("{}/rc/noopauth", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17929,19 +25243,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn rc_error<'a>(
         &'a self,
         async_: Option<bool>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::RcErrorPrefer>,
         body: &'a types::RcErrorRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/rc/error", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -17985,19 +25306,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn rc_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::RcListPrefer>,
         body: &'a types::RcListRequest,
     ) -> Result<ResponseValue<types::RcListResponse>, Error<types::RcError>> {
         let url = format!("{}/rc/list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18045,6 +25373,8 @@ impl Client {
     /// - `command`: Backend-specific command to invoke.
     /// - `fs`: Remote name or path the backend command should target.
     /// - `opt`: Backend command options encoded as a JSON string.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn backend_command<'a>(
         &'a self,
@@ -18054,14 +25384,19 @@ impl Client {
         command: Option<&'a str>,
         fs: Option<&'a str>,
         opt: Option<&'a str>,
+        prefer: Option<types::BackendCommandPrefer>,
         body: &'a types::BackendCommandRequest,
     ) -> Result<ResponseValue<types::BackendCommandResponse>, Error<types::RcError>> {
         let url = format!("{}/backend/command", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18113,6 +25448,8 @@ impl Client {
     ///   `remote:path/to/dir`.
     /// - `with_data`: Set to true to drop cached chunk data along with
     ///   directory entries.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn cache_expire<'a>(
         &'a self,
@@ -18120,14 +25457,19 @@ impl Client {
         group: Option<&'a str>,
         remote: Option<&'a str>,
         with_data: Option<bool>,
+        prefer: Option<types::CacheExpirePrefer>,
         body: &'a types::CacheExpireRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/expire", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18175,6 +25517,8 @@ impl Client {
     /// - `chunks`: Comma-separated chunk specifier list (e.g. `0:10,25:30`)
     ///   describing file pieces to prefetch.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn cache_fetch<'a>(
         &'a self,
@@ -18182,14 +25526,19 @@ impl Client {
         group: Option<&'a str>,
         chunks: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::CacheFetchPrefer>,
         body: &'a types::CacheFetchRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/fetch", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18234,19 +25583,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn cache_stats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CacheStatsPrefer>,
         body: &'a types::CacheStatsRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/cache/stats", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18295,6 +25651,8 @@ impl Client {
     /// - `parameters`: JSON object of configuration key/value pairs required
     ///   for the remote.
     /// - `type_`: Backend type identifier, such as `drive`, `s3`, or `dropbox`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_create<'a>(
         &'a self,
@@ -18304,14 +25662,22 @@ impl Client {
         opt: Option<&'a str>,
         parameters: Option<&'a str>,
         type_: Option<&'a str>,
+        prefer: Option<types::ConfigCreatePrefer>,
         body: &'a types::ConfigCreateRequest,
-    ) -> Result<ResponseValue<types::ConfigCreateResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/config/create", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18362,20 +25728,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the remote configuration to delete.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_delete<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         name: Option<&'a str>,
+        prefer: Option<types::ConfigDeletePrefer>,
         body: &'a types::ConfigDeleteRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/delete", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18420,11 +25793,14 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_dump<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ConfigDumpPrefer>,
         body: &'a types::ConfigDumpRequest,
     ) -> Result<
         ResponseValue<
@@ -18436,11 +25812,15 @@ impl Client {
         Error<types::RcError>,
     > {
         let url = format!("{}/config/dump", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18484,20 +25864,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the remote configuration to fetch.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_get<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         name: Option<&'a str>,
+        prefer: Option<types::ConfigGetPrefer>,
         body: &'a types::ConfigGetRequest,
     ) -> Result<ResponseValue<types::ConfigGetResponse>, Error<types::RcError>> {
         let url = format!("{}/config/get", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18541,19 +25928,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_listremotes<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ConfigListremotesPrefer>,
         body: &'a types::ConfigListremotesRequest,
     ) -> Result<ResponseValue<types::ConfigListremotesResponse>, Error<types::RcError>> {
         let url = format!("{}/config/listremotes", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18586,6 +25980,135 @@ impl Client {
         }
     }
 
+    ///Get OAuth server status
+    ///
+    ///Returns the status of the interactive OAuth authentication server,
+    /// including the authorization URL when it is running.
+    ///
+    ///Sends a `POST` request to `/config/oauthstatus`
+    ///
+    ///Arguments:
+    /// - `async_`: Run the command asynchronously. Returns a job id
+    ///   immediately.
+    /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
+    /// - `body`
+    pub async fn config_oauthstatus<'a>(
+        &'a self,
+        async_: Option<bool>,
+        group: Option<&'a str>,
+        prefer: Option<types::ConfigOauthstatusPrefer>,
+        body: &'a types::ConfigOauthstatusRequest,
+    ) -> Result<ResponseValue<types::ConfigOauthstatusResponse>, Error<types::RcError>> {
+        let url = format!("{}/config/oauthstatus", self.baseurl,);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
+        header_map.append(
+            ::reqwest::header::HeaderName::from_static("api-version"),
+            ::reqwest::header::HeaderValue::from_static(Self::api_version()),
+        );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
+        #[allow(unused_mut)]
+        let mut request = self
+            .client
+            .post(url)
+            .header(
+                ::reqwest::header::ACCEPT,
+                ::reqwest::header::HeaderValue::from_static("application/json"),
+            )
+            .json(&body)
+            .query(&progenitor_client::QueryParam::new("_async", &async_))
+            .query(&progenitor_client::QueryParam::new("_group", &group))
+            .headers(header_map)
+            .build()?;
+        let info = OperationInfo {
+            operation_id: "config_oauthstatus",
+        };
+        self.pre(&mut request, &info).await?;
+        let result = self.exec(request, &info).await;
+        self.post(&result, &info).await?;
+        let response = result?;
+        match response.status().as_u16() {
+            200u16 => ResponseValue::from_response(response).await,
+            400u16..=499u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            500u16..=599u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            _ => Err(Error::UnexpectedResponse(response)),
+        }
+    }
+
+    ///Stop OAuth server
+    ///
+    ///Stops the interactive OAuth authentication server if one is running.
+    /// Returns an error if no OAuth flow is in progress.
+    ///
+    ///Sends a `POST` request to `/config/oauthstop`
+    ///
+    ///Arguments:
+    /// - `async_`: Run the command asynchronously. Returns a job id
+    ///   immediately.
+    /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
+    /// - `body`
+    pub async fn config_oauthstop<'a>(
+        &'a self,
+        async_: Option<bool>,
+        group: Option<&'a str>,
+        prefer: Option<types::ConfigOauthstopPrefer>,
+        body: &'a types::ConfigOauthstopRequest,
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
+        let url = format!("{}/config/oauthstop", self.baseurl,);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
+        header_map.append(
+            ::reqwest::header::HeaderName::from_static("api-version"),
+            ::reqwest::header::HeaderValue::from_static(Self::api_version()),
+        );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
+        #[allow(unused_mut)]
+        let mut request = self
+            .client
+            .post(url)
+            .header(
+                ::reqwest::header::ACCEPT,
+                ::reqwest::header::HeaderValue::from_static("application/json"),
+            )
+            .json(&body)
+            .query(&progenitor_client::QueryParam::new("_async", &async_))
+            .query(&progenitor_client::QueryParam::new("_group", &group))
+            .headers(header_map)
+            .build()?;
+        let info = OperationInfo {
+            operation_id: "config_oauthstop",
+        };
+        self.pre(&mut request, &info).await?;
+        let result = self.exec(request, &info).await;
+        self.post(&result, &info).await?;
+        let response = result?;
+        match response.status().as_u16() {
+            200u16 => ResponseValue::from_response(response).await,
+            400u16..=499u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            500u16..=599u16 => Err(Error::ErrorResponse(
+                ResponseValue::from_response(response).await?,
+            )),
+            _ => Err(Error::UnexpectedResponse(response)),
+        }
+    }
+
     ///Update remote secrets
     ///
     ///Sets obscured password fields for a remote configuration.
@@ -18599,6 +26122,8 @@ impl Client {
     /// - `name`: Name of the remote whose secrets should be updated.
     /// - `parameters`: JSON object of password answers, typically including
     ///   `pass`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_password<'a>(
         &'a self,
@@ -18606,14 +26131,19 @@ impl Client {
         group: Option<&'a str>,
         name: Option<&'a str>,
         parameters: Option<&'a str>,
+        prefer: Option<types::ConfigPasswordPrefer>,
         body: &'a types::ConfigPasswordRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/password", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18662,19 +26192,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_paths<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ConfigPathsPrefer>,
         body: &'a types::ConfigPathsRequest,
     ) -> Result<ResponseValue<types::ConfigPathsResponse>, Error<types::RcError>> {
         let url = format!("{}/config/paths", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18717,19 +26254,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_providers<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ConfigProvidersPrefer>,
         body: &'a types::ConfigProvidersRequest,
     ) -> Result<ResponseValue<types::ConfigProvidersResponse>, Error<types::RcError>> {
         let url = format!("{}/config/providers", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18774,20 +26318,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `path`: Absolute path to the `rclone.conf` file that rclone should
     ///   use.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_setpath<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         path: Option<&'a str>,
+        prefer: Option<types::ConfigSetpathPrefer>,
         body: &'a types::ConfigSetpathRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/setpath", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18832,20 +26383,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `config_password`: Password used to unlock an encrypted config file.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_unlock<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         config_password: Option<&'a str>,
+        prefer: Option<types::ConfigUnlockPrefer>,
         body: &'a types::ConfigUnlockRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/config/unlock", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18897,6 +26455,8 @@ impl Client {
     ///   `obscure`, `continue`).
     /// - `parameters`: JSON object of configuration key/value pairs to apply to
     ///   the remote.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn config_update<'a>(
         &'a self,
@@ -18905,14 +26465,22 @@ impl Client {
         name: Option<&'a str>,
         opt: Option<&'a str>,
         parameters: Option<&'a str>,
+        prefer: Option<types::ConfigUpdatePrefer>,
         body: &'a types::ConfigUpdateRequest,
-    ) -> Result<ResponseValue<types::ConfigUpdateResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/config/update", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -18962,19 +26530,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_version<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::CoreVersionPrefer>,
         body: &'a types::CoreVersionRequest,
     ) -> Result<ResponseValue<types::CoreVersionResponse>, Error<types::RcError>> {
         let url = format!("{}/core/version", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19022,21 +26597,28 @@ impl Client {
     ///   to include all groups.
     /// - `short`: When true, omit the `transferring` and `checking` arrays from
     ///   the response.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn core_stats<'a>(
         &'a self,
         async_: Option<bool>,
-        _group: Option<&'a str>,
+        group_: Option<&'a str>,
         group: Option<&'a str>,
         short: Option<bool>,
+        prefer: Option<types::CoreStatsPrefer>,
         body: &'a types::CoreStatsRequest
     ) -> Result<ResponseValue<types::CoreStatsResponse>, Error<types::RcError>> {
         let url = format!("{}/core/stats", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19084,20 +26666,27 @@ impl Client {
     ///   --transfers if not set.
     /// - `inputs`: List of inputs to the commands with an extra _path
     ///   parameter.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn job_batch<'a>(
         &'a self,
         async_: Option<bool>,
         concurrency: Option<i64>,
         inputs: Option<&'a ::std::vec::Vec<types::JobBatchInputsItem>>,
+        prefer: Option<types::JobBatchPrefer>,
         body: &'a types::JobBatchRequest,
     ) -> Result<ResponseValue<types::JobBatchResponse>, Error<types::RcError>> {
         let url = format!("{}/job/batch", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19143,18 +26732,25 @@ impl Client {
     ///Arguments:
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn job_list<'a>(
         &'a self,
         async_: Option<bool>,
+        prefer: Option<types::JobListPrefer>,
         body: &'a types::JobListRequest,
     ) -> Result<ResponseValue<types::JobListResponse>, Error<types::RcError>> {
         let url = format!("{}/job/list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19197,19 +26793,26 @@ impl Client {
     ///   immediately.
     /// - `jobid`: Numeric identifier of the job to query, as returned from an
     ///   async call.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn job_status<'a>(
         &'a self,
         async_: Option<bool>,
         jobid: Option<f64>,
+        prefer: Option<types::JobStatusPrefer>,
         body: &'a types::JobStatusRequest,
     ) -> Result<ResponseValue<types::JobStatusResponse>, Error<types::RcError>> {
         let url = format!("{}/job/status", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19252,19 +26855,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `jobid`: Numeric identifier of the job to cancel.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn job_stop<'a>(
         &'a self,
         async_: Option<bool>,
         jobid: Option<f64>,
+        prefer: Option<types::JobStopPrefer>,
         body: &'a types::JobStopRequest,
-    ) -> Result<ResponseValue<types::JobStopResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/job/stop", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19307,19 +26920,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Stats group name whose active jobs should be stopped.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn job_stopgroup<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::JobStopgroupPrefer>,
         body: &'a types::JobStopgroupRequest,
-    ) -> Result<ResponseValue<types::JobStopgroupResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/job/stopgroup", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19382,6 +27005,8 @@ impl Client {
     /// - `show_hash`: Set to true to include hash digests for each entry.
     /// - `show_orig_i_ds`: Set to true to include original backend identifiers
     ///   where available.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_list<'a>(
         &'a self,
@@ -19400,14 +27025,19 @@ impl Client {
         show_encrypted: Option<bool>,
         show_hash: Option<bool>,
         show_orig_i_ds: Option<bool>,
+        prefer: Option<types::OperationsListPrefer>,
         body: &'a types::OperationsListRequest,
     ) -> Result<ResponseValue<types::OperationsListResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19486,6 +27116,8 @@ impl Client {
     /// - `opt`: Optional JSON object of listing flags, matching those accepted
     ///   by `operations/list`.
     /// - `remote`: Path to the file or directory within `fs` to describe.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_stat<'a>(
         &'a self,
@@ -19494,14 +27126,19 @@ impl Client {
         fs: Option<&'a str>,
         opt: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsStatPrefer>,
         body: &'a types::OperationsStatRequest,
     ) -> Result<ResponseValue<types::OperationsStatResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/stat", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19549,20 +27186,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path to query for capacity information.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_about<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::OperationsAboutPrefer>,
         body: &'a types::OperationsAboutRequest,
     ) -> Result<ResponseValue<types::OperationsAboutResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/about", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19609,6 +27253,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path where the uploaded file should be stored.
     /// - `remote`: Destination path within `fs` for the uploaded file.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`: Multipart form payload containing one or more files to upload.
     pub async fn operations_uploadfile<'a, B: Into<reqwest::Body>>(
         &'a self,
@@ -19616,14 +27262,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsUploadfilePrefer>,
         body: B,
-    ) -> Result<ResponseValue<types::OperationsUploadfileResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/uploadfile", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19676,6 +27330,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path from which to remove all contents.
     /// - `remote`: Path within `fs` whose contents should be purged.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_purge<'a>(
         &'a self,
@@ -19685,14 +27341,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsPurgePrefer>,
         body: &'a types::OperationsPurgeRequest,
-    ) -> Result<ResponseValue<types::OperationsPurgeResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/purge", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19741,6 +27405,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path in which to create a directory.
     /// - `remote`: Directory path within `fs` to create.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_mkdir<'a>(
         &'a self,
@@ -19748,14 +27414,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsMkdirPrefer>,
         body: &'a types::OperationsMkdirRequest,
-    ) -> Result<ResponseValue<types::OperationsMkdirResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/mkdir", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19802,6 +27476,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Remote name or path containing the directory to remove.
     /// - `remote`: Directory path within `fs` to delete.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_rmdir<'a>(
         &'a self,
@@ -19809,14 +27485,22 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         remote: Option<&'a str>,
+        prefer: Option<types::OperationsRmdirPrefer>,
         body: &'a types::OperationsRmdirRequest,
-    ) -> Result<ResponseValue<types::OperationsRmdirResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/operations/rmdir", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19883,6 +27567,8 @@ impl Client {
     /// - `one_way`: Set to true to only ensure that source files exist on the
     ///   destination.
     /// - `src_fs`: Source remote name or path to verify, e.g. `drive:`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn operations_check<'a>(
         &'a self,
@@ -19901,14 +27587,19 @@ impl Client {
         missing_on_src: Option<bool>,
         one_way: Option<bool>,
         src_fs: Option<&'a str>,
+        prefer: Option<types::OperationsCheckPrefer>,
         body: &'a types::OperationsCheckRequest,
     ) -> Result<ResponseValue<types::OperationsCheckResponse>, Error<types::RcError>> {
         let url = format!("{}/operations/check", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -19986,6 +27677,8 @@ impl Client {
     ///   directories on the destination.
     /// - `dst_fs`: Destination remote path to sync to, e.g. `drive:dst`.
     /// - `src_fs`: Source remote path to sync from, e.g. `drive:src`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn sync_sync<'a>(
         &'a self,
@@ -19996,14 +27689,22 @@ impl Client {
         create_empty_src_dirs: Option<bool>,
         dst_fs: Option<&'a str>,
         src_fs: Option<&'a str>,
+        prefer: Option<types::SyncSyncPrefer>,
         body: &'a types::SyncSyncRequest,
-    ) -> Result<ResponseValue<types::SyncSyncResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/sync/sync", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20061,6 +27762,8 @@ impl Client {
     ///   directories on the destination.
     /// - `dst_fs`: Destination remote path to copy to.
     /// - `src_fs`: Source remote path to copy from.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn sync_copy<'a>(
         &'a self,
@@ -20071,14 +27774,22 @@ impl Client {
         create_empty_src_dirs: Option<bool>,
         dst_fs: Option<&'a str>,
         src_fs: Option<&'a str>,
+        prefer: Option<types::SyncCopyPrefer>,
         body: &'a types::SyncCopyRequest,
-    ) -> Result<ResponseValue<types::SyncCopyResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/sync/copy", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20138,6 +27849,8 @@ impl Client {
     ///   the source after the move completes.
     /// - `dst_fs`: Destination remote path that will receive moved files.
     /// - `src_fs`: Source remote path whose contents will be moved.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn sync_move<'a>(
         &'a self,
@@ -20149,14 +27862,22 @@ impl Client {
         delete_empty_src_dirs: Option<bool>,
         dst_fs: Option<&'a str>,
         src_fs: Option<&'a str>,
+        prefer: Option<types::SyncMovePrefer>,
         body: &'a types::SyncMoveRequest,
-    ) -> Result<ResponseValue<types::SyncMoveResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/sync/move", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20243,6 +27964,8 @@ impl Client {
     /// - `resync`: Set to true to perform a one-time resync, rebuilding bisync
     ///   history.
     /// - `workdir`: Directory path used to store bisync working files.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn sync_bisync<'a>(
         &'a self,
@@ -20268,14 +27991,19 @@ impl Client {
         resilient: Option<bool>,
         resync: Option<bool>,
         workdir: Option<&'a str>,
+        prefer: Option<types::SyncBisyncPrefer>,
         body: &'a types::SyncBisyncRequest,
     ) -> Result<ResponseValue<types::SyncBisyncResponse>, Error<types::RcError>> {
         let url = format!("{}/sync/bisync", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20371,19 +28099,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn options_blocks<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::OptionsBlocksPrefer>,
         body: &'a types::OptionsBlocksRequest,
     ) -> Result<ResponseValue<types::OptionsBlocksResponse>, Error<types::RcError>> {
         let url = format!("{}/options/blocks", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20428,20 +28163,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `blocks`: Optional comma-separated list of option block names to
     ///   return.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn options_get<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         blocks: Option<&'a str>,
+        prefer: Option<types::OptionsGetPrefer>,
         body: &'a types::OptionsGetRequest,
     ) -> Result<ResponseValue<types::OptionsGetResponse>, Error<types::RcError>> {
         let url = format!("{}/options/get", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20488,20 +28230,27 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `blocks`: Optional comma-separated list of option block names to
     ///   describe.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn options_info<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         blocks: Option<&'a str>,
+        prefer: Option<types::OptionsInfoPrefer>,
         body: &'a types::OptionsInfoRequest,
     ) -> Result<ResponseValue<types::OptionsInfoResponse>, Error<types::RcError>> {
         let url = format!("{}/options/info", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20565,6 +28314,8 @@ impl Client {
     /// - `sftp`: Overrides for the `sftp` option block.
     /// - `vfs`: Overrides for the `vfs` option block.
     /// - `webdav`: Overrides for the `webdav` option block.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn options_set<'a>(
         &'a self,
@@ -20585,14 +28336,22 @@ impl Client {
         sftp: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         vfs: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         webdav: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::OptionsSetPrefer>,
         body: &'a types::OptionsSetRequest,
-    ) -> Result<ResponseValue<types::OptionsSetResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/options/set", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20651,19 +28410,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn options_local<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::OptionsLocalPrefer>,
         body: &'a types::OptionsLocalRequest,
     ) -> Result<ResponseValue<types::OptionsLocalResponse>, Error<types::RcError>> {
         let url = format!("{}/options/local", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20706,19 +28472,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn serve_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ServeListPrefer>,
         body: &'a types::ServeListRequest,
     ) -> Result<ResponseValue<types::ServeListResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20770,6 +28543,8 @@ impl Client {
     /// - `params`: Additional arbitrary parameters allowed.
     /// - `type_`: Type of server to start (e.g. `http`, `webdav`, `ftp`,
     ///   `sftp`).
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn serve_start<'a>(
         &'a self,
@@ -20781,14 +28556,19 @@ impl Client {
         fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         type_: Option<&'a str>,
+        prefer: Option<types::ServeStartPrefer>,
         body: &'a types::ServeStartRequest,
     ) -> Result<ResponseValue<types::ServeStartResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/start", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20839,20 +28619,30 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `id`: Identifier of the running serve instance returned by
     ///   `serve/start`.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn serve_stop<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         id: Option<&'a str>,
+        prefer: Option<types::ServeStopPrefer>,
         body: &'a types::ServeStopRequest,
-    ) -> Result<ResponseValue<types::ServeStopResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/serve/stop", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20896,19 +28686,29 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn serve_stopall<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ServeStopallPrefer>,
         body: &'a types::ServeStopallRequest,
-    ) -> Result<ResponseValue<types::ServeStopallResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/serve/stopall", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -20951,19 +28751,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn serve_types<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::ServeTypesPrefer>,
         body: &'a types::ServeTypesRequest,
     ) -> Result<ResponseValue<types::ServeTypesResponse>, Error<types::RcError>> {
         let url = format!("{}/serve/types", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21009,6 +28816,8 @@ impl Client {
     /// - `fs`: Optional VFS identifier to target; required when more than one
     ///   VFS is active.
     /// - `params`: Additional arbitrary parameters allowed.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_forget<'a>(
         &'a self,
@@ -21016,14 +28825,19 @@ impl Client {
         group: Option<&'a str>,
         fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        prefer: Option<types::VfsForgetPrefer>,
         body: &'a types::VfsForgetRequest,
     ) -> Result<ResponseValue<types::VfsForgetResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/forget", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21069,20 +28883,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier; omit to list all active VFS instances.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_list<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::VfsListPrefer>,
         body: &'a types::VfsListRequest,
     ) -> Result<ResponseValue<types::VfsListResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/list", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21133,6 +28954,8 @@ impl Client {
     ///   interval.
     /// - `timeout`: Duration to wait for the poll interval change to take
     ///   effect; `0` waits indefinitely.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_poll_interval<'a>(
         &'a self,
@@ -21141,17 +28964,22 @@ impl Client {
         fs: Option<&'a str>,
         interval: Option<&'a str>,
         timeout: Option<&'a str>,
+        prefer: Option<types::VfsPollIntervalPrefer>,
         body: &'a types::VfsPollIntervalRequest,
     ) -> Result<
         ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         Error<types::RcError>,
     > {
         let url = format!("{}/vfs/poll-interval", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21198,20 +29026,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier whose upload queue should be inspected.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_queue<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::VfsQueuePrefer>,
         body: &'a types::VfsQueueRequest,
     ) -> Result<ResponseValue<types::VfsQueueResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/queue", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21262,6 +29097,8 @@ impl Client {
     /// - `id`: Queue item ID as returned by `vfs/queue`.
     /// - `relative`: Set to true to treat `expiry` as relative to the current
     ///   value.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_queue_set_expiry<'a>(
         &'a self,
@@ -21271,14 +29108,22 @@ impl Client {
         fs: Option<&'a str>,
         id: Option<i64>,
         relative: Option<bool>,
+        prefer: Option<types::VfsQueueSetExpiryPrefer>,
         body: &'a types::VfsQueueSetExpiryRequest,
-    ) -> Result<ResponseValue<types::VfsQueueSetExpiryResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let url = format!("{}/vfs/queue-set-expiry", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21330,6 +29175,8 @@ impl Client {
     ///   refreshed.
     /// - `params`: Additional arbitrary parameters allowed.
     /// - `recursive`: Set to true to refresh entire directory trees.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_refresh<'a>(
         &'a self,
@@ -21338,14 +29185,19 @@ impl Client {
         fs: Option<&'a str>,
         params: Option<&'a ::serde_json::Map<::std::string::String, ::serde_json::Value>>,
         recursive: Option<bool>,
+        prefer: Option<types::VfsRefreshPrefer>,
         body: &'a types::VfsRefreshRequest,
     ) -> Result<ResponseValue<types::VfsRefreshResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/refresh", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21393,20 +29245,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `fs`: Optional VFS identifier whose statistics should be returned.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn vfs_stats<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         fs: Option<&'a str>,
+        prefer: Option<types::VfsStatsPrefer>,
         body: &'a types::VfsStatsRequest,
     ) -> Result<ResponseValue<types::VfsStatsResponse>, Error<types::RcError>> {
         let url = format!("{}/vfs/stats", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21452,20 +29311,30 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `url`: Repository URL of the plugin to install.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_add_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         url: Option<&'a str>,
+        prefer: Option<types::PluginsctlAddPluginPrefer>,
         body: &'a types::PluginsctlAddPluginRequest,
-    ) -> Result<ResponseValue<types::PluginsctlAddPluginResponse>, Error<types::RcError>> {
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
         let _url = format!("{}/pluginsctl/addPlugin", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21512,6 +29381,8 @@ impl Client {
     /// - `group`: Assign the request to a custom stats group.
     /// - `plugin_type`: Filter results by plugin type (e.g. `test`).
     /// - `type_`: MIME type to match when listing plugins.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_get_plugins_for_type<'a>(
         &'a self,
@@ -21519,15 +29390,20 @@ impl Client {
         group: Option<&'a str>,
         plugin_type: Option<&'a str>,
         type_: Option<&'a str>,
+        prefer: Option<types::PluginsctlGetPluginsForTypePrefer>,
         body: &'a types::PluginsctlGetPluginsForTypeRequest,
     ) -> Result<ResponseValue<types::PluginsctlGetPluginsForTypeResponse>, Error<types::RcError>>
     {
         let url = format!("{}/pluginsctl/getPluginsForType", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21575,19 +29451,26 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_list_plugins<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::PluginsctlListPluginsPrefer>,
         body: &'a types::PluginsctlListPluginsRequest,
     ) -> Result<ResponseValue<types::PluginsctlListPluginsResponse>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/listPlugins", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21630,20 +29513,27 @@ impl Client {
     /// - `async_`: Run the command asynchronously. Returns a job id
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_list_test_plugins<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
+        prefer: Option<types::PluginsctlListTestPluginsPrefer>,
         body: &'a types::PluginsctlListTestPluginsRequest,
     ) -> Result<ResponseValue<types::PluginsctlListTestPluginsResponse>, Error<types::RcError>>
     {
         let url = format!("{}/pluginsctl/listTestPlugins", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21687,20 +29577,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the plugin to uninstall.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_remove_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         name: Option<&'a str>,
+        prefer: Option<types::PluginsctlRemovePluginPrefer>,
         body: &'a types::PluginsctlRemovePluginRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/removePlugin", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21745,20 +29642,27 @@ impl Client {
     ///   immediately.
     /// - `group`: Assign the request to a custom stats group.
     /// - `name`: Name of the test plugin to uninstall.
+    /// - `prefer`: Set to "respond-async" with _async=true to receive HTTP 202
+    ///   instead of 200.
     /// - `body`
     pub async fn pluginsctl_remove_test_plugin<'a>(
         &'a self,
         async_: Option<bool>,
         group: Option<&'a str>,
         name: Option<&'a str>,
+        prefer: Option<types::PluginsctlRemoveTestPluginPrefer>,
         body: &'a types::PluginsctlRemoveTestPluginRequest,
     ) -> Result<ResponseValue<()>, Error<types::RcError>> {
         let url = format!("{}/pluginsctl/removeTestPlugin", self.baseurl,);
-        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(1usize);
+        let mut header_map = ::reqwest::header::HeaderMap::with_capacity(2usize);
         header_map.append(
             ::reqwest::header::HeaderName::from_static("api-version"),
             ::reqwest::header::HeaderValue::from_static(Self::api_version()),
         );
+        if let Some(value) = prefer {
+            header_map.append("Prefer", value.to_string().try_into()?);
+        }
+
         #[allow(unused_mut)]
         let mut request = self
             .client
@@ -21798,3 +29702,8 @@ pub mod prelude {
     #[allow(unused_imports)]
     pub use super::Client;
 }
+
+
+// ---- rclone-sdk hand-written overrides (see src/overrides.rs) ----
+pub mod overrides;
+pub use overrides::*;

@@ -17,7 +17,9 @@ export type Strip202<P> = {
     }
 }
 
-/** Default paths with 202 responses stripped for clean sync usage. */
+// Sync client paths (202 stripped). Response shapes that depend on a request
+// field (e.g. config/create) can't be typed here — they get per-path wrappers
+// in ./overrides/ instead.
 export type SyncPaths = Strip202<paths>
 
 /** Strips 200 responses, keeping only 202 (async) + error codes. */

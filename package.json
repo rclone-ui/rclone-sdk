@@ -19,7 +19,7 @@
         "lint": "biome check .",
         "check": "tsc --noEmit",
         "pub:ts": "npm version patch --no-git-tag-version && npm publish",
-        "gen:rs": "node scripts/progen.cjs",
+        "gen:rs": "node scripts/gen.rust.mjs",
         "pub:rs": "cd rs && cargo publish --allow-dirty",
         "all": "npm publish && npm run gen:rs && npm run pub:rs"
     },

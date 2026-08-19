@@ -6,6 +6,8 @@ import createFetchClient, {
 } from 'openapi-fetch'
 import type { PathsWithMethod, RequiredKeysOf } from 'openapi-typescript-helpers'
 import type { paths } from 'rclone-openapi'
+import { type Overrides, applyOverrides } from './overrides/index.js'
+import { type AsyncPaths, type SyncPaths, preferAsyncMiddleware } from './shared.js'
 
 export type {
     Client as OpenApiClient,
@@ -15,9 +17,21 @@ export type {
 } from 'openapi-fetch'
 export type { RequiredKeysOf as OpenApiRequiredKeysOf } from 'openapi-typescript-helpers'
 export type { paths } from 'rclone-openapi'
-
-export type { AsyncJobResponse, AsyncPaths, Strip200, Strip202, SyncPaths } from './shared.js'
-import { type AsyncPaths, type SyncPaths, preferAsyncMiddleware } from './shared.js'
+export type {
+    AsyncJobResponse,
+    AsyncPaths,
+    Strip200,
+    Strip202,
+    SyncPaths,
+} from './shared.js'
+export type {
+    ConfigStep,
+    ConfigOpt,
+    ConfigResult,
+    ConfigCreateArgs,
+    ConfigUpdateArgs,
+    Overrides,
+} from './overrides/index.js'
 
 type InitParam<Init> = RequiredKeysOf<Init> extends never
     ? [(Init & { [key: string]: unknown })?]
@@ -38,7 +52,7 @@ export type RCDClient = Client<SyncPaths> & {
         url: Path,
         ...init: InitParam<Init>
     ): Promise<FetchResponse<AsyncPaths[Path & keyof AsyncPaths]['post'], Init, DefaultMedia>>
-}
+} & Overrides
 
 /**
  * Creates a typed fetch client for the Rclone RC daemon.
@@ -46,6 +60,7 @@ export type RCDClient = Client<SyncPaths> & {
  *   const rcd = createRCDClient({ baseUrl: "http://localhost:5572" });
  *   const { data } = await rcd.POST("/config/listremotes");       // sync — typed 200 response
  *   const { data } = await rcd.ASYNC("/sync/copy", { body: { srcFs: "a:", dstFs: "b:" } }); // async — typed 202 { jobid }
+ *   const step = await rcd.configCreate({ name, type, opt: { nonInteractive: true } }); // typed ConfigStep (flag-dependent)
  * Note: Rclone RC routes are exposed as POST calls, even for read operations.
  */
 export default function createRCDClient(options: ClientOptions = {}): RCDClient {
@@ -60,6 +75,8 @@ export default function createRCDClient(options: ClientOptions = {}): RCDClient 
             body: { ...opts.body, _async: true },
         } as any) as any
     }
+
+    Object.assign(enhanced, applyOverrides(client))
 
     return enhanced
 }
