@@ -1,45 +1,42 @@
 import type { Client } from 'openapi-fetch'
-import type { components } from 'rclone-openapi'
+import type { components, paths } from 'rclone-openapi'
 import type { SyncPaths } from '../shared.js'
 
-/** Interactive step from `config/create` / `config/update` (with `opt.nonInteractive`). */
-export interface ConfigStep {
-    State?: string
-    Option?: components['schemas']['ConfigProviderOption'] | null
-    Error?: string
-    Result?: string
-    [key: string]: unknown
-}
+/** The next step of `config/create` / `config/update` (with `opt.nonInteractive`). */
+export type ConfigStep =
+    components['responses']['ConfigStepResponse']['content']['application/json']
 
-/** Structured `opt` (rclone `UpdateRemoteOpt`); the spec types it as an opaque JSON string. */
-export interface ConfigOpt {
-    obscure?: boolean
-    noObscure?: boolean
-    noOutput?: boolean
-    nonInteractive?: boolean
-    continue?: boolean
-    all?: boolean
-    state?: string
-    result?: string
-    edit?: boolean
-}
+/** The `opt` param of `config/create` and `config/update`. */
+export type ConfigOpt = NonNullable<
+    paths['/config/create']['post']['requestBody']['content']['application/json']['opt']
+>
 
 type EmptyObject = Record<string, never>
 
-/** `ConfigStep` when `nonInteractive` is set, `{}` otherwise — resolved from the `opt` passed. */
-export type ConfigResult<O> = O extends { nonInteractive: true } ? ConfigStep : EmptyObject
+/**
+ * `ConfigStep` when `nonInteractive` is set, `{}` when it isn't, and either one when `opt`'s value
+ * isn't known at compile time.
+ */
+export type ConfigResult<O> = O extends { nonInteractive: true }
+    ? ConfigStep
+    : O extends { nonInteractive?: false }
+      ? EmptyObject
+      : ConfigStep | EmptyObject
+
+// `O` is inferred, so TypeScript doesn't check it for extra fields on its own.
+type OnlyConfigOpt<O> = O & Record<Exclude<keyof O, keyof ConfigOpt>, never>
 
 export interface ConfigCreateArgs<O extends ConfigOpt> {
     name: string
     type: string
     parameters?: Record<string, unknown>
-    opt?: O
+    opt?: OnlyConfigOpt<O>
 }
 
 export interface ConfigUpdateArgs<O extends ConfigOpt> {
     name: string
     parameters?: Record<string, unknown>
-    opt?: O
+    opt?: OnlyConfigOpt<O>
 }
 
 // `const O` captures the literal `opt` (keeps `nonInteractive: true` as `true`) so
@@ -49,13 +46,11 @@ export function makeConfigCreate(client: Client<SyncPaths>) {
         args: ConfigCreateArgs<O>
     ): Promise<ConfigResult<O>> {
         const { data, error } = await client.POST('/config/create', {
-            params: {
-                query: {
-                    name: args.name,
-                    type: args.type,
-                    parameters: JSON.stringify(args.parameters ?? {}),
-                    opt: JSON.stringify(args.opt ?? {}),
-                },
+            body: {
+                name: args.name,
+                type: args.type,
+                parameters: args.parameters ?? {},
+                opt: args.opt,
             },
         })
         if (error) throw error
@@ -68,12 +63,10 @@ export function makeConfigUpdate(client: Client<SyncPaths>) {
         args: ConfigUpdateArgs<O>
     ): Promise<ConfigResult<O>> {
         const { data, error } = await client.POST('/config/update', {
-            params: {
-                query: {
-                    name: args.name,
-                    parameters: JSON.stringify(args.parameters ?? {}),
-                    opt: JSON.stringify(args.opt ?? {}),
-                },
+            body: {
+                name: args.name,
+                parameters: args.parameters ?? {},
+                opt: args.opt,
             },
         })
         if (error) throw error

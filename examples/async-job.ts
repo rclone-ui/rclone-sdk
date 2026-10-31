@@ -16,8 +16,8 @@ if (!srcFs || !dstFs) {
 }
 
 // Start an async copy
-const { data: copyResult } = await rcd.POST('/sync/copy', {
-    body: { srcFs, dstFs, _async: true },
+const { data: copyResult } = await rcd.ASYNC('/sync/copy', {
+    body: { srcFs, dstFs },
 })
 
 const jobid = copyResult?.jobid

@@ -11,6 +11,6 @@
 	  "outDir": "dist",
 	  "verbatimModuleSyntax": true
 	},
-	"include": ["src"]
+	"include": ["src", "examples", "scripts/check-types.ts"]
   }
   
