@@ -15,13 +15,15 @@
     "description": "Fully typed SDK for Rclone. Compatible with vanilla Fetch, React Query, and SWR.",
     "scripts": {
         "build": "tsup",
-        "prepublishOnly": "npm run build",
         "lint": "biome check .",
         "check": "tsc --noEmit",
-        "pub:ts": "npm version patch --no-git-tag-version && npm publish",
+        "check:rs": "cargo check --manifest-path rs/Cargo.toml",
+        "check:live": "npm run build && node scripts/check-live.mjs",
+        "bump": "npm version --no-git-tag-version",
         "gen:rs": "node scripts/gen.rust.mjs",
-        "pub:rs": "cd rs && cargo publish --allow-dirty",
-        "all": "npm publish && npm run gen:rs && npm run pub:rs"
+        "pub:ts": "npm run check && npm run build && npm publish",
+        "pub:rs": "npm run check:rs && cd rs && cargo publish --allow-dirty",
+        "all": "npm run gen:rs && npm run check:live && npm run pub:ts && npm run pub:rs"
     },
     "engines": {
         "node": ">=18"
@@ -30,7 +32,7 @@
         "openapi-fetch": "^0.17.0",
         "openapi-react-query": "^0.5.4",
         "openapi-typescript-helpers": "^0.1.0",
-        "rclone-openapi": "^1.75.0",
+        "rclone-openapi": "1.75.2",
         "swr-openapi": "^5.6.0"
     },
     "devDependencies": {
