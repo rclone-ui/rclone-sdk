@@ -1,16 +1,16 @@
 // Rust generator: 3.1→3.0 down-convert + format-adapters + declarative overrides
-// → cargo progenitor → post-gen fixups (group rename, wire in overrides module).
+// → cargo progenitor → post-gen fixups (group rename, fs conversions, wire in overrides module).
 
 import { execSync } from 'node:child_process'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { Converter } from '@apiture/openapi-down-convert'
-import yaml from 'js-yaml'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const GEN_FOLDER = path.resolve(ROOT, 'rs')
-const SOURCE_SPEC = path.resolve(ROOT, 'node_modules/rclone-openapi/openapi.yaml')
+const SOURCE_SPEC = path.resolve(ROOT, 'node_modules/rclone-openapi/openapi.json')
+const PROGENITOR_VERSION = '0.15.1'
 const OUTPUT_SPEC = path.resolve(ROOT, 'openapi-3.0.json')
 const KEYWORDS = ['rclone', 'sdk', 'openapi', 'client']
 const CATEGORIES = ['api-bindings', 'web-programming::http-client']
@@ -19,16 +19,6 @@ const REPOSITORY = 'https://github.com/rclone-ui/rclone-sdk'
 const README = '../README.md'
 
 // --- Override registry: facts the OpenAPI spec can't express --------------
-
-// A: uploadfile has a binary body (spec models it as multipart/unknown).
-const uploadFileBinary = {
-    target: 'both',
-    kind: 'request-body',
-    path: '/operations/uploadfile',
-    description: 'Binary payload containing the file to upload.',
-    mediaType: 'application/octet-stream',
-    schema: { type: 'string', format: 'binary' },
-}
 
 // C: ConfigProviderOptionAny is arbitrary JSON → empty schema → serde_json::Value
 // (was objects-only serde_json::Map, which failed on a string/number Default).
@@ -44,14 +34,6 @@ const arbitraryJsonValue = {
 const groupCollision = {
     target: 'rust',
     kind: 'rust-rename-post-gen',
-    routes: [
-        '/core/stats',
-        '/core/stats-delete',
-        '/core/stats-reset',
-        '/core/transferred',
-        '/job/stopgroup',
-    ],
-    wireName: '_group',
     from: 'group',
     to: 'group_',
 }
@@ -60,7 +42,7 @@ function loadSourceSpec(filePath) {
     if (!fs.existsSync(filePath)) {
         throw new Error(`Source spec not found at ${filePath}`)
     }
-    return yaml.load(fs.readFileSync(filePath, 'utf8'))
+    return JSON.parse(fs.readFileSync(filePath, 'utf8'))
 }
 
 function readPackageVersion() {
@@ -83,17 +65,23 @@ function convertToOpenApi30(openapi31) {
     return converter.convert()
 }
 
-// Drop the 202 (async) response where a 200 exists — progenitor 0.11 allows ≤1
-// success type per operation. Mirrors the TS `Strip202` (Rust is the sync client).
-function stripAsyncResponses(doc) {
+// progenitor 0.15 allows one success type and one error type per operation, and
+// can't generate multipart. Rust is the sync client, and overrides.rs has the rest:
+// - Background calls go through `post_async`, so the 202 and `Prefer` go. A generated
+//   method that sent `Prefer` would get a 202 it can't read.
+// - The text/plain 401 goes, so a 401 comes back as `Error::InvalidResponsePayload`.
+// - Uploads go through a hand-written `operations_uploadfile`.
+function adaptRoutes(doc) {
+    delete doc.paths['/operations/uploadfile']
     for (const pathItem of Object.values(doc.paths ?? {})) {
         if (!pathItem || typeof pathItem !== 'object') continue
         for (const op of Object.values(pathItem)) {
             if (!op || typeof op !== 'object' || !op.responses) continue
-            const hasOk = op.responses['200'] !== undefined || op.responses[200] !== undefined
-            if (hasOk && op.responses['202'] !== undefined) {
-                delete op.responses['202']
-            }
+            delete op.responses['202']
+            delete op.responses['401']
+            op.parameters = op.parameters?.filter(
+                (param) => param.$ref !== '#/components/parameters/PreferAsyncHeader'
+            )
         }
     }
 }
@@ -140,62 +128,41 @@ function walkSchemaNodes(node, visitor) {
     }
 }
 
-function simplifyDeepObjectParameter(param) {
-    if (!param || typeof param !== 'object' || param.$ref) return false
-    if (param.style !== 'deepObject') return false
-    param.style = 'form'
-    if (param.explode === undefined) param.explode = true
-    if (!param.schema || typeof param.schema !== 'object') {
-        param.schema = { type: 'object', additionalProperties: true }
+// Calls `visitor` on every schema node in the components and in the routes.
+function forEachSchemaNode(doc, visitor) {
+    const walkContent = (content) => {
+        for (const media of Object.values(content ?? {})) walkSchemaNodes(media.schema, visitor)
     }
-    return true
+    for (const schema of Object.values(doc.components?.schemas ?? {})) {
+        walkSchemaNodes(schema, visitor)
+    }
+    for (const response of Object.values(doc.components?.responses ?? {})) {
+        walkContent(response.content)
+    }
+    for (const pathItem of Object.values(doc.paths ?? {})) {
+        walkContent(pathItem.post?.requestBody?.content)
+        for (const response of Object.values(pathItem.post?.responses ?? {})) {
+            walkContent(response.content)
+        }
+    }
 }
 
-function adjustParameters(doc) {
-    const componentParameters = doc.components?.parameters || {}
-    for (const key of Object.keys(componentParameters)) {
-        simplifyDeepObjectParameter(componentParameters[key])
-    }
-    if (!doc.paths) return
-    for (const pathItem of Object.values(doc.paths)) {
-        if (!pathItem || typeof pathItem !== 'object') continue
-        if (Array.isArray(pathItem.parameters)) {
-            pathItem.parameters.forEach(simplifyDeepObjectParameter)
-        }
-        for (const operation of Object.values(pathItem)) {
-            if (!operation || typeof operation !== 'object') continue
-            if (Array.isArray(operation.parameters)) {
-                operation.parameters.forEach(simplifyDeepObjectParameter)
-            }
-        }
-    }
+// typify ignores `additionalProperties: true` on an object that has properties, which would
+// leave no way to send or read the other fields. With `{}` the struct gets an `extra` map.
+function keepOpenFields(node) {
+    if (node.properties && node.additionalProperties === true) node.additionalProperties = {}
 }
 
 // --- Apply overrides ------------------------------------------------------
 
-// A: rewrite a route's request body.
-function applyRequestBodyOverride(doc, entry) {
-    const pathItem = doc.paths?.[entry.path]
-    if (!pathItem || typeof pathItem !== 'object') return false
-    const op = pathItem.post || pathItem.put || pathItem.patch
-    if (!op || typeof op !== 'object') return false
-    const originalBody = op.requestBody || {}
-    const required = originalBody.required
-    op.requestBody = {
-        description: originalBody.description || entry.description,
-        content: { [entry.mediaType]: { schema: entry.schema } },
-        ...(required === undefined ? {} : { required }),
-    }
-    return true
-}
-
 // C: replace a named schema wholesale.
 function applySchemaReplace(doc, entry) {
     const schema = doc.components?.schemas?.[entry.schema]
-    if (!schema || typeof schema !== 'object') return false
+    if (!schema || typeof schema !== 'object') {
+        throw new Error(`Schema ${entry.schema} isn't in the spec, so its override can't apply`)
+    }
     for (const k of Object.keys(schema)) delete schema[k]
     Object.assign(schema, entry.replacement)
-    return true
 }
 
 // B: post-gen fix for the `_group`/`group` collision. Pattern-based (from/to
@@ -220,29 +187,34 @@ function applyGroupRename(libPath, entry) {
         `$1${to}: Default::default(),$2${from}: Default::default(),`
     )
 
-    // method signature (rename first of two `<from>` params)
-    const methodPattern = /pub async fn (\w+)<'a>\(\s*&'a self,\s*([^)]+)\)/gs
-    content = content.replace(methodPattern, (match, methodName, params) => {
-        const paramLines = params
-            .split(',')
-            .map((p) => p.trim())
-            .filter((p) => p)
-        const groupIndices = []
-        paramLines.forEach((param, idx) => {
-            if (new RegExp(`^\\s*${from}\\s*:`).test(param)) groupIndices.push(idx)
-        })
-        if (groupIndices.length === 2) {
-            paramLines[groupIndices[0]] = paramLines[groupIndices[0]].replace(
-                new RegExp(`^\\s*${from}\\s*:`),
-                `${to}:`
-            )
-            const newParams = paramLines.join(',\n        ')
-            return `pub async fn ${methodName}<'a>(\n        &'a self,\n        ${newParams}\n    )`
-        }
-        return match
-    })
-
     fs.writeFileSync(libPath, content)
+}
+
+// `fs`-like params are `string | RemoteDefinition`, and typify makes a separate enum for each one.
+// These conversions let callers write `fs: "gdrive:".into()` on all of them.
+function addFsConversions(libPath) {
+    const content = fs.readFileSync(libPath, 'utf8')
+    const enums = content.matchAll(
+        /pub enum (\w+) \{\s+String\(::std::string::String\),\s+RemoteDefinition\(RemoteDefinition\),\s+\}/g
+    )
+    let conversions = ''
+    for (const [, name] of enums) {
+        conversions += `
+impl From<&str> for types::${name} {
+    fn from(value: &str) -> Self {
+        Self::String(value.to_string())
+    }
+}
+
+impl From<String> for types::${name} {
+    fn from(value: String) -> Self {
+        Self::String(value)
+    }
+}
+`
+    }
+    if (!conversions) throw new Error('Found no `string | RemoteDefinition` enums to convert')
+    fs.writeFileSync(libPath, content + conversions)
 }
 
 /** Wire the hand-written override module into the freshly generated crate. */
@@ -297,6 +269,19 @@ function generateClient(version) {
         'false',
     ]
     execSync(args.join(' '), { stdio: 'inherit', cwd: ROOT })
+}
+
+// `cargo progenitor --version` sets the crate version, so the tool can't report its own.
+// The dependency it writes into the manifest shows which version ran.
+function checkProgenitorVersion() {
+    const manifest = fs.readFileSync(path.resolve(GEN_FOLDER, 'Cargo.toml'), 'utf8')
+    const used = manifest.match(/^progenitor-client = "(.+)"/m)?.[1]
+    if (used !== PROGENITOR_VERSION) {
+        throw new Error(
+            `This needs cargo-progenitor ${PROGENITOR_VERSION}, but ${used} ran. Install it with: ` +
+                `cargo install cargo-progenitor --version ${PROGENITOR_VERSION} --locked --force`
+        )
+    }
 }
 
 function updateCargoManifest(version, description, readme) {
@@ -380,6 +365,14 @@ function updateCargoManifest(version, description, readme) {
     updateVersion()
     metadataFields.forEach(ensureField)
 
+    // overrides.rs needs multipart and base64, and `https://` URLs need TLS.
+    const reqwestIndex = lines.findIndex((line) => line.startsWith('reqwest ='))
+    lines[reqwestIndex] = lines[reqwestIndex].replace(
+        '"stream"]',
+        '"stream", "multipart", "rustls"]'
+    )
+    lines.splice(lines.indexOf('[dependencies]') + 1, 0, 'base64 = "0.22"')
+
     let dependenciesIndex = lines.findIndex((line) => line.trim() === '[dependencies]')
     if (dependenciesIndex > 0) {
         let i = dependenciesIndex - 1
@@ -406,14 +399,11 @@ export function generateRust() {
         const doc = convertToOpenApi30(source)
 
         // format-adapters
-        stripAsyncResponses(doc)
-        for (const schema of Object.values(doc.components?.schemas ?? {})) {
-            walkSchemaNodes(schema, convertAnyOfNullToNullable)
-        }
-        adjustParameters(doc)
+        adaptRoutes(doc)
+        forEachSchemaNode(doc, convertAnyOfNullToNullable)
+        forEachSchemaNode(doc, keepOpenFields)
 
         // declarative overrides
-        applyRequestBodyOverride(doc, uploadFileBinary)
         applySchemaReplace(doc, arbitraryJsonValue)
 
         writeOutput(doc, OUTPUT_SPEC)
@@ -421,9 +411,11 @@ export function generateRust() {
 
         const version = readPackageVersion()
         generateClient(version)
+        checkProgenitorVersion()
 
         // post-gen overrides
         applyGroupRename(libPath, groupCollision)
+        addFsConversions(libPath)
         wireInOverrides(libPath)
 
         updateCargoManifest(version, 'Full OpenAPI-based client for the Rclone RC API.', README)

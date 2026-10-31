@@ -1,88 +1,81 @@
 //! Hand-written overrides for the generated client. Survives regeneration; the
 //! gen script wires it in via `pub mod overrides;`.
 
-use crate::types;
 use crate::Client;
+use crate::types;
+use base64::Engine;
 use progenitor_client::{Error, ResponseValue};
+use reqwest::header::{AUTHORIZATION, HeaderMap, HeaderValue};
 
-/// Interactive step from `config/create` / `config/update` (with `opt.nonInteractive`).
-#[derive(::serde::Serialize, ::serde::Deserialize, Debug, Clone, Default)]
-pub struct ConfigStep {
-    #[serde(rename = "State", default, skip_serializing_if = "Option::is_none")]
-    pub state: Option<String>,
-    #[serde(rename = "Option", default, skip_serializing_if = "Option::is_none")]
-    pub option: Option<::serde_json::Value>,
-    #[serde(rename = "Error", default, skip_serializing_if = "Option::is_none")]
-    pub error: Option<String>,
-    #[serde(rename = "Result", default, skip_serializing_if = "Option::is_none")]
-    pub result: Option<String>,
-    #[serde(flatten)]
-    pub extra: ::serde_json::Map<String, ::serde_json::Value>,
-}
+pub use ::reqwest;
+pub use ::reqwest::multipart;
 
-/// Job handle from an async submission (poll `job/status` with `jobid`).
+/// Job handle from a background call. Poll `job/status` with `jobid`.
 #[derive(::serde::Serialize, ::serde::Deserialize, Debug, Clone, Default)]
 pub struct AsyncJob {
+    #[serde(rename = "executeId")]
+    pub execute_id: String,
     pub jobid: i64,
 }
 
+// No total timeout, because a call like `sync_copy` can run for as long as its transfer does.
+fn client_builder() -> reqwest::ClientBuilder {
+    let builder = reqwest::ClientBuilder::new();
+    #[cfg(not(target_arch = "wasm32"))]
+    let builder = builder.connect_timeout(::std::time::Duration::from_secs(15));
+    builder
+}
+
 impl Client {
-    /// Typed `config/create` (use with `opt.nonInteractive=true`); preserves the
-    /// interactive step fields the generated method drops.
-    pub async fn config_create_step<'a>(
-        &'a self,
-        name: Option<&'a str>,
-        type_: Option<&'a str>,
-        opt: Option<&'a str>,
-        parameters: Option<&'a str>,
-    ) -> Result<ResponseValue<ConfigStep>, Error<types::RcError>> {
-        self.config_step("config/create", name, type_, opt, parameters)
-            .await
+    /// Connects with the credentials from `--rc-user` and `--rc-pass`.
+    /// Use this or [`Client::without_auth`] instead of `Client::new`, which gives up on every call
+    /// after 15 seconds, and rclone cancels a call when its client disconnects.
+    pub fn with_auth(baseurl: &str, user: &str, password: &str) -> Self {
+        let credentials =
+            base64::engine::general_purpose::STANDARD.encode(format!("{user}:{password}"));
+        let mut value = HeaderValue::from_str(&format!("Basic {credentials}"))
+            .expect("base64 is always a valid header value");
+        value.set_sensitive(true);
+        let mut headers = HeaderMap::new();
+        headers.insert(AUTHORIZATION, value);
+        let client = client_builder()
+            .default_headers(headers)
+            .build()
+            .expect("the client settings are valid");
+        Self::new_with_client(baseurl, client)
     }
 
-    /// Typed `config/update` counterpart of [`Client::config_create_step`].
-    pub async fn config_update_step<'a>(
-        &'a self,
-        name: Option<&'a str>,
-        opt: Option<&'a str>,
-        parameters: Option<&'a str>,
-    ) -> Result<ResponseValue<ConfigStep>, Error<types::RcError>> {
-        self.config_step("config/update", name, None, opt, parameters)
-            .await
+    /// Connects to a server that runs with `--rc-no-auth`.
+    /// On a server with no credentials and without that flag, most routes return a 403.
+    pub fn without_auth(baseurl: &str) -> Self {
+        let client = client_builder()
+            .build()
+            .expect("the client settings are valid");
+        Self::new_with_client(baseurl, client)
     }
 
-    async fn config_step<'a>(
+    /// Runs any RC call in the background by sending `Prefer: respond-async`.
+    /// `body` has to serialize to a JSON object. It can be one of the generated body types
+    /// or a `serde_json::Value`.
+    pub async fn post_async<'a, B>(
         &'a self,
         path: &'a str,
-        name: Option<&'a str>,
-        type_: Option<&'a str>,
-        opt: Option<&'a str>,
-        parameters: Option<&'a str>,
-    ) -> Result<ResponseValue<ConfigStep>, Error<types::RcError>> {
-        let url = format!("{}/{}", self.baseurl, path);
-        let mut query: Vec<(&str, &str)> = Vec::new();
-        if let Some(v) = name {
-            query.push(("name", v));
-        }
-        if let Some(v) = type_ {
-            query.push(("type", v));
-        }
-        if let Some(v) = opt {
-            query.push(("opt", v));
-        }
-        if let Some(v) = parameters {
-            query.push(("parameters", v));
-        }
+        body: &'a B,
+    ) -> Result<ResponseValue<AsyncJob>, Error<types::RcError>>
+    where
+        B: ::serde::Serialize + ?Sized,
+    {
+        let url = format!("{}/{}", self.baseurl, path.trim_start_matches('/'));
         let response = self
             .client
             .post(url)
-            .header(::reqwest::header::ACCEPT, "application/json")
-            .json(&::serde_json::json!({}))
-            .query(&query)
+            .header(reqwest::header::ACCEPT, "application/json")
+            .header("Prefer", "respond-async")
+            .json(body)
             .send()
             .await?;
         match response.status().as_u16() {
-            200 => ResponseValue::from_response(response).await,
+            202 => ResponseValue::from_response(response).await,
             400..=599 => Err(Error::ErrorResponse(
                 ResponseValue::from_response(response).await?,
             )),
@@ -90,28 +83,42 @@ impl Client {
         }
     }
 
-    /// Submit any RC operation asynchronously (sets `_async=true` +
-    /// `Prefer: respond-async`). Rust analog of the TS `ASYNC`.
-    pub async fn post_async<'a>(
+    /// Uploads `files` to the directory `remote` on `fs`, as `(file name, content)` pairs.
+    /// Rclone only reads multipart bodies and skips parts with no file name, and it returns 200
+    /// either way. This method replaces the generated one so that neither can happen.
+    pub async fn operations_uploadfile<'a>(
         &'a self,
-        path: &'a str,
-        query: &'a [(&'a str, &'a str)],
-        body: &'a ::serde_json::Value,
-    ) -> Result<ResponseValue<AsyncJob>, Error<types::RcError>> {
-        let url = format!("{}/{}", self.baseurl, path.trim_start_matches('/'));
-        let mut q: Vec<(&str, &str)> = query.to_vec();
-        q.push(("_async", "true"));
+        config: Option<&'a str>,
+        filter: Option<&'a str>,
+        group: Option<&'a str>,
+        fs: &'a str,
+        remote: &'a str,
+        files: impl IntoIterator<Item = (String, multipart::Part)>,
+    ) -> Result<
+        ResponseValue<::serde_json::Map<::std::string::String, ::serde_json::Value>>,
+        Error<types::RcError>,
+    > {
+        let url = format!("{}/operations/uploadfile", self.baseurl);
+        let mut query = vec![("fs", fs), ("remote", remote)];
+        for (name, value) in [("_config", config), ("_filter", filter), ("_group", group)] {
+            if let Some(value) = value {
+                query.push((name, value));
+            }
+        }
+        let mut form = multipart::Form::new();
+        for (file_name, part) in files {
+            form = form.part("file", part.file_name(file_name));
+        }
         let response = self
             .client
             .post(url)
-            .header(::reqwest::header::ACCEPT, "application/json")
-            .header("Prefer", "respond-async")
-            .json(body)
-            .query(&q)
+            .header(reqwest::header::ACCEPT, "application/json")
+            .query(&query)
+            .multipart(form)
             .send()
             .await?;
         match response.status().as_u16() {
-            200 | 202 => ResponseValue::from_response(response).await,
+            200 => ResponseValue::from_response(response).await,
             400..=599 => Err(Error::ErrorResponse(
                 ResponseValue::from_response(response).await?,
             )),
