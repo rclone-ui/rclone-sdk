@@ -21,6 +21,7 @@ dist
 
 # Rust
 target
+scripts/check-live-rs/Cargo.lock
 *.rs.bk
 .*.swp
 
