@@ -793,7 +793,7 @@ dependencies = [
 
 [[package]]
 name = "rclone-sdk"
-version = "1.75.0"
+version = "1.75.2"
 dependencies = [
  "base64 0.22.1",
  "bytes",

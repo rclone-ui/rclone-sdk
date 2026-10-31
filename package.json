@@ -1,6 +1,6 @@
 {
     "name": "rclone-sdk",
-    "version": "1.75.0",
+    "version": "1.75.2",
     "keywords": [
         "rclone",
         "rclone-remote-control",

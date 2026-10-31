@@ -1,6 +1,6 @@
 [package]
 name = "rclone-sdk"
-version = "1.75.0"
+version = "1.75.2"
 edition = "2024"
 license = "MIT"
 description = "Full OpenAPI-based client for the Rclone RC API."
