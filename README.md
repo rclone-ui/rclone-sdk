@@ -23,34 +23,48 @@ cargo add rclone-sdk
 
 ```toml
 [dependencies]
-rclone-sdk = "1.74.1"
+rclone-sdk = "1.75.2"
 tokio = { version = "1", features = ["full"] }
 ```
 
 ```rust
-use rclone_sdk::Client;
+use rclone_sdk::{types, Client};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let client = Client::new("http://localhost:5572");
+    let client = Client::with_auth("http://localhost:5572", "user", "password");
 
     // Get rclone version info
-    let version = client.core_version(None, None).await?;
+    let version = client.core_version(&Default::default()).await?;
     let v = version.into_inner();
     println!("Rclone {} on {}/{}", v.version, v.os, v.arch);
 
     // List all configured remotes
-    let remotes = client.config_listremotes(None, None).await?;
+    let remotes = client.config_listremotes(&Default::default()).await?;
     println!("Remotes: {:?}", remotes.into_inner().remotes);
 
     // Get storage info for a remote
-    let about = client.operations_about(None, None, "gdrive:").await?;
+    let about = client
+        .operations_about(&types::OperationsAboutBody {
+            fs: "gdrive:".into(),
+            config: Default::default(),
+            filter: Default::default(),
+            group: None,
+        })
+        .await?;
     let info = about.into_inner();
-    println!("Storage: {} / {} bytes used", info.used, info.total);
+    println!("Storage: {:?} / {:?} bytes used", info.used, info.total);
 
     Ok(())
 }
 ```
+
+- **Connecting:** use `Client::with_auth`, or `Client::without_auth` for a server that runs with `--rc-no-auth`. Avoid `Client::new`, which gives up on every call after 15 seconds, and rclone cancels a call when its client disconnects. To use your own settings, pass a `rclone_sdk::reqwest::Client` to `Client::new_with_client`.
+- **Bodies:** each method takes one body struct. A body with required fields has no `Default`, so you list every field.
+- **Open routes:** routes like `serve/start` accept more than the spec lists. Put those fields in the struct's `extra` map.
+- **Background calls:** `client.post_async("sync/copy", &body)` returns the job ID. Poll `job_status` with it.
+- **Uploads:** `client.operations_uploadfile(None, None, None, "gdrive:", "photos", files)` takes `(file name, multipart::Part)` pairs. `remote` is the directory to upload into.
+- **Failed logins:** a 401 is plain text, so it comes back as `Error::InvalidResponsePayload` with the text inside.
 
 
 ## 📦 JavaScript / TypeScript
@@ -83,6 +97,8 @@ const { data: about } = await rcd.POST('/operations/about', {
 console.log(`Used: ${about?.used} / ${about?.total}`)
 ```
 
+TypeScript rejects fields that rclone would ignore, so `{ fs: 'gdrive:', remote: '', recurse: true }` doesn't compile. `recurse` belongs in `opt`.
+
 ### Tanstack/React Query
 
 ```tsx
@@ -94,7 +110,7 @@ function RemotesList() {
     const { data, isLoading, error } = rq.useQuery('post', '/config/listremotes')
 
     if (isLoading) return <div>Loading...</div>
-    if (error) return <div>Error: {error.message}</div>
+    if (error) return <div>Error: {typeof error === 'string' ? error : error.error}</div>
 
     return (
         <ul>
@@ -114,6 +130,8 @@ function StorageInfo({ remote }: { remote: string }) {
 }
 ```
 
+These types come from `openapi-react-query`, which doesn't reject extra body fields.
+
 ### SWR
 
 ```tsx
@@ -122,10 +140,10 @@ import createRCDSWR from 'rclone-sdk/swr'
 const swr = createRCDSWR({ baseUrl: 'http://localhost:5572' })
 
 function RemotesList() {
-    const { data, error, isLoading } = swr.useQuery('post', '/config/listremotes')
+    const { data, error, isLoading } = swr.useQuery('/config/listremotes')
 
     if (isLoading) return <div>Loading...</div>
-    if (error) return <div>Error: {error.message}</div>
+    if (error) return <div>Error: {typeof error === 'string' ? error : error.error}</div>
 
     return (
         <ul>
@@ -137,7 +155,7 @@ function RemotesList() {
 }
 
 function FileList({ remote, path }: { remote: string; path: string }) {
-    const { data } = swr.useQuery('post', '/operations/list', {
+    const { data } = swr.useQuery('/operations/list', {
         body: { fs: `${remote}:`, remote: path }
     })
 
@@ -155,14 +173,14 @@ function FileList({ remote, path }: { remote: string; path: string }) {
 
 ## Async Operations
 
-Many rclone endpoints support asynchronous execution. Use `rcd.ASYNC()` instead of `rcd.POST()` to get a properly typed `{ jobid }` response:
+Every rclone route except uploads can run in the background. Use `rcd.ASYNC()` instead of `rcd.POST()` to get a properly typed job ID:
 
 ```ts
 import createRCDClient from 'rclone-sdk'
 
 const rcd = createRCDClient({ baseUrl: 'http://localhost:5572' })
 
-// Start an async copy — ASYNC sets _async and Prefer header automatically
+// Start an async copy — ASYNC sends the Prefer: respond-async header
 const { data } = await rcd.ASYNC('/sync/copy', {
     body: { srcFs: 'gdrive:docs', dstFs: 'b2:backup' },
 })
@@ -173,7 +191,9 @@ const { data: status } = await rcd.POST('/job/status', { body: { jobid: data!.jo
 console.log(status?.finished, status?.success)
 ```
 
-`POST()` returns the synchronous (200) response type. `ASYNC()` returns the async (202) response type (`{ jobid: number }`). Both accept the same path and parameters — `ASYNC()` just adds `_async: true` and the `Prefer: respond-async` header for you.
+`POST()` returns the synchronous (200) response type. `ASYNC()` returns the async (202) response type (`{ jobid: number, executeId: string }`). Both accept the same path and parameters — `ASYNC()` just adds the `Prefer: respond-async` header for you.
+
+React Query and SWR hooks wait for the result, like `POST()`. To start a job from a React app, call `rcd.ASYNC()` inside a mutation.
 
 If you need the raw OpenAPI types (including both 200 and 202), they're available as `paths`:
 
@@ -183,68 +203,40 @@ import { type paths } from 'rclone-sdk'
 
 ## Tips
 
-Even though the client supports all HTTP methods, **`rclone`** expects everything as a _POST_ request.
+**`rclone`** expects everything as a _POST_ request, even for read operations.
 
-If you want to wrap the client to only send POST requests and throw errors automatically, here's a quick snippet (adjust to taste):
+If you want a function that returns the data and throws on errors, here's a quick snippet (adjust to taste):
+
 ```ts
-import createRCDClient, {
-    type OpenApiMethodResponse,
-    type OpenApiClient,
-    type OpenApiClientPathsWithMethod,
-    type OpenApiMaybeOptionalInit,
-    type OpenApiRequiredKeysOf,
-    type RCDClient,
-} from 'rclone-sdk'
+import createRCDClient, { type RCDArgs, type RCDData, type RCDPath } from 'rclone-sdk'
 
-type ClientPaths<T> = T extends OpenApiClient<infer P, any> ? P : never
-type Paths = ClientPaths<RCDClient>
-type InitParam<Init> = OpenApiRequiredKeysOf<Init> extends never
-    ? [(Init & { [key: string]: unknown })?]
-    : [Init & { [key: string]: unknown }]
+const client = createRCDClient({ baseUrl: 'http://localhost:5572' })
 
-export default async function rclone<
-    Path extends OpenApiClientPathsWithMethod<RCDClient, 'post'>,
-    Init extends OpenApiMaybeOptionalInit<Paths[Path], 'post'> = OpenApiMaybeOptionalInit<
-        Paths[Path],
-        'post'
-    >,
->(
-    path: Path,
-    ...init: InitParam<Init>
-): Promise<OpenApiMethodResponse<RCDClient, 'post', Path, Init>> {
-    const client = createRCDClient({ baseUrl: 'http://localhost:5572' })
+// TypeScript can't resolve `client.POST` for a generic `Path`, so this one call uses a simpler type
+const post = client.POST as unknown as (
+    path: string,
+    init?: unknown
+) => Promise<{ data?: unknown; error?: unknown }>
 
-    const result = await client.POST(
-        path,
-        ...(init as InitParam<OpenApiMaybeOptionalInit<Paths[Path], 'post'>>)
-    )
-
-    if (result?.error) {
-        const message =
-            typeof result.error === 'string' ? result.error : JSON.stringify(result.error)
-
-        throw new Error(message)
-    }
-
-    const data = result.data as { error?: unknown } | undefined
-    if (data?.error) {
-        const message = typeof data.error === 'string' ? data.error : JSON.stringify(data.error)
-
-        throw new Error(message)
-    }
-
-    if (!result.response.ok) {
-        throw new Error(`${result.response.status} ${result.response.statusText}`)
-    }
-
-    return result.data as OpenApiMethodResponse<typeof client, 'post', Path, Init>
+export default async function rclone<Path extends RCDPath>(path: Path, ...init: RCDArgs<Path>) {
+    const { data, error } = await post(path, init[0])
+    if (error) throw new Error(typeof error === 'string' ? error : JSON.stringify(error))
+    return data as RCDData<Path>
 }
 ```
 
 Now you'll be able to
-- call **`rclone('config/listremotes')`** directly
+- call **`rclone('/config/listremotes')`** directly
 - get the data as the return value (correctly typed, and without having to de-construct the resulting object)
 - have it throw on error with a detailed error message (instead of checking the **`error`** field manually)
+
+## Known limits
+
+- **Long calls on Node:** `fetch` stops waiting for a response after 5 minutes, and rclone cancels a call when its client disconnects. Use `ASYNC()` for anything long. The Rust client's `with_auth` and `without_auth` have no such limit.
+- **`core/command`:** its `returnType` decides between JSON and plain text. In TypeScript, `data` is a union that you narrow, and the `STREAM` types need `parseAs: 'text'`. In Rust, `STREAM` returns `Error::InvalidResponsePayload` with the output inside. In the background, the `STREAM` types run the command but the job's `output` is empty.
+- **`Prefer` as a free-form header:** `rcd.POST(path, { headers: { Prefer: 'respond-async' } })` compiles and returns a job ID that its type doesn't show. Use `ASYNC()`.
+- **Uploads in TypeScript:** rclone skips form parts with no file name and still returns 200, and types can't see inside a `FormData`. Append each file with a name, as in `form.append('file', blob, 'name.txt')`.
+- **`_config` and `_filter` on three routes:** `cache/fetch`, `vfs/forget` and `vfs/refresh` take open-ended keys with string values, and the spec can't allow objects for only these two keys. It leaves them out, so neither client can send them on these routes, although rclone accepts them.
 
 ## Contributing
 
